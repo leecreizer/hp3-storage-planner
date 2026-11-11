@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>홈뷰 몸체 상자 굽기</title></head>
+<body><pre id="out">굽는 중…</pre>
+<script type="module">
+// 홈뷰 방 꾸밈 모델 몸체 상자 → public/data/hvboxes.json
+// 방을 지을 때 모델을 받기 전에 이 상자로 자리부터 잡고, 모델은 뒤에서 가구 → 소품 순으로 끼운다(furnish.ts addHomvueModule).
+// 모델(public/props/hv)·hvrooms.json 을 바꾸면 다시 굽는다: 개발 서버에서 /tools/hvboxes.html 을 열고 window.__boxes 를 저장
+import { bakeHvBoxes } from '/src/furnish.ts';
+const boxes = await bakeHvBoxes();
+window.__boxes = boxes;
+document.getElementById('out').textContent = `${Object.keys(boxes).length}개\n` + JSON.stringify(boxes);
+</script></body></html>

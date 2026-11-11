@@ -288,7 +288,7 @@ function collectOcc(room: THREE.Object3D, extra: THREE.Object3D[], skip: Set<THR
   const addOcc = (o: THREE.Object3D) => o.traverse(x => {
     const m = x as THREE.Mesh;
     if (!m.isMesh || (m as any).isInstancedMesh || !m.geometry?.getAttribute('position') || skip.has(m)) return;
-    for (let pp: THREE.Object3D | null = m; pp; pp = pp.parent) if (!pp.visible || SKIP_OCC.test(pp.name)) return;
+    for (let pp: THREE.Object3D | null = m; pp; pp = pp.parent) if (!pp.visible || SKIP_OCC.test(pp.name) || pp.userData.noOcc) return;
     // 아주 작은 것(책·소품 20cm 미만)은 방 빛을 거의 가리지 않는다 — 삼각형만 많다
     if (!m.geometry.boundingSphere) m.geometry.computeBoundingSphere();
     if (m.geometry.boundingSphere!.radius * m.matrixWorld.getMaxScaleOnAxis() < 0.1) return;

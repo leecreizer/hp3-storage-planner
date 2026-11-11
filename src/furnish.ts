@@ -693,7 +693,8 @@ export const ROOM_STYLES: { id: RoomStyle; name: string; group?: string; desc: s
 ];
 /** 홈뷰 묶음 이동 — 가구를 눌러 골라 끌어 옮기고 돌리고 뺀다(사용자 지시 2026-11-02 「배치된 상품들을 선택해서 이동하게」) */
 /** rot = 90° 단위(예전 저장분), ang = 도(5° 단위 돌리기·회전 고리 — 사용자 지시 2026-11-03). 실제 각 = rot × 90 + ang */
-export type HvMove = { dx: number; dz: number; rot: number; ang?: number; del?: boolean; cL?: number; cR?: number; /** 속커튼 자락 폭(m) — 겉커튼과 따로 */ cLi?: number; cRi?: number; /** 벽 장식 높이 이동(m) */ dy?: number };
+export type HvMove = { dx: number; dz: number; rot: number; ang?: number; del?: boolean; cL?: number; cR?: number; /** 속커튼 자락 폭(m) — 겉커튼과 따로 */ cLi?: number; cRi?: number; /** 벽 장식 높이 이동(m) */ dy?: number;
+  /** 벽 장식을 사용자가 벽째 옮겼다(다른 벽으로 · 벽에 딱 붙여) — dx·dz·dy 는 원래 기준점에서 그대로 간 거리, 장 앞 자동 밀기·겹침 표시 안 함 */ free?: boolean };
 /** 커튼 자락 폭(레일 따라 m) — 묶음 이동과 같은 곳(moves['_curtain'])에 저장. 없으면 창에 맞춘 기본 */
 export const CURTAIN_KEY = '_curtain';
 export type RoomFurnishOpts = {
@@ -712,6 +713,8 @@ export type RoomFurnishOpts = {
   avoid?: [number, number, number, number][];
   /** 장 앞 통로 깊이(m) — avoid 의 장 상자에서 장 앞면을 되짚는 데 쓴다 */
   aisle?: number;
+  /** 자리를 먼저 잡고 모델을 뒤에 끼울 때 — 모델 하나가 끼워질 때마다(화면을 다시 그리게) */
+  onFill?: () => void;
 };
 /** 맞은편 벽(z = D)에 침대 + 침구 + 협탁 2 + (자리 되면) 2단 책장, 창(오른쪽 벽 x1)에 커튼. alive() 가 거짓이면(방이 다시 만들어짐) 버린다 */
 
@@ -737,6 +740,28 @@ export async function hvRoomInfo(style: RoomStyle): Promise<HvRoomInfo | null> {
 }
 let hvRooms: Promise<Record<string, HvRoom>> | null = null;
 const hvData = (): Promise<Record<string, HvRoom>> => (hvRooms ??= fetch(`${import.meta.env.BASE_URL}data/hvrooms.json`).then(r => r.json() as Promise<Record<string, HvRoom>>).catch(() => ({} as Record<string, HvRoom>)));
+/** 투명 천을 빼는 홈뷰 종류(침구·매트리스·쿠션·옷) */
+const HV_SHEER = /Fabric|Matrres|Cushion|Cloth/;
+/** 홈뷰 방 모델 몸체 상자(모델 좌표 — coreLocal 과 같은 값, [최소 xyz, 최대 xyz]). tools/hvboxes.html 로 굽는다.
+ *  모델·hvrooms.json 을 바꾸면 다시 굽는다 — 없거나 빠진 모델이 있으면 예전처럼 다 받은 뒤에 놓는다 */
+let hvBoxes: Promise<Record<string, number[] | null>> | null = null;
+const hvBoxData = (): Promise<Record<string, number[] | null>> => (hvBoxes ??= fetch(`${import.meta.env.BASE_URL}data/hvboxes.json`)
+  .then(r => (r.ok ? r.json() : {})).catch(() => ({})));
+/** 몸체 상자 굽기(tools/hvboxes.html) — 홈뷰 방 꾸밈에 나오는 모델 전부 */
+export async function bakeHvBoxes() {
+  const cats = new Map<string, string>();
+  for (const r of Object.values(await hvData())) for (const it of r.items) cats.set(it.m, it.cat);
+  // 못 쓰는 모델(받기·재질 정리 실패)은 null — 방을 지을 때도 그 자리는 빠진다(예전처럼)
+  const out: Record<string, number[] | null> = {};
+  for (const [n, cat] of cats) {
+    const m = await roomModel('hv/' + n, hvRule(cat)).catch(e => { console.warn('[몸체 상자] 못 씀', n, String(e?.stack ?? e).slice(0, 300)); return null; });
+    if (!m) { out[n] = null; continue; }
+    if (HV_SHEER.test(cat)) dropSheer(m);
+    const b = coreLocal(m);
+    out[n] = [...b.min.toArray(), ...b.max.toArray()].map(v => Math.round(v * 1e5) / 1e5);
+  }
+  return out;
+}
 /** 홈뷰 소품 재질 — 종류(카테고리)로 */
 /** 침구의 투명 천(비치는 덧담요·레이스) 메시를 뺀다 — 사용자 지시 2026-11-03 「침구로 투명 재질의 천은 제거」.
  *  모델 캐시 원본에서 빼므로 이 방을 다시 만들어도 다시 붙지 않는다 */
@@ -780,27 +805,62 @@ type Wall = 'F' | 'L' | 'R' | 'B';
 type Unit = { members: number[]; kind: 'furn' | 'decor' | 'rug'; wall: Wall | null; parts?: number[][] };
 
 async function addHomvueModule(g: THREE.Group, o: RoomFurnishOpts, style: RoomStyle, alive: () => boolean,
-  ctx: { free: (x0: number, x1: number, z0: number, z1: number, h?: number) => boolean; taken: THREE.Box3[]; midZ: () => number }): Promise<boolean> {
+  ctx: { free: (x0: number, x1: number, z0: number, z1: number, h?: number) => boolean; taken: THREE.Box3[]; midZ: () => number; pending: Promise<unknown>[] }): Promise<boolean> {
   const mod = (await hvData())[style];
   if (!mod?.floor || !mod.items.length) return false;
   const names = [...new Set(mod.items.map(i => i.m))];
   const catOf = new Map(mod.items.map(i => [i.m, i.cat]));
+  const getModel = (n: string) => roomModel('hv/' + n, hvRule(catOf.get(n)!)).then(m => { if (HV_SHEER.test(catOf.get(n)!)) dropSheer(m); return m; });
   const loaded = new Map<string, THREE.Object3D | null>();
-  await Promise.all(names.map(async n => {
-    const m = await roomModel('hv/' + n, hvRule(catOf.get(n)!)).catch(() => null);
-    if (m && /Fabric|Matrres|Cushion|Cloth/.test(catOf.get(n)!)) dropSheer(m);
-    loaded.set(n, m);
-  }));
+  // 몸체 상자를 미리 구워 뒀으면(data/hvboxes.json) 모델을 받기 전에 빈 자리표로 자리부터 잡는다 — 자리 계산은 상자만 쓴다.
+  // 모델은 뒤에서 가구 → 소품 순으로 받아 자리표에 끼운다(사용자 지시 2026-11-12 「공간 → 장 → 가구 → 소품 절차적으로」)
+  const boxes = await hvBoxData();
+  const early = names.every(n => n in boxes && (boxes[n] === null || boxes[n]!.length === 6));
+  if (early) for (const n of names) {
+    const b = boxes[n];
+    if (!b) { loaded.set(n, null); continue; }
+    const px = new THREE.Group();
+    px.userData.hvItem = true; px.userData.hvName = n;
+    px.userData.coreL = new THREE.Box3(new THREE.Vector3(b[0], b[1], b[2]), new THREE.Vector3(b[3], b[4], b[5]));
+    loaded.set(n, px);
+  }
+  else await Promise.all(names.map(async n => { loaded.set(n, await getModel(n).catch(() => null)); }));
   if (!alive()) return true;
+  /** 복제 — 몸체 상자(coreL)도 함께. clone 은 userData 를 JSON 으로 옮겨 Box3 가 빠진다(자리표는 메시가 없어 다시 잴 수 없다) */
+  const dup = (m: THREE.Object3D) => { const c = m.clone(true); const k = m.userData.coreL as THREE.Box3 | undefined; if (k?.isBox3) c.userData.coreL = k.clone(); return c; };
   const items = mod.items;
   const N = items.length;
   const [fx0, fx1, fz0, fz1] = mod.floor;
   // 아이템마다 따로 복제(같은 모델이 여러 번 나온다) · 홈뷰 자리 행렬(기울기 포함 전체 회전 q) · 모델 자체 상자 가운데(좌우 반전용)
-  const objs = items.map(it => { const m = loaded.get(it.m); return m ? m.clone(true) : null; });
+  const objs = items.map(it => { const m = loaded.get(it.m); return m ? dup(m) : null; });
+  /** 자리표에 모델 끼우기 — 놓인 것만, 가구(침대·책상·의자 등) 먼저 다 받고 소품 */
+  const fill = () => {
+    if (!early) return;
+    const by = new Map<string, { ob: THREE.Object3D; furn: boolean; rug: boolean }[]>();
+    objs.forEach((ob, i) => {
+      if (!ob?.parent) return;
+      const n = ob.userData.hvName as string;
+      if (!by.has(n)) by.set(n, []);
+      by.get(n)!.push({ ob, furn: items[i].role !== 'prop', rug: isRug(i) });
+    });
+    const put = (n: string, m: THREE.Object3D | null) => {
+      if (!m || !alive()) return;
+      by.get(n)!.forEach((t, k) => {
+        const c = k ? m.clone(true) : m;
+        c.position.set(0, 0, 0); c.quaternion.identity(); c.scale.set(1, 1, 1);
+        if (t.rug) c.traverse(x => { x.castShadow = false; });
+        t.ob.add(c);
+      });
+      o.onFill?.();
+    };
+    const wave = (furn: boolean) => Promise.all([...by.keys()].filter(n => by.get(n)!.some(t => t.furn) === furn)
+      .map(n => getModel(n).catch(e => { console.warn('[홈뷰 꾸밈] 모델', n, e); return null; }).then(m => put(n, m))));
+    ctx.pending.push(wave(true).then(() => (alive() ? wave(false) : undefined)));
+  };
   // 비정상 크기·비율 소품 — 홈뷰 배율이 잘못 들어온 것(자녀방 벽 액자 11.6배 → 7.4m, 탁상 액자 6.1배 → 1.6m, 아기방 오르골 0.04배 → 8mm).
   // 배율을 버리고 모델 원래 크기로, 원래 크기도 이상하면 이 방의 같은 종류 정상 소품으로 바꾼다(사용자 지시 2026-11-03 「비율이 이상한 소품은 다른 걸로 교체」)
   const PROP_MAX: [RegExp, number][] = [[/Frame/, 1.3], [/Rug/, 4], [/Fabric|Matrres/, 2.6], [/Plant/, 2]];
-  const nativeSize = (m: THREE.Object3D) => { const c = m.clone(true); c.position.set(0, 0, 0); c.quaternion.identity(); c.scale.set(1, 1, 1); return boxOf(c).getSize(new THREE.Vector3()); };
+  const nativeSize = (m: THREE.Object3D) => { const c = dup(m); c.position.set(0, 0, 0); c.quaternion.identity(); c.scale.set(1, 1, 1); return boxOf(c).getSize(new THREE.Vector3()); };
   const sane = (v: THREE.Vector3, cat: string) => { const mx = Math.max(v.x, v.y, v.z); return mx >= 0.03 && mx <= (PROP_MAX.find(([r]) => r.test(cat))?.[1] ?? 1); };
   const scl = items.map(it => [...it.s] as [number, number, number]);
   items.forEach((it, i) => {
@@ -810,7 +870,7 @@ async function addHomvueModule(g: THREE.Group, o: RoomFurnishOpts, style: RoomSt
     if (sane(sz, it.cat) && ratio <= 3) return;
     if (sane(ns, it.cat)) { scl[i] = [1, 1, 1]; console.info('[홈뷰 소품] 배율 무시', it.m, it.s); return; }
     const sub = items.find(o => o.cat === it.cat && o.m !== it.m && loaded.get(o.m) && sane(nativeSize(loaded.get(o.m)!).multiply(new THREE.Vector3(...o.s.map(Math.abs) as [number, number, number])), o.cat));
-    objs[i] = sub ? loaded.get(sub.m)!.clone(true) : null;
+    objs[i] = sub ? dup(loaded.get(sub.m)!) : null;
     if (sub) scl[i] = [...sub.s] as [number, number, number];
     console.info('[홈뷰 소품] 교체', it.m, '→', sub?.m ?? '(뺌)');
   });
@@ -1094,6 +1154,7 @@ async function addHomvueModule(g: THREE.Group, o: RoomFurnishOpts, style: RoomSt
       if (isRug(i)) ob.traverse(mm => { mm.castShadow = false; });
       g.add(ob);
     }
+    fill();
     return true;
   }
   // ---- 원본 그대로 — 묶음마다 그룹(hv-unit)으로. 바닥 가운데가 기준점이라 끌어 옮기고 90° 돌린다.
@@ -1117,6 +1178,7 @@ async function addHomvueModule(g: THREE.Group, o: RoomFurnishOpts, style: RoomSt
     const bx = u.ms.reduce((b, i) => b.union(best.pose[i]!.box), new THREE.Box3()).translate(new THREE.Vector3(u.dx, 0, u.dz));
     const c = bx.getCenter(new THREE.Vector3());
     const ug = new THREE.Group(); ug.name = 'hv-unit'; ug.userData.hvUnit = key; ug.userData.kind = u.kind;
+    ug.userData.hvBase = new THREE.Vector3(c.x, 0, c.z);   // 옮기기 전 기준점 — 벽째 옮긴 벽 장식은 여기서 바로 잰다(main.ts)
     const tuck = u.ms.every(i => items[i].role === 'chair') ? 'chair' as const
       : u.ms.some(i => mains.includes(i) && /Desk|Vanity|Table/.test(items[i].cat)) ? 'table' as const : undefined;
     ug.userData.tuck = tuck;
@@ -1139,7 +1201,7 @@ async function addHomvueModule(g: THREE.Group, o: RoomFurnishOpts, style: RoomSt
     if (u.kind === 'decor') {
       // 장 벽 장식 — 장·방문 자리(벽에 붙은 비울 자리)와 가로로 겹치면 겹침. 사용자가 옮기지 않았으면 그 벽에서 가장 가까운 빈 자리로 민다
       // (장을 놓은 벽에 원래 걸려 있던 시계가 장 앞면에 박혀 빨갛게 됐다, 2026-11-03)
-      const blk = (o.avoid ?? []).filter(r => r[2] <= 0.01);
+      const blk = mv?.free ? [] : (o.avoid ?? []).filter(r => r[2] <= 0.01);   // 사용자가 벽째 옮긴 것은 밀지 않는다
       const hitB = (a0: number, a1: number) => blk.some(r => a0 < r[1] - 0.005 && a1 > r[0] + 0.005);
       // 미는 자리는 옮기기 전(원래) 자리로 정한다 — 옮긴 값(dx)은 민 자리 기준이라, 옮겼다고 밀기를 빼면 높이만 바꿔도 장식이 옆으로 튀었다(2026-11-05)
       const base = fb.clone().translate(new THREE.Vector3(-(mv?.dx ?? 0), 0, -(mv?.dz ?? 0)));
@@ -1159,6 +1221,7 @@ async function addHomvueModule(g: THREE.Group, o: RoomFurnishOpts, style: RoomSt
     ug.userData.fpL = [lb.min.x, lb.max.x, lb.min.z, lb.max.z];
     if (!conflict && u.kind === 'furn') { ctx.taken.push(...boxes); if (tuck) for (const b of boxes) tuckOf.set(b, tuck); }
   }
+  fill();
   return true;
 }
 
@@ -1175,14 +1238,23 @@ export async function addHomvueRoom(g: THREE.Group, o: RoomFurnishOpts, alive: (
   };
   const load = (n: string) => roomModel(n).then(m => { if (n === 'bedding') dropSheer(m); return m; }).catch(e => { console.warn('[방 소품]', n, e); return null; });
   const master = style === 'master', dress = style.startsWith('dress');
-  const [bedM, beddingM, ns1, ns2, shelfM, curtainM, art1M, art2M, rugM, plantM, lampM] = await Promise.all(
-    // 스타일마다 색·재질 톤을 하나로(사용자 지적 2026-10-30 「톤이 섞여 정신없다」) — 안방 = 월넛 + 부클 베이지(옆 서랍장도 월넛),
-    // 자녀방(성인) = 오크 + 블랙(책장 BKIC04243 오크·블랙 다리), 학생방 = 화이트, 아기방 = 화이트 + 파스텔, 드레스룸 = 올 화이트
-    [master ? 'bed' : '', dress ? '' : 'bedding', master ? 'nightstand' : '', master ? 'nightstand' : '', master ? 'style/master_chest' : style === 'adult' ? 'shelf' : '',
-      'curtain', 'art1', master || dress ? 'art2' : '', dress || style !== 'baby' ? 'rug' : '', 'plant', 'lamp'].map(n => (n ? load(n) : Promise.resolve(null))));
+  const curtainP = load('curtain');
+  type M = THREE.Object3D | null;
+  const none = null as M;     // 「null 로만 대입됐다」고 좁혀 읽지 않게(아래 loadLegacy 가 채운다)
+  let bedM = none, beddingM = none, ns1 = none, ns2 = none, shelfM = none, art1M = none, art2M = none, rugM = none, plantM = none, lampM = none;
   const extra = new Map<string, THREE.Object3D | null>();
-  await Promise.all(SET[style].map(async n => { extra.set(n.slice(6), await load(n)); }));
-  if (!alive()) return;
+  /** 예전 규칙 가구·소품 — 홈뷰 꾸밈을 못 쓸 때(드레스룸·좁은 방)만 받는다. 예전엔 늘 먼저 받아, 홈뷰 꾸밈을 쓰는 안방에서도
+   *  안 쓰는 침구(8MB)·침대·화분 등 14MB 를 다 받은 뒤에야 홈뷰 가구를 받기 시작했다(처음 열기 11초 지연, 실측 2026-11-12) */
+  const loadLegacy = async () => {
+    [bedM, beddingM, ns1, ns2, shelfM, art1M, art2M, rugM, plantM, lampM] = await Promise.all(
+      // 스타일마다 색·재질 톤을 하나로(사용자 지적 2026-10-30 「톤이 섞여 정신없다」) — 안방 = 월넛 + 부클 베이지(옆 서랍장도 월넛),
+      // 자녀방(성인) = 오크 + 블랙(책장 BKIC04243 오크·블랙 다리), 학생방 = 화이트, 아기방 = 화이트 + 파스텔, 드레스룸 = 올 화이트
+      [master ? 'bed' : '', dress ? '' : 'bedding', master ? 'nightstand' : '', master ? 'nightstand' : '', master ? 'style/master_chest' : style === 'adult' ? 'shelf' : '',
+        'art1', master || dress ? 'art2' : '', dress || style !== 'baby' ? 'rug' : '', 'plant', 'lamp'].map(n => (n ? load(n) : Promise.resolve(null))));
+    await Promise.all(SET[style].map(async n => { extra.set(n.slice(6), await load(n)); }));
+  };
+  /** 자리를 먼저 잡고 뒤에서 끼우는 모델 받기(홈뷰 꾸밈) — 다 끼워진 뒤에 끝난다 */
+  const pending: Promise<unknown>[] = [];
   const W = o.x1 - o.x0, cx = (o.x0 + o.x1) / 2;
   // ---- 공통 도구 — 빈 자리 판정(방문 열림·장 앞·커튼 자리·놓인 가구) · 구석 · 맞은편 벽 한 줄 · 왼쪽 벽
   const taken: THREE.Box3[] = [];
@@ -1302,8 +1374,9 @@ export async function addHomvueRoom(g: THREE.Group, o: RoomFurnishOpts, alive: (
   };
 
   // 홈뷰 방 꾸밈이 있으면 그대로 옮겨 놓는다(가구·소품). 자료·모델을 못 받으면 아래 예전 규칙
-  const usedHv = await addHomvueModule(g, o, style, alive, { free, taken, midZ }).catch(e => { console.warn('[홈뷰 꾸밈]', e); return false; });
+  const usedHv = await addHomvueModule(g, o, style, alive, { free, taken, midZ, pending }).catch(e => { console.warn('[홈뷰 꾸밈]', e); return false; });
   if (!alive()) return;
+  if (!usedHv) { await loadLegacy(); if (!alive()) return; }
   if (!usedHv && !master) {
     if (style === 'baby') {
       // 아기방 — [수납장][가드 저상 침대] 맞은편 벽, 가운데 놀이매트 + 유아 소파, 침대 위 액자
@@ -1462,6 +1535,8 @@ export async function addHomvueRoom(g: THREE.Group, o: RoomFurnishOpts, alive: (
   // 커튼 — 모델 폭(x)을 창 쪽 벽(z)으로 돌리고, 커튼 박스 윗면 ~ 바닥 1cm 위로 늘린다.
   // 레일은 창 양옆 15cm 까지, 자락(겉·속 좌우 넷)은 창 양옆에 주름을 모아 접어 둔다 — 통째로 늘였을 땐 오른쪽 자락이
   // 창에서 떨어져 벽에 퍼졌고, 장 쪽으로 밀려도 납작해질 뿐 접혀 보이지 않았다(사용자 지적 2026-10-30)
+  const curtainM = await curtainP;
+  if (!alive()) return;
   if (curtainM) {
     // 장·방문 쪽으로는 침범하지 않는다(사용자 지시 2026-10-29)
     // 레일 = 창 양옆 15cm — 자락이 창틀 가장자리에 대칭으로 모인다
@@ -1529,4 +1604,5 @@ export async function addHomvueRoom(g: THREE.Group, o: RoomFurnishOpts, alive: (
     c.updateMatrix(); c.applyMatrix4(win.m);          // 창이 있는 벽으로
     g.add(c);
   }
+  await Promise.all(pending);
 }

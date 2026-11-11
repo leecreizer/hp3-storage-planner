@@ -20,6 +20,7 @@ import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { afterRoom } from './loadgate';
 
 // ---- 실제 모델 (장 만들기 전에 한 번 불러 둔다 — buildWardrobe 가 기다림)
 type Piece = { geo: THREE.BufferGeometry; mat: THREE.Material };
@@ -92,6 +93,7 @@ export function loadWardAssets() {
       // 홈뷰 의류·가방(57개 · 25MB)은 기다리지 않는다 — 처음 열 때 이것을 다 받아 풀어야 장을 지어 방 짓기까지 3초 늦었다(실측 2026-11-09,
       // 사용자 지적 「최초 오픈이 너무 오래 걸려」). 기본 소품으로 먼저 짓고, 다 오면 합쳐 넣고 알린다(onWardHvReady → 장 안만 다시)
       void (async () => {
+        await afterRoom();                 // 방 가구·소품을 다 받은 뒤에(loadgate — 처음 열 때 방 꾸밈과 받기를 다퉜다, 실측 2026-11-12)
         const hvNames = [...HV_SHIRT, ...HV_JACKET, ...HV_COATS, ...HV_PANTS, ...HV_STACKS, ...HV_FOLD, ...HV_BAGS];
         (await Promise.allSettled(hvNames.map(async n => [n, await load(n)] as const))).forEach((r, i) => { if (r.status === 'fulfilled') got.set(r.value[0], r.value[1]); else console.warn('[장 소품] 홈뷰', hvNames[i], r.reason); });
         if (!ward) return;

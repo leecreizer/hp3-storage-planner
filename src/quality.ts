@@ -19,6 +19,8 @@ export type QualityProfile = {
   lite: boolean;
   /** 후처리 설정 위에 덮어쓰는 값 — 사용자가 「후처리」 메뉴에서 고른 값은 그대로 두고 이 단계에서만 끈다 */
   caps: Partial<PostSettings>;
+  /** 공간 라이트맵 굽기 — 텍셀(m)·튄 빛 표본 수. 없으면 기본(40mm · 24) */
+  bake?: { cell: number; bounce: number };
 };
 
 export const PROFILES: Record<QualityName, QualityProfile> = {
@@ -26,7 +28,9 @@ export const PROFILES: Record<QualityName, QualityProfile> = {
   // 보통 — 간접광·화면 반사·블룸을 빼고 깨끗한 구석 그늘(GTAO)과 TRAA 만. 거울은 낮은 해상도 평면 반사
   mid: { name: 'mid', label: '보통', dpr: 1.25, maxPixels: 2.2e6, lite: false, caps: { ssr: false, sss: false, bloom: false, aoKind: 'gtao', quality: 'low', reflect: 'low' } },
   // 노트북 — 화면 효과 없음, 배율 1 · 130만 화소(FHD 노트북 150% 배율이면 그리는 칸이 약 86만 화소라 배율 1 그대로)
-  low: { name: 'low', label: '노트북', dpr: 1, maxPixels: 1.3e6, lite: true, caps: { ssgi: false, ssr: false, sss: false, traa: false, bloom: false, denoise: false, reflect: 'off' } },
+  // 라이트맵은 텍셀 60mm · 튄 빛 12 — 굽는 시간은 삼각형 수가 아니라 칸 수에 달렸다(실측 2026-11-12, RTX 4080 PC 작업자 12: 40mm·24 = 5.6초 → 60mm·12 ≈ 1.5초,
+  //  작은 소품 17개를 가림에서 빼 삼각형 28만 → 16만이어도 5.2초). 노트북(i7-1165G7)은 작업자가 6개라 기본으로는 20초 안팎이 걸린다
+  low: { name: 'low', label: '노트북', dpr: 1, maxPixels: 1.3e6, lite: true, caps: { ssgi: false, ssr: false, sss: false, traa: false, bloom: false, denoise: false, reflect: 'off' }, bake: { cell: 0.06, bounce: 12 } },
 };
 const KEY = 'storage-planner.quality';
 const params = new URLSearchParams(location.search);

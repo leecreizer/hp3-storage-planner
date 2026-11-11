@@ -10,6 +10,7 @@ import { CEILING_LIGHTS, DOOR_H, FIXTURE_SPEC, fixtureSize, ROOM_D, ROOM_H, ROOM
 import { POST_DEFAULTS, type PostSettings } from './render/raster';
 import { AUTO_TIER, GPU_NAME, PROFILES, QUALITY_FORCED, qualityChoice, setQualityChoice, type QualityChoice } from './quality';
 import { arrange } from './arrange';
+import { roomGateOpen } from './loadgate';
 
 const $ = <T extends HTMLElement = HTMLElement>(s: string) => document.querySelector(s) as T;
 const h = (tag: string, cls = '', html = '') => { const e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; };
@@ -293,7 +294,8 @@ let prewarmed = false;
 function preloadPlan() {
   if (!design) return;
   // 덮개가 떠 있는 동안(처음 열기·방 재구성)은 미룬다 — 몸통·도어 167개(16MB)가 방 짓기와 다퉜다(실측 2026-11-09)
-  if (stage.isBusy) { setTimeout(preloadPlan, 1500); return; }
+  // 방 가구·소품을 처음 다 받기 전에도 미룬다(loadgate — 받는 순서 공간 → 장 → 가구 → 소품 → 미리 받기)
+  if (stage.isBusy || !roomGateOpen()) { setTimeout(preloadPlan, 1500); return; }
   const p = pl.plan(design.planId);
   preload(p.slots.flatMap(s => s.bodies.flatMap(b => [pl.c(b.id), ...b.doors.map(id => pl.c(id))])));
 }
@@ -1769,7 +1771,8 @@ function openEpPop(s: 'L' | 'R') {
   renderEpPop(); stage.markEP(s);
 }
 function closeEpPop() { epSide = null; epPop.hidden = true; stage.markEP(null); }
-let furnDrag: { u: THREE.Object3D; start: THREE.Vector3; p0: THREE.Vector3; moved: boolean; decor: boolean; stack: string[]; sx: number; sy: number; live: boolean } | null = null;
+let furnDrag: { u: THREE.Object3D; start: THREE.Vector3; p0: THREE.Vector3; moved: boolean; decor: boolean; stack: string[]; sx: number; sy: number; live: boolean;
+  /** 벽 장식 — 벽째 옮기기(stage.decorGrab) */ g?: ReturnType<Stage['decorGrab']> } | null = null;
 const curMove = (k: string) => stage.hvMoves[stage.movesKey]?.[k] ?? { dx: 0, dz: 0, rot: 0 };
 /** 고른 묶음을 다시 눌렀다 — 그 자리에 겹친 다음 묶음으로(맨 뒤면 맨 앞으로). 러그는 다른 묶음이 겹쳐 있으면 건너뛴다(가구를 다시 누를 때마다 러그로 넘어가지 않게) */
 function cycleUnit(stack: string[]) {
@@ -1928,7 +1931,8 @@ cv.addEventListener('pointerdown', e => {
   // 벽 장식은 걸린 벽 면을 따라(옆·위아래), 나머지는 바닥을 따라 끈다
   const decor = u.userData.kind === 'decor';
   const p0 = decor ? stage.decorWallAt(e, u) : stage.floorAt(e); if (!p0) return;
-  furnDrag = { u, start: u.position.clone(), p0, moved: false, decor, stack: stack.map(x => x.userData.hvUnit as string), sx: e.clientX, sy: e.clientY, live: false };
+  furnDrag = { u, start: u.position.clone(), p0, moved: false, decor, stack: stack.map(x => x.userData.hvUnit as string), sx: e.clientX, sy: e.clientY, live: false,
+    g: decor ? stage.decorGrab(e, u) : undefined };
   stage.controls.enabled = false; cv.setPointerCapture(e.pointerId); cv.style.cursor = 'grabbing';
   e.stopImmediatePropagation();
 }, true);
@@ -1936,6 +1940,12 @@ cv.addEventListener('pointermove', e => {
   if (!furnDrag) { if (!e.buttons && picked === 'furn' && selUnit && stage.mode === 'raster') cv.style.cursor = stage.unitsAt(e).some(x => x.userData.hvUnit === selUnit) || stage.ringAt(e) != null ? 'grab' : ''; return; }
   // 화면에서 5px 넘게 움직여야 끌기 — 클릭할 때 손이 1~3px 흔들려도 가구가 밀리지 않고 「다시 누르면 뒤 가구」가 되게(실측: 흔들린 클릭마다 1cm 씩 밀렸다)
   if (!furnDrag.live) { if (Math.hypot(e.clientX - furnDrag.sx, e.clientY - furnDrag.sy) <= 5) return; furnDrag.live = true; }
+  // 벽 장식 — 가리키는 벽에 등을 대고 딱 붙여 옮긴다(다른 벽이면 그 벽을 보게 돌려서)
+  if (furnDrag.g) {
+    const r = stage.decorDrag(e, furnDrag.u, furnDrag.g); if (!r) return;
+    if (r.pos.distanceTo(furnDrag.u.position) > 0.002 || Math.abs(r.rot - furnDrag.u.rotation.y) > 1e-3) { stage.previewUnit(furnDrag.u, r.pos, r.rot); furnDrag.moved = true; }
+    return;
+  }
   const p = furnDrag.decor ? stage.decorWallAt(e, furnDrag.u) : stage.floorAt(e); if (!p) return;
   const want = furnDrag.start.clone().add(p.sub(furnDrag.p0));
   want.y = furnDrag.decor ? stage.clampDecorY(furnDrag.u, want.y) : furnDrag.start.y;
@@ -1951,6 +1961,13 @@ cv.addEventListener('pointerup', () => {
   if (!fd.moved) { cycleUnit(fd.stack); return; }
   if (!selUnit) return;
   const d = fd.u.position.clone().sub(fd.start), m = curMove(selUnit);
+  const base = fd.u.userData.hvBase as THREE.Vector3 | undefined;
+  if (fd.g && base) {
+    // 벽째 옮긴 벽 장식 — 원래 기준점에서 그대로 간 거리 · 돌린 각(90° 단위 + 나머지)으로 저장
+    const deg = THREE.MathUtils.radToDeg(fd.u.rotation.y), rot = Math.round(deg / 90);
+    stage.setUnitMove(selUnit, { ...m, dx: fd.u.position.x - base.x, dz: fd.u.position.z - base.z, dy: fd.u.position.y, rot: ((rot % 4) + 4) % 4, ang: deg - rot * 90, free: true }); saveMoves();
+    return;
+  }
   stage.setUnitMove(selUnit, { ...m, dx: m.dx + d.x, dz: m.dz + d.z, ...(fd.decor ? { dy: (m.dy ?? 0) + d.y } : {}) }); saveMoves();
 }, true);
 cv.addEventListener('pointerdown', e => {
