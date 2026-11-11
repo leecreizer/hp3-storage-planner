@@ -1,0 +1,8 @@
+{
+  "name": "storage-planner",
+  "private": true,
+  "version": "0.0.1",
+  "description": "붙박이장 셀프 플래너(store.hanssem.com/storage-simulator) 웹 재현 + 해 방향 조절 · 경로 추적 실사 렌더",
+  "type": "module",
+  "scripts": { "dev": "vite", "build": "tsc --noEmit && vite build", "catalog": "python tools/build_catalog.py" }
+}

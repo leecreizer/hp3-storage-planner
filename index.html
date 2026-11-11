@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>붙박이장 셀프 플래너 (웹)</title>
+</head>
+<body>
+  <div id="app">
+    <section id="viewport">
+      <div class="tools">
+        <button id="v-front" aria-label="정면" aria-description="정면 보기" data-tip="정면"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><path d="M9.2 4.5v15M14.8 4.5v15"/></svg></button>
+        <button id="v-door" aria-label="도어" aria-description="도어 열기·닫기" data-tip="도어"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3.5" width="10" height="17" rx="1"/><path d="M14 3.5l6 2.2v12.6l-6 2.2"/><circle cx="11.2" cy="12" r=".9" fill="currentColor" stroke="none"/></svg></button>
+        <button id="v-sun" aria-label="조명" aria-description="조명 (해 · 실내 조명 · 환경광 · 노출)" data-tip="조명"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></button>
+        <button id="v-surf" aria-label="CMF" aria-description="CMF — 바닥·벽지·걸레받이 세트로 한 번에 · 하나씩 고르기" data-tip="CMF"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.7 1.7-1.7H16a5 5 0 0 0 5-5C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11.5" r="1.1"/><circle cx="9.8" cy="7.4" r="1.1"/><circle cx="14.6" cy="7.4" r="1.1"/></svg></button>
+        <button id="v-look" aria-label="보기" aria-description="보기 방식 (재질 / 재질+라인)" data-tip="보기"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+        <button id="v-post" aria-label="후처리" aria-description="후처리 (간접광·AO · 안티앨리어싱 · 톤·색 · 블룸)" data-tip="후처리"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>
+        <button id="v-path" aria-label="실사" aria-description="실사 렌더 방식" data-tip="실사"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 3.5l1.8 5.2 5.2 1.8-5.2 1.8L11 17.5l-1.8-5.2L4 10.5l5.2-1.8z"/><path d="M18.5 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></button>
+        <button id="v-roomdoor" aria-label="방문" aria-description="방 출입문 (끌어서 옮기기 · 폭 · 경첩)" data-tip="방문"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20.5V4.5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v16"/><path d="M3.5 20.5h17"/><circle cx="14.8" cy="12.5" r=".9" fill="currentColor" stroke="none"/></svg></button>
+        <button id="v-window" aria-label="창문" aria-description="창문 (끌어서 옮기기 · 폭 · 높이 · 창대 높이)" data-tip="창문"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 19V10a6.5 6.5 0 0 1 13 0v9z"/><path d="M12 3.5V19M5.5 11.5h13"/><path d="M4 21h16"/></svg></button>
+        <button id="v-fixture" aria-label="설비" aria-description="콘센트 · 통신단자함 · 벽걸이 에어컨 (끌어서 옮기기 · 빼기 · 달기)" data-tip="설비"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="3"/><path d="M10 9.5v2.5M14 9.5v2.5"/><path d="M12 15.5v1"/></svg></button>
+        <button id="v-full" aria-label="전체 화면" aria-description="전체 화면" data-tip="전체 화면"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
+      </div>
+      <div id="samples" hidden></div>
+      <div id="sun-panel" hidden>
+        <div class="sun-title">조명 <small>바꾸는 즉시 반영</small></div>
+        <div class="presets"><button data-preset="bright">밝게</button><button data-preset="morning">아침</button><button data-preset="noon">한낮</button><button data-preset="afternoon">오후</button><button data-preset="sunset">해질녘</button><button data-preset="night">밤</button></div>
+        <div class="grp">해 · 창 <small>창은 오른쪽 벽 · 창 빛 = 하늘 산란광</small></div>
+        <label>방위 <input id="sun-az" type="range" min="-85" max="85" step="1"><input id="sun-az-v" class="val" type="number"></label>
+        <label>고도 <input id="sun-el" type="range" min="4" max="80" step="1"><input id="sun-el-v" class="val" type="number"></label>
+        <label>세기 <input id="sun-in" type="range" min="0" max="8" step="0.1"><input id="sun-in-v" class="val" type="number"></label>
+        <label>색온도 <input id="sun-k" type="range" min="2000" max="8000" step="100"><input id="sun-k-v" class="val" type="number"></label>
+        <label>창 빛 <input id="sky" type="range" min="0" max="5" step="0.05"><input id="sky-v" class="val" type="number"></label>
+        <div class="grp">그림자 <small>해 · 다운라이트 모두</small></div>
+        <label>진하기 <input id="sh-str" type="range" min="0" max="10" step="0.1"><input id="sh-str-v" class="val" type="number"></label>
+        <label>부드럽게 <input id="sh-soft" type="range" min="0" max="10" step="0.5"><input id="sh-soft-v" class="val" type="number"></label>
+        <div class="grp">실내 조명 <small>천장 다운라이트 · 라인 조명</small></div>
+        <label>천장 조명 <select id="ceil-sel"></select></label>
+        <label>세기 <input id="lamp" type="range" min="0" max="3" step="0.05"><input id="lamp-v" class="val" type="number"></label>
+        <label>색온도 <input id="kelvin" type="range" min="2000" max="8000" step="100"><input id="kelvin-v" class="val" type="number"></label>
+        <label>빛 색 <span class="lamp-colors" id="lamp-colors"></span><input id="lamp-col" type="color" value="#ffffff" title="직접 고르기"></label>
+        <div class="grp">공간</div>
+        <label>환경광 <input id="envi" type="range" min="0" max="2.5" step="0.05"><input id="envi-v" class="val" type="number"></label>
+        <label>노출 <input id="expo" type="range" min="0.3" max="2.5" step="0.05"><input id="expo-v" class="val" type="number"></label>
+      </div>
+      <div id="post-panel" hidden></div>
+      <div id="surf-pop" class="mode-pop surf-pop" hidden></div>
+      <div id="look-pop" class="mode-pop" hidden>
+        <div class="sun-title">보기</div>
+        <button data-look="mat" class="on"><b>재질</b><small>원본 모델 재질 그대로</small></button>
+        <button data-look="line"><b>재질+라인</b><small>재질 위에 모서리 선</small></button>
+        <button data-look="size"><b>재질+라인+사이즈</b><small>모서리 선 + 규격 치수(전체 폭·칸 폭·높이)</small></button>
+        <div class="look-sep"></div>
+        <button id="look-props" class="on"><b>소품 보이기</b><small>장 안 옷·이불·상자 · 침대·침구·협탁·선반장·커튼</small></button>
+      </div>
+      <div id="render-pop" class="mode-pop" hidden>
+        <div class="sun-title">실사 렌더 <small>웹 렌더 품질 시험 3방식</small></div>
+        <button data-mode="raster" class="on"><b>실시간 (기본)</b><small>그림자 · AO · 바로 반영</small></button>
+        <button data-mode="mutracer"><b>① 경로 추적 · MuTracer</b><small>사진 같은 품질 · 멈춰 있으면 수렴</small></button>
+        <button data-mode="bake"><b>② 라이트맵 굽기 · WebGPU</b><small>구운 뒤 가볍고 빠름 · 굽기에 시간 걸림</small></button>
+        <button data-mode="surfel"><b>③ 서펠 GI · webgiya</b><small>실시간 간접광 · WebGPU</small></button>
+        <button data-mode="hq"><b>④ 실시간 고품질 · SSR + SSS</b><small>화면 반사 · 접촉 그림자 · 바로 반영 · 무거움</small></button>
+        <button data-mode="gpupt"><b>⑤ 경로 추적 · three-gpu-pathtracer</b><small>WebGPU · 절반 해상도 6샘플 + OIDN + FSR</small></button>
+        <div class="look-sep"></div>
+        <div class="q-title">화면 성능 <small id="q-gpu"></small></div>
+        <div class="q-row" id="q-row"></div>
+        <p class="q-note" id="q-note"></p>
+        <label class="q-fps"><input type="checkbox" id="q-fps"> FPS 표시</label>
+      </div>
+      <div id="door-pop" hidden></div>
+      <div id="roomdoor-pop" class="mode-pop" hidden></div>
+      <div id="window-pop" class="mode-pop" hidden></div>
+      <div id="fix-pop" class="mode-pop" hidden></div>
+      <form id="prompt-bar" autocomplete="off">
+        <div id="prompt-out" hidden></div>
+        <div class="prompt-ex"></div>
+        <div class="prompt-row">
+          <input id="prompt-in" placeholder="원하는 장 스타일을 말해 주세요 — 예) 긴 옷이 많아서 긴 옷장이 필요해">
+          <button type="submit">배치하기</button>
+        </div>
+      </form>
+    </section>
+    <aside id="panel"></aside>
+  </div>
+
+  <div id="type-modal" class="modal" hidden>
+    <div class="modal-box">
+      <div class="modal-head"><b>붙박이장 셀프 플래너</b><button id="type-close">✕</button></div>
+      <div id="type-list"></div>
+      <p class="hint center">기본 너비 3100mm로 설정됩니다.</p>
+      <button id="type-ok" class="btn-black">선택하기</button>
+    </div>
+  </div>
+  <div id="info-modal" class="modal" hidden>
+    <div class="modal-box wide">
+      <div class="modal-head"><b id="info-title"></b><button id="info-close">✕</button></div>
+      <div id="info-body"></div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

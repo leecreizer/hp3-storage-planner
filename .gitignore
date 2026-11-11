@@ -1,0 +1,20 @@
+# 의존성·빌드·캐시
+node_modules
+dist
+.vite-cache
+*.log
+
+# 자산·데이터 — 저장소엔 코드만(한샘 상품 모델·쿠지알러 재질·API 사본은 올리지 않는다)
+public/
+tools/api_snapshot/
+
+# 작업 백업
+*.bak_*
+*.bak
+__pycache__/
+
+# 사내망 https 자체 인증서(LAN=1)
+.cert/
+.vite-cache-lan
+# 로컬 경로(원본 자산 폴더)
+.env.local

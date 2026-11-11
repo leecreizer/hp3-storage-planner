@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>소품 시트</title>
+<style>body{margin:0;background:#eee;font:11px sans-serif}#g{display:grid;grid-template-columns:repeat(8,200px);gap:4px;padding:4px}figure{margin:0;background:#fff}figcaption{padding:2px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}canvas{display:block}</style></head>
+<body><div id="g"></div>
+<script type="module">
+// 홈뷰 상품 GLB 썸네일 — ?dir=ETC/Cloth&from=0&n=40
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+const q = new URLSearchParams(location.search);
+const files = (q.get('files') || '').split(',').filter(Boolean);
+const base = `/@fs/${import.meta.env.VITE_ASSET_ROOT}/homvue/glb/product_bp/`; // .env.local 의 원본 자산 폴더
+const r = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+r.setSize(200, 200); r.toneMapping = THREE.AgXToneMapping;
+const pm = new THREE.PMREMGenerator(r);
+const env = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+const loader = new GLTFLoader();
+let done = 0;
+for (const f of files) {
+  const fig = document.createElement('figure'), c = document.createElement('canvas'); c.width = c.height = 200;
+  const cap = document.createElement('figcaption'); cap.textContent = f.split('/').pop().replace(/^BP_|\.glb$/g, '');
+  fig.append(c, cap); document.getElementById('g').append(fig);
+  try {
+    const g = await loader.loadAsync(base + f);
+    const s = new THREE.Scene(); s.environment = env; s.background = new THREE.Color('#f4f4f4');
+    s.add(g.scene);
+    const b = new THREE.Box3().setFromObject(g.scene), sz = b.getSize(new THREE.Vector3()), ct = b.getCenter(new THREE.Vector3());
+    const cam = new THREE.PerspectiveCamera(30, 1, 0.01, 100), R = Math.max(sz.x, sz.y, sz.z) * 1.9;
+    cam.position.copy(ct).add(new THREE.Vector3(0.6, 0.35, 1).normalize().multiplyScalar(R)); cam.lookAt(ct);
+    r.render(s, cam);
+    c.getContext('2d').drawImage(r.domElement, 0, 0);
+    cap.textContent += ` ${sz.x.toFixed(2)}×${sz.y.toFixed(2)}×${sz.z.toFixed(2)}`;
+  } catch (e) { cap.textContent += ' 오류'; }
+  done++;
+}
+window.__done = done;
+</script></body></html>
