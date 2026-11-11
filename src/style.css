@@ -237,7 +237,8 @@ table.quote tfoot td { font-weight: 700; font-size: 15px; border-bottom: 0; }
 .size-warn { color: #d33 !important; font-weight: 600; }
 
 /* 공간 재구성 중 — 방을 다시 만드는 동안 3D 화면 가운데 */
-.busy-overlay { position: absolute; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; background: rgba(240, 240, 238, 0.82); backdrop-filter: blur(8px); pointer-events: none; }
+/* 덮개는 모달(20) 아래 — 처음 오는 사람은 저장된 설계가 없어 「장 타입 고르기」가 먼저 뜨는데 불투명 덮개가 그 위를 덮어 넘어가지 못했다(2026-11-11 Pages 첫 접속) */
+.busy-overlay { position: absolute; inset: 0; z-index: 15; display: flex; align-items: center; justify-content: center; background: rgba(240, 240, 238, 0.82); backdrop-filter: blur(8px); pointer-events: none; }
 /* 첫 방이 나오기 전 — 짓는 중인 장면이 비치지 않게 완전히 덮는다 */
 .busy-overlay.busy-full { background: var(--bg); backdrop-filter: none; }
 .busy-overlay[hidden] { display: none; }
