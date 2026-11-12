@@ -649,13 +649,32 @@ function gapDims(y: number, z: number) {
 
 /** 엔드판넬(EP)은 공간 구조를 따른다 — 열린 쪽 옆면에만 붙인다(벽에 붙은 쪽은 안 보이므로 뺀다).
  *  추가 옵션 단계에서는 고르지 않는다(사용자 지시 2026-10-29) */
+/** EP 두께(mm) — 이 장 구성의 엔드판넬 */
+function epThick() {
+  const p = design ? pl.plan(design.planId) : null;
+  return p?.panels.map(id => pl.c(id)).find(c => c?.panelLoc === 'LEFT')?.d ?? 18;
+}
+/** 써라운딩이 EP 보다 얇거나 없다 — EP 가 장 폭 바깥에 붙는다(model.ts) */
+const epOutside = () => !!design && pl.layout(design).side < epThick();
 function syncEP() {
   if (!design) return;
-  const L = stage.layout, S = design.space ?? design.width, off = design.offset ?? 0;
+  const L = stage.layout, S = design.space ?? design.width;
+  // 써라운딩이 빠지면(EP 두께보다 얇으면) 벽이 있어도 양옆에 EP — 몸통 옆면 재질이 그대로 드러나고, 벽에 바로 붙은 도어는 열 때 벽에 걸린다
+  // (사용자 지시 2026-11-12 「서라운딩이 빠지면 무조건 EP라도 — 벽이 있어도 조화를 위해, EP 가 없으면 도어 열림에도 벽과 간섭」).
+  // EP 는 장 폭 바깥이라 벽 쪽이면 그만큼 띄운다(공간 안에서 자리가 될 때 — 안 되면 fitToSpace 가 장 폭을 줄인다)
+  const out = epOutside(), ep = epThick();
+  const wallL = !(L === 'openL' || L === 'openBoth'), wallR = !(L === 'openR' || L === 'openBoth');
+  if (out) {
+    let o = design.offset ?? 0;
+    if (wallR && o + design.width > S - ep) o = S - ep - design.width;
+    if (wallL && o < ep) o = ep;
+    if (o + design.width <= S - (wallR ? ep : 0) + 0.5) design.offset = o;
+  }
+  const off = design.offset ?? 0;
   // 열린 구조뿐 아니라 꽉 채우기여도 옆이 벽이 아니면 EP(사용자 지적 2026-11-06 「최대 크기로 놓기 하니 EP 가 빠진다 — 옆 공간이 벽이 아니면 EP」).
   // 방문·콘센트를 피해 놓으면 장 한쪽이 벽에서 떨어진다 — 5mm 넘게 떨어진 쪽
-  design.options.epLeft = L === 'openL' || L === 'openBoth' || off > 5;
-  design.options.epRight = L === 'openR' || L === 'openBoth' || off + design.width < S - 5;
+  design.options.epLeft = out || !wallL || off > 5;
+  design.options.epRight = out || !wallR || off + design.width < S - 5;
 }
 
 /** 설치할 벽 그림 — 위에서 본 방, 고른 벽에 장(회색 띠) */
@@ -1037,6 +1056,7 @@ const POST_CTLS: PostCtl[] = [
   { kind: 'range', key: 'depthFx', label: '공간감 (창에서 멀수록 어둡게)', min: 0, max: 1, step: 0.05, fmt: v => v.toFixed(2) },
   { kind: 'grp', label: '안티앨리어싱', note: 'TRAA — 끄면 간접광 노이즈가 남는다' },
   { kind: 'check', key: 'traa', label: '켜기' },
+  { kind: 'select', key: 'aa', label: 'TRAA 끈 때', options: [['msaa', 'MSAA 4배 (가볍게 · 테두리 깔끔)'], ['smaa', 'SMAA'], ['fxaa', 'FXAA (가장 가볍다)'], ['none', '끔']] },
   { kind: 'grp', label: '톤 · 색' },
   { kind: 'select', key: 'toneMapping', label: '톤매핑', options: [['agx', 'AgX (실사와 같음)'], ['neutral', 'Neutral'], ['aces', 'ACES']] },
   { kind: 'range', key: 'exposure', label: '노출 배율', min: 0.3, max: 3, step: 0.05, fmt: v => `×${v.toFixed(2)}` },
@@ -1694,7 +1714,8 @@ function fitToSpace(resetView = false) {
     doorNote = `방문이 열리는 자리를 빼면 장 자리가 ${w}mm 라 ${t.name}(최소 ${minW}mm)이 들어가지 않아요 — 방문을 옮기거나 설치 공간을 늘려 주세요.`;
     w = Math.max(minW, Math.round(S * 1000)); off = 0;
   }
-  if (w !== design.width) {
+  const setW = (w: number) => {
+    if (!design || w === design.width) return;
     // 써라운딩부터 — 지금 몸통 그대로 양옆이 0~SIDE_MAX 안이면 칸 구성은 두고 폭만(써라운딩이 늘고 준다). 넘을 때만 장을 다시 짠다(사용자 규칙)
     const sum = pl.layout(design).sum, side = (w - sum) / 2;
     if (side >= 0 && side <= SIDE_MAX) design.width = w;
@@ -1702,11 +1723,22 @@ function fitToSpace(resetView = false) {
       // 자동 조합(써라운딩이 가장 얇은 조합). 꽉 맞는 조합이 없는 자리(몸통 폭 사이에 낀 길이)면 가장 크게 들어가는 조합 —
       // 남는 자리는 비운다(아래에서 문 반대쪽 벽에 붙인다). 예전엔 장을 그대로 둬 문과 겹쳤다
       const nd = autoDesign(design.typeId, w, design);
-      if (nd) { design = { ...nd, space: design.space, offset: off, wear: design.wear, run: design.run }; syncEP(); }
+      if (nd) { design = { ...nd, space: design.space, offset: off, wear: design.wear, run: design.run }; }
     }
+  };
+  setW(w);
+  // 써라운딩이 EP 보다 얇으면 양옆에 EP(벽이 있어도 — syncEP) — 장 폭 바깥에 붙으므로 그 두께만큼 자리를 낸다.
+  // 몸통 그대로 써라운딩을 EP 두께 이상으로 키울 수 있으면 그대로 둔다(그러면 EP 가 필요 없다)
+  const ep = epThick();
+  let epOut = false;
+  if (w >= minW && epOutside()) {
+    setW(w - 2 * ep);
+    if (epOutside()) epOut = true;
+    else setW(w);                                // 줄인 조합의 써라운딩이 EP 보다 두껍다 — 원래 폭으로 써라운딩만 키운다
   }
-  // 넓은 쪽이 오른쪽이면 오른쪽 벽에 붙인다(남는 자리는 문 쪽으로)
-  if (spot.blocked && spot.a > 0 && w >= minW) off = Math.round(spot.b * 1000) - design.width;
+  // 넓은 쪽이 오른쪽이면 오른쪽 벽에 붙인다(남는 자리는 문 쪽으로) · EP 가 바깥에 붙으면 그 두께만큼 띄운다
+  if (spot.blocked && spot.a > 0 && w >= minW) off = Math.round(spot.b * 1000) - design.width - (epOut ? ep : 0);
+  else if (epOut) off += ep;
   design.offset = off;
   syncEP();                                  // 자리가 정해진 뒤 — 벽에서 떨어진 쪽에 EP
   rebuild(resetView); render();
@@ -2481,5 +2513,6 @@ addCloseButton(epPop);
 
 // 처음 열 때 — 지난번 설계가 있으면 그대로 불러오고(타입 선택부터 다시 하지 않는다), 없으면 타입 선택
 const restored = loadDesign();
-if (restored) { design = restored; rebuild(true); render(); } else openTypeModal();
+// 불러온 설계도 지금 EP 규칙으로(써라운딩이 EP 보다 얇으면 양옆 EP · 벽 쪽은 그 두께만큼 띄움 — 2026-11-12)
+if (restored) { design = restored; syncEP(); saveDesign(); rebuild(true); render(); } else openTypeModal();
 void loadHvRoom(stage.roomStyle, false);

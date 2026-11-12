@@ -7,7 +7,8 @@ const DOOR = { wall: 'back', t: 0.08, w: 0.7494117426643603, hinge: 'R', h: 2.17
 const DESIGN = {
   typeId: 9, width: 2320, planId: 1902320, doorColorId: 1,
   slots: [{ slotSeq: 1, bodyId: 645, doorColorId: null }, { slotSeq: 2, bodyId: 659, doorColorId: null }, { slotSeq: 3, bodyId: 644, doorColorId: null }],
-  options: { epLeft: true, epRight: false, acc: false }, space: 3100, offset: 780,
+  // 써라운딩 10mm < EP 18mm → 양옆 EP, 오른쪽 벽에서 EP 두께만큼 띄움(main.ts syncEP)
+  options: { epLeft: true, epRight: true, acc: false }, space: 3100, offset: 762,
 };
 const DIMS = { w: 3640, d: 4960, h: 2400, wall: 'back', custom: false };
 const SEED: Record<string, unknown> = {

@@ -20,6 +20,7 @@ import { bloom } from 'three/addons/tsl/display/BloomNode.js';
 import { outline } from 'three/addons/tsl/display/OutlineNode.js';
 import { denoise } from 'three/addons/tsl/display/DenoiseNode.js';
 import { fxaa } from 'three/addons/tsl/display/FXAANode.js';
+import { smaa } from 'three/addons/tsl/display/SMAANode.js';
 import { ao as gtaoNode } from 'three/addons/tsl/display/GTAONode.js';
 import { RectAreaLightTexturesLib } from 'three/addons/lights/RectAreaLightTexturesLib.js';
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
@@ -41,6 +42,9 @@ export type PostSettings = {
   /** AO 세부(사용자 지시 「AO 를 디테일하게 — 퍼짐·부드럽게」): 두께 = 물체 뒤로 그늘이 퍼지는 깊이(GTAO), 대비 = 그늘 곡선(ao^대비), 부드럽게 = 경계를 지키는 번짐 반경(0 = 끔) */
   aoThick: number; aoPow: number; aoSoft: number;
   traa: boolean;
+  /** TRAA 를 끈 때(노트북 단계 등) 쓰는 가벼운 계단 지우기 — msaa = 장면을 4배 표본으로 그려 테두리를 편다(가벼운 화면에서만, 전체 처리 화면에선 SMAA),
+   *  smaa = 화면 색에서 모서리를 찾아 섞는다, fxaa = 가장 가볍지만 덜 펴진다(사용자 지적 2026-11-12 「너무 자글거려 — TRAA 가 무거우면 저사양 방법으로」) */
+  aa: 'msaa' | 'smaa' | 'fxaa' | 'none';
   toneMapping: ToneMap; exposure: number; contrast: number; saturation: number; vignette: number;
   bloom: boolean; bloomStrength: number; bloomThreshold: number; bloomRadius: number;
   /** 거울 반사 — off = 실내 환경맵(방 가운데서 찍은 저해상도라 크고 흐리다), 그 외 = 평면 반사(거울 면 기준으로 장면을 한 번 더 그린다) 해상도 */
@@ -94,7 +98,7 @@ export const POST_DEFAULTS: PostSettings = {
   // 화면 안 가까운 면이 있는 안쪽 모서리에만 더해져 모서리가 어두워지기는커녕 밝아졌다. 간접광 3 + 깨끗한 GTAO 그늘(both, AO 1)로 —
   // 같은 밝기에서 모서리에 자연스러운 그늘(실측 비교 2026-11-03 cn1/opts)
   aoKind: 'both', aoRadius: 0.15, aoThick: 1, aoPow: 1, aoSoft: 0,
-  traa: true,
+  traa: true, aa: 'msaa',
   // 노출 배율 — 조명 패널 노출 × 이 값. 실사(AgX)는 ×1.5, 실시간은 같은 AgX 로 1.4 에서 밝기 170(실사 158)이라 1.25
   toneMapping: 'aces', exposure: 1.5, contrast: 1, saturation: 1, vignette: 0.06,
   bloom: true, bloomStrength: 0.1, bloomThreshold: 1, bloomRadius: 0.4,
@@ -113,7 +117,7 @@ export const POST_DEFAULTS: PostSettings = {
 // 화면 성능 단계(quality.ts)는 이 위에서 사양에 맞게 처음 값만 끈다 — 사용자가 체크하면 그 단계에서도 켜진다(아래 userSet)
 Object.assign(POST_DEFAULTS, {
   ssgi: true, quality: 'high', gi: 1, ao: 0.7, radius: 4.2, thickness: 1, giSpace: 'world', giOcc: 1, giRes: 'half', denoise: true,
-  aoKind: 'both', aoRadius: 0.15, aoThick: 1, aoPow: 1, aoSoft: 0, traa: true,
+  aoKind: 'both', aoRadius: 0.15, aoThick: 1, aoPow: 1, aoSoft: 0, traa: true, aa: 'msaa',
   toneMapping: 'aces', exposure: 1.5, contrast: 1, saturation: 1, vignette: 0.06,
   bloom: true, bloomStrength: 0.1, bloomThreshold: 1, bloomRadius: 0.4,
   reflect: 'mid', outside: 'skyline', outsideRot: -140,
@@ -157,14 +161,14 @@ export interface Raster {
 const params = new URLSearchParams(location.search);
 /** 외곽선 색 — 선택 파랑(#2f6bff, 화면 색) */
 const OUTLINE_RGB = vec3(0x2f / 255, 0x6b / 255, 1);
-const POST_KEY = 'storage-planner.post.v7';
+const POST_KEY = 'storage-planner.post.v7';   // 예전 판(v1~v6)이 저장돼 있어도 새 기본값을 쓰게(v7 = 모서리 그늘 both)
 /** 사용자가 직접 바꾼 후처리 항목 — 화면 성능 단계는 처음 값만 정하고, 사용자가 체크·조절한 항목은 그 단계에서도 그대로 쓴다
  *  (사용자 지시 2026-11-12 「노트북도 고성능이 있는데 막아버리면 — 설정만 사양에 맞춰 끄고 사용자가 체크하면 적용되게」) */
 const SET_KEY = 'storage-planner.postset.v1';
 function loadSet(): Set<keyof PostSettings> { try { return new Set(JSON.parse(localStorage.getItem(SET_KEY) || '[]')); } catch { return new Set(); } }
 function saveSet(s: Set<keyof PostSettings>) { try { localStorage.setItem(SET_KEY, JSON.stringify([...s])); } catch { /* 이번 화면엔 반영 */ } }
 /** 가벼운 화면(장면 한 장 + FXAA)에선 못 그리는 효과 — 사용자가 하나라도 켜면 단계가 노트북이어도 전체 화면 처리로 그린다 */
-const HEAVY: (keyof PostSettings)[] = ['ssgi', 'ssr', 'sss', 'traa', 'bloom', 'denoise', 'aoKind'];   // 예전 판(v1~v6)이 저장돼 있어도 새 기본값을 쓰게(v7 = 모서리 그늘 both)
+const HEAVY: (keyof PostSettings)[] = ['ssgi', 'ssr', 'sss', 'traa', 'bloom', 'denoise', 'aoKind'];
 function loadPost(): PostSettings {
   try { return { ...POST_DEFAULTS, ...JSON.parse(localStorage.getItem(POST_KEY) || '{}') }; } catch { return { ...POST_DEFAULTS }; }
 }
@@ -384,28 +388,37 @@ function webgpu(scene: THREE.Scene, camera: THREE.PerspectiveCamera, mainLight?:
       })();
       // 가벼운 화면(노트북 단계) — 장면을 색·깊이만으로 한 번 그린다(재질 색·법선·움직임 버퍼 4장을 쓰지 않아 대역폭이 준다).
       // 공간감은 깊이만으로 되는 「창에서 멀수록」만 남긴다(창을 등진 면은 법선이 필요하다)
-      const litePass = pass(scene, camera);
-      const liteColor = litePass.getTextureNode('output'), liteDepth = litePass.getTextureNode('depth');
-      const liteFactor = (() => {
-        const wp = cameraWorldMatrix.mul(vec4(getViewPosition(screenUV, liteDepth, cameraProjectionMatrixInverse), 1)).xyz;
+      // MSAA(4배 표본) 판과 한 장 판을 따로 — 계단 지우기 방식을 바꿀 때 고른다(쓰지 않는 판은 그리지 않는다)
+      const liteOf = new Map<number, { color: any; factor: any }>();
+      const getLite = (samples: number) => {
+        let v = liteOf.get(samples);
+        if (v) return v;
+        const lp = pass(scene, camera, samples ? { samples } : undefined);
+        const color = lp.getTextureNode('output'), dep = lp.getTextureNode('depth');
+        const wp = cameraWorldMatrix.mul(vec4(getViewPosition(screenUV, dep, cameraProjectionMatrixInverse), 1)).xyz;
         const s = wp.sub(winP).dot(winN);
         const f = float(1).sub(depthAmt.mul(0.6).mul(smoothstep(0.3, winDepth, s)));
-        return mix(float(1), f, winOn.mul(step(-0.05, s)).mul(step(liteDepth, 0.99999)));
-      })();
+        v = { color, factor: mix(float(1), f, winOn.mul(step(-0.05, s)).mul(step(dep, 0.99999))) };
+        liteOf.set(samples, v);
+        return v;
+      };
+      /** 가벼운 계단 지우기(화면 색 기준이라 톤매핑 뒤에) — msaa 는 장면 그릴 때 이미 했다 */
+      const lightAA = (c: any, msaaDone: boolean) => post.aa === 'fxaa' ? fxaa(c) : post.aa === 'smaa' || (post.aa === 'msaa' && !msaaDone) ? smaa(c) : c;
       (me as any).glow = glow;
       pipeline = new RenderPipeline(renderer);
       pipeline.outputColorTransform = false;       // 톤매핑은 아래 renderOutput 에서 — 그 뒤에 색 보정
       rebuild = () => {
         if (liteOn) {
           (scenePass as any).contextNode = null;
-          const shown: any = renderOutput(vec4(liteColor.rgb.mul(liteFactor), liteColor.a));
+          const lt = getLite(post.aa === 'msaa' ? 4 : 0);
+          const shown: any = renderOutput(vec4(lt.color.rgb.mul(lt.factor), lt.color.a));
           let rgb = saturation(shown.rgb, u.saturation);
           rgb = rgb.sub(0.5).mul(u.contrast).add(0.5);
           const d = screenUV.sub(0.5).length().mul(1.4142);
           rgb = rgb.mul(float(1).sub(u.vignette.mul(smoothstep(0.35, 1.0, d))));
           rgb = mix(rgb, OUTLINE_RGB, outl.visibleEdge.mul(4).clamp(0, 1));
-          // 계단 — TRAA(프레임마다 쌓기) 대신 한 장으로 끝나는 FXAA(화면 색 기준이라 톤매핑 뒤에)
-          pipeline!.outputNode = fxaa(vec4(rgb.clamp(0, 1), shown.a));
+          // 계단 — TRAA(프레임마다 쌓기) 대신 한 장으로 끝나는 방법(기본 MSAA 4배 — FXAA 만으로는 자글거렸다)
+          pipeline!.outputNode = lightAA(vec4(rgb.clamp(0, 1), shown.a), post.aa === 'msaa');
           pipeline!.needsUpdate = true;
           return;
         }
@@ -419,7 +432,8 @@ function webgpu(scene: THREE.Scene, camera: THREE.PerspectiveCamera, mainLight?:
         const d = screenUV.sub(0.5).length().mul(1.4142);
         rgb = rgb.mul(float(1).sub(u.vignette.mul(smoothstep(0.35, 1.0, d))));
         rgb = mix(rgb, OUTLINE_RGB, outl.visibleEdge.mul(4).clamp(0, 1));
-        pipeline!.outputNode = vec4(rgb.clamp(0, 1), shown.a);
+        // TRAA 를 껐으면 가벼운 계단 지우기 — 전체 처리 화면은 버퍼가 여러 장이라 MSAA 대신 SMAA
+        pipeline!.outputNode = post.traa ? vec4(rgb.clamp(0, 1), shown.a) : lightAA(vec4(rgb.clamp(0, 1), shown.a), false);
         pipeline!.needsUpdate = true;
       };
       rebuild();
@@ -458,7 +472,7 @@ function webgpu(scene: THREE.Scene, camera: THREE.PerspectiveCamera, mainLight?:
       const next: PostSettings = { ...user, ...capsEff };
       const liteNext = lite && !HEAVY.some(k => userSet.has(k) && (k === 'aoKind' || !!next[k]));
       if (liteNext !== liteOn) { liteOn = liteNext; force = true; }
-      const structural = force || (['ssgi', 'aoKind', 'denoise', 'traa', 'bloom', 'toneMapping', 'ssr', 'sss'] as const).some(k => next[k] !== post[k])
+      const structural = force || (['ssgi', 'aoKind', 'denoise', 'traa', 'aa', 'bloom', 'toneMapping', 'ssr', 'sss'] as const).some(k => next[k] !== post[k])
         || (next.aoSoft > 0) !== (post.aoSoft > 0);   // 부드럽게 켜고 끄기는 노드를 끼우고 뺀다
       Object.assign(post, next);
       renderer.toneMapping = TONE[post.toneMapping];
