@@ -18,6 +18,7 @@ import { float, lights, materialColor, normalView, positionViewDirection, reflec
 import { createRaster, type PostSettings, type Raster, type RasterRenderer } from './render/raster';
 import { quality, effectiveDpr, type QualityProfile } from './quality';
 import { roomFurnished } from './loadgate';
+import { loadDoing, loadMark, loadStall } from './loadlog';
 // MuTracer(실사)는 쓸 때 불러온다 — 정적으로 불러오면 모듈 약 240개 · 10MB 가 다 와야 앱이 시작해 첫 화면이 늦었다(2026-10-29 실측)
 type MT = typeof import('./render/mutracer');
 let mt: MT | null = null;
@@ -129,13 +130,14 @@ export class Stage {
   labels: CSS2DRenderer;
   sun = new THREE.DirectionalLight(0xfff1dc, 3.2);
   // 직사광이 약했다(사용자 지적 2026-10-30) — 세기 1.2 → 3, 고도 62° → 42°(빛이 방 안쪽까지 든다)
-  sunCfg: Sun = { azimuth: 30, elevation: 42, intensity: 3 };
+  // 기본 빛 = 2026-11-12 사용자가 쓰던 설정(사용자 지시 「빛 셋팅도 지금 설정으로 기본」) — 낮은 아침 해(고도 16°) 6500K
+  sunCfg: Sun = { azimuth: 21, elevation: 16, intensity: 3, kelvin: 6500 };
   /** 그림자 — 진하기(0 = 없음 ~ 1) · 부드럽게(PCF 반경) */
-  shadowCfg = { strength: 1, soft: 3 };
+  shadowCfg = { strength: 1, soft: 8 };
   setShadow(p: Partial<{ strength: number; soft: number }>) { Object.assign(this.shadowCfg, p); this.dirty = true; }
   // 기본 = 한샘 카탈로그 렌더처럼 — 직사광은 약하게, 창 산란광으로 고르게 밝게, 다운라이트는 은은하게
   // 실내 조명 색온도 5000K 고정(사용자 지시 2026-10-29) — 시간대 프리셋도 바꾸지 않는다. 슬라이더로 직접 바꿀 때만 달라진다
-  roomCfg: RoomLight = { lamp: 0.3, kelvin: 5000, sky: 1.8, env: 1.0, exposure: 1.05, lampColor: '#ffffff' };
+  roomCfg: RoomLight = { lamp: 0.3, kelvin: 6000, sky: 1.8, env: 1.0, exposure: 1, lampColor: '#ffffff' };
   /** 실내 조명 빛 색 — 색온도 × 고른 색(사용자 지시 2026-10-30 「조명 색을 고를 수 있게」) */
   lampCol() { return kelvinColor(this.roomCfg.kelvin).multiply(new THREE.Color(this.roomCfg.lampColor ?? '#ffffff')); }
   room = new THREE.Group();
@@ -256,6 +258,26 @@ export class Stage {
     let c: THREE.Object3D | null = h.object; while (c && c.name !== 'curtain-set') c = c.parent;
     return c?.userData.curtain ? { c, side, layer: h.object.userData.curtainLayer === 'In' ? 'In' : 'Out', point: h.point } : null;
   }
+  /** 고른 커튼 — 파란 테두리(편집 표시, 거울엔 안 비친다). 방을 다시 지으면 커튼이 새로 생기므로 그때도 다시(buildRoom 끝) */
+  private curMark = new THREE.Group();
+  private curPicked = false;
+  get curtainPicked() { return this.curPicked; }
+  markCurtain(on: boolean) {
+    this.curPicked = on;
+    this.curMark.traverse(o => { const m = o as THREE.Mesh; m.geometry?.dispose(); (m.material as THREE.Material | undefined)?.dispose?.(); });
+    this.curMark.clear();
+    const c = on ? this.room.children.find(o => o.name === 'curtain-set') : undefined;
+    if (c) {
+      // 가구 묶음 고르기와 같은 모양 — 선 + 반투명 면(깊이 무시. 선만으론 벽·천장에 묻혀 안 보였다)
+      const b = new THREE.Box3().setFromObject(c), col = 0x2f6bff;
+      const h = new THREE.Box3Helper(b, col); h.layers.set(1); this.curMark.add(h);
+      const sz = b.getSize(new THREE.Vector3()), fill = new THREE.Mesh(new THREE.BoxGeometry(sz.x, sz.y, sz.z),
+        new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.1, depthTest: false, depthWrite: false }));
+      fill.position.copy(b.getCenter(new THREE.Vector3())); fill.layers.set(1); fill.renderOrder = 9; this.curMark.add(fill);
+      if (!this.curMark.parent) this.scene.add(this.curMark);
+    }
+    this.dirty = true;
+  }
   /** 커튼 레일 좌표(가운데 0, 레일 방향 x) 위 마우스 x — 자락이 걸린 세로 면(z = z0)과 만나는 자리 */
   private railX(ev: PointerEvent, cg: THREE.Object3D, z0: number) {
     const r = this.rayAt(ev).ray.clone().applyMatrix4(cg.matrixWorld.clone().invert());
@@ -289,6 +311,7 @@ export class Stage {
     const k = this.movesKey, all = { ...(this.hvMoves[k] ?? {}) };
     all[CURTAIN_KEY] = { dx: 0, dz: 0, rot: 0, cL: cur.L, cR: cur.R, cLi: cur.Li, cRi: cur.Ri };
     this.hvMoves[k] = all;
+    if (this.curPicked) this.markCurtain(true);    // 펴고 접은 폭으로 테두리를 다시
     this.sceneChanged();
     return true;
   }
@@ -312,9 +335,8 @@ export class Stage {
     const d = [r[0] - this.rx0, this.rx1 - r[1], r[2], ROOM_D - r[3]], k = d.indexOf(Math.min(...d));
     const Y = new THREE.Vector3(0, 1, 0), inv = -u.rotation.y;
     const out = [new THREE.Vector3(-1, 0, 0), new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 0, -1), new THREE.Vector3(0, 0, 1)][k];
-    const rot0 = u.rotation.y; u.rotation.y = 0; u.updateMatrixWorld(true);
-    const box = coreBox(u).translate(u.position.clone().negate());
-    u.rotation.y = rot0; u.updateMatrixWorld(true);
+    // 실제 모양으로 벽에 붙인다(몸체 크기로 붙이면 걸이 등 튀어나온 부분이 벽을 뚫었다) — 묶음 좌표 = 돌리기 전 기준점 기준
+    const box = this.meshLocalBox(u);
     return { back: out.clone().applyAxisAngle(Y, inv), grab: p.clone().sub(u.position).applyAxisAngle(Y, inv), box };
   }
   /** 끄는 중 — 놓을 자리(기준점)·돌린 각(라디안). 가리키는 벽이 없으면 null */
@@ -501,9 +523,46 @@ export class Stage {
     return obs;
   }
   /** from → to 로 끌 때 갈 수 있는 자리. 축마다 쓸어 가며 처음 닿는 면에서 멈추고(뚫고 지나가지 않는다), 남은 축으로 미끄러진다 */
+  /** 실제 모양 범위(묶음 좌표, 돌리기 전) — 몸체 크기(fpL)는 손잡이 등 튀어나온 부분을 빼서 벽에 붙이면 그만큼 벽을 뚫었다
+   *  (사용자 지적 2026-11-12 「안방 침대가 약간 벽을 뚫고 들어가」 — 실측 1cm). 벽과의 판정에만 쓴다. 바닥 그늘판은 뺀다 */
+  meshLocalBox(u: THREE.Object3D) {
+    u.updateMatrixWorld(true);
+    const inv = u.matrixWorld.clone().invert(), m = new THREE.Matrix4(), b = new THREE.Box3(), t = new THREE.Box3();
+    u.traverse(o => {
+      const me = o as THREE.Mesh;
+      if (!me.isMesh || me.name === 'contact-shadow' || !me.geometry) return;
+      for (let q: THREE.Object3D | null = me; q && q !== u; q = q.parent) if (!q.visible) return;
+      if (!me.geometry.boundingBox) me.geometry.computeBoundingBox();
+      b.union(t.copy(me.geometry.boundingBox!).applyMatrix4(m.multiplyMatrices(inv, me.matrixWorld)));
+    });
+    return b;
+  }
+  /** 벽 판정용 범위 — 몸체 사각형(unitRect) 기준으로 실제 모양이 더 나간 만큼 벽을 안쪽으로 당긴 값 [x0, x1, z0, z1] */
+  private wallBounds(u: THREE.Object3D, at: THREE.Vector3) {
+    const W = [this.rx0, this.rx1, 0, ROOM_D];
+    const r = this.unitRect(u, at), mb = this.meshLocalBox(u);
+    if (!r || mb.isEmpty()) return W;
+    const f = u.userData.fpL as number[], ang = u.rotation.y;
+    const save = u.userData.fpL; u.userData.fpL = [Math.min(f[0], mb.min.x), Math.max(f[1], mb.max.x), Math.min(f[2], mb.min.z), Math.max(f[3], mb.max.z)];
+    const rm = this.unitRect(u, at, ang)!; u.userData.fpL = save;
+    const cap = (v: number) => Math.min(Math.max(v, 0), 0.15);   // 이상하게 큰 모양(늘어진 천 등)은 15cm 까지만
+    return [W[0] + cap(r[0] - rm[0]), W[1] - cap(rm[1] - r[1]), W[2] + cap(r[2] - rm[2]), W[3] - cap(rm[3] - r[3])];
+  }
+  /** 실제 모양이 벽을 뚫은 묶음을 방 안으로 — 모델이 다 들어온 뒤 한 번(buildRoom). 몸체 크기로 놓아 튀어나온 부분이 벽에 박혀 있었다 */
+  private pushUnitsOutOfWalls() {
+    for (const u of this.room.children) {
+      if (u.name !== 'hv-unit' || u.userData.kind === 'rug') continue;
+      const r = this.unitRect(u, u.position); if (!r) continue;
+      const w = this.wallBounds(u, u.position);
+      const dx = r[0] < w[0] - 0.002 ? w[0] - r[0] : r[1] > w[1] + 0.002 ? w[1] - r[1] : 0;
+      const dz = r[2] < w[2] - 0.002 ? w[2] - r[2] : r[3] > w[3] + 0.002 ? w[3] - r[3] : 0;
+      if (dx || dz) { u.position.x += dx; u.position.z += dz; u.updateMatrixWorld(true); }
+    }
+  }
   constrainUnit(u: THREE.Object3D, from: THREE.Vector3, to: THREE.Vector3): THREE.Vector3 {
     const r0 = this.unitRect(u, from); if (!r0) return to.clone();
-    const E = 0.002, SNAP = 0.06, W = [[this.rx0, this.rx1], [0, ROOM_D]];
+    const wb = this.wallBounds(u, from);
+    const E = 0.002, SNAP = 0.06, W = [[wb[0], wb[1]], [wb[2], wb[3]]];
     const hit = (r: number[], b: number[]) => r[0] < b[1] - E && r[1] > b[0] + E && r[2] < b[3] - E && r[3] > b[2] + E;
     // 처음부터 겹친 것(장 속에 묻힌 채 시작)은 막지 않는다 — 그래야 끌어낼 수 있다
     const obs = this.unitObstacles(u).filter(b => !hit(r0, b));
@@ -733,7 +792,7 @@ export class Stage {
   }
   private setBusy(on: boolean) {
     if (on) this.busySeq++;
-    else this.roomShown = true;
+    else { this.roomShown = true; loadMark('덮개 걷힘'); loadDoing('가구 받아 끼우기'); }
     this.busyEl.classList.toggle('busy-full', !this.roomShown);
     this.busyEl.hidden = !on;
     this.busyWaitEnv = false;
@@ -918,11 +977,14 @@ export class Stage {
     this.unitAvoid = [...(sw ? [sw] : []), ...wardAvoid];
     const unitsInfo: { key: string; label: string; del: boolean }[] = [];
     this.furnishing = true;
+    if (!quiet) { loadMark('공간 짓기 시작'); loadDoing('공간·장 짓기'); }
     void addHomvueRoom(this.room, { x0, x1, D, H, win: { x1: lx1, z0, z1, top: H + PD, zMin: cMin, zMax: cMax, m: f.m.clone(), zone: [zone.min.x, zone.max.x, zone.min.z, zone.max.z], sill: y0 },
       avoid: [...(sw ? [sw] : []), ...wardAvoid], aisle, style: this.roomStyle, hvWall: this.hvWall, moves: this.hvMoves[this.movesKey], unitsInfo,
       onFill: () => { if (this.roomKey === key && !quiet) this.dirty = true; } }, () => this.roomKey === key)
       .then(() => { if (this.roomKey !== key) return; this.hvUnitsInfo = unitsInfo;
+        this.pushUnitsOutOfWalls();
         this.furnishing = false; this.openGateAfterBake();
+        const tPost = performance.now(); loadMark('가구·소품 다 옴');
         addContactShadows(this.room, this.mode === 'raster' && this.raster.post.contact !== false);   // 가구 밑 그림자 — 묶음을 합치기 전에
         // 합치기 전 — 가구 묶음이 따로 있을 때 자리를 잰다. 설비가 옮겨졌으면 알린다(장 자리 추천이 옮긴 자리로 다시 계산되게 — onRoomBuilt)
         const fixBefore = JSON.stringify(this.fixtures);
@@ -936,7 +998,9 @@ export class Stage {
         this.depthWindow();
         this.envDirty = true; this.dirty = true; this.warmAll = true; this.sceneChanged();
         // 실시간이면 환경맵을 찍고 새 방을 한 번 그린 뒤 끈다(loop). 실사·굽기 화면은 그쪽이 자기 진행 상태를 보인다
+        if (this.curPicked) this.markCurtain(true);   // 새로 지은 커튼에 테두리를 다시
         this.onRoomBuilt?.();
+        loadStall('가구 다 온 뒤 정리(그림자판·묶기·그늘막)', performance.now() - tPost, tPost); loadDoing('라이트맵 굽기');
         if (this.mode === 'raster') this.busyWaitEnv = true; else this.setBusy(false); })
       .catch(e => { console.warn('[방] 꾸미기 실패', e); if (this.roomKey === key) { this.furnishing = false; roomFurnished(); this.setBusy(false); this.holdAt = 0; this.sceneChanged(); } });
     this.noWindowLight(this.mode === 'raster');
@@ -1138,7 +1202,14 @@ export class Stage {
     if (!this.wardrobe || this.mode === 'mutracer' || !this.raster.ready) return;
     if (this.busyWaitEnv) this.envSinceBusy = true;
     this.envDirty = false; this.envAt = performance.now();
+    const tEnv = performance.now();
     const ov = this.overlay.visible; this.overlay.visible = false;
+    // 노트북 단계 — 환경맵엔 공간(벽·바닥·천장·창·조명)만. 가구·소품·장·설비 재질을 큐브맵용으로 또 짓지 않는다(환경광·반사 차이는 작다)
+    const hid: THREE.Object3D[] = [];
+    if (this.quality.lite) {
+      const FURN = ['hv-unit', 'bed', 'bedding', 'nightstand', 'side-shelf', 'room-deco', 'room-furn', 'curtain-set'];
+      for (const o of [...this.room.children.filter(c => FURN.includes(c.name)), this.wardrobe.root, ...this.fixGs]) if (o.visible) { o.visible = false; hid.push(o); }
+    }
     const sm = this.renderer.shadowMap as { autoUpdate?: boolean; needsUpdate?: boolean };
     sm.autoUpdate = false; sm.needsUpdate = true;        // 그림자는 첫 면에서 한 번만
     this.envCam.position.set((this.rx0 + this.rx1) / 2, 1.3, 2.2);
@@ -1149,9 +1220,11 @@ export class Stage {
       this.envRT = this.raster.pmremFromCubemap(this.envCube.texture, this.envRT);
       this.scene.environment = this.envRT.texture;
     }
-    sm.autoUpdate = true;
+    sm.autoUpdate = true; sm.needsUpdate = true;      // 숨겼던 가구가 그림자에 다시 들어가게
+    hid.forEach(o => (o.visible = true));
     this.overlay.visible = ov;
     this.dirty = true;
+    loadStall('환경맵 찍기', performance.now() - tEnv);
   }
 
   // ---- 해: 방위각(오른쪽 창 기준 0° = 창 정면, +는 앞쪽에서), 고도
@@ -2211,7 +2284,7 @@ export class Stage {
           });
           // 성긴 판을 먼저 굽는 단계는 뺐다 — SAH BVH 로 광선이 3배 빨라져 짓기(1.2초)가 대부분이라 두 번 굽는 이득이 없고 화면만 두 번 바뀌었다
           const info = await bakeSpaceAO(this.room, extra, this.lightIn(), this.insideBox(), (ms, tex) => this.shellLightmap(ms, tex), ms => this.shellLightmap(ms, null), this.quality.bake);
-          if (info) { console.info('[공간 라이트맵]', info); this.dirty = true; this.envDirty = true; }
+          if (info) { console.info('[공간 라이트맵]', info); this.dirty = true; this.envDirty = true; loadMark('라이트맵 끝'); loadDoing('보기'); }
         }
       } catch (e) { console.warn('[라이트맵] 실패', e); }
       finally { if (this.gateWait) { clearTimeout(this.gateWait); this.gateWait = 0; roomFurnished(); } }
@@ -2584,7 +2657,9 @@ export class Stage {
     if (!this.raster.ready) return;
     if (this.busyHold > 0) { this.busyHold--; return; }
     if (this.holdAt && performance.now() - this.holdAt < 3000) return;   // 가구 이동 재구성 중 — 옛 그림을 둔다(3초 넘으면 그냥 그린다)
-    if (this.envDirty && performance.now() - this.envAt > 100) this.updateEnv();
+    // 가구·소품을 받아 끼우는 동안은 찍지 않는다 — 찍을 때마다 새로 들어온 재질 셰이더를 큐브맵용으로 한꺼번에 지어 6초씩 멈췄다
+    // (실측 2026-11-12, CPU 4배 느리게: 덮개 걷힌 뒤 10.5초에 6.3초 멈춤 · 그중 updateEnv 4.7초). 덮개를 걷기 전 공간만 찍는 첫 번은 둔다
+    if (this.envDirty && (!this.furnishing || this.busyWaitEnv) && performance.now() - this.envAt > 100) this.updateEnv();
     // 바뀐 게 없어도 settleFrames 동안은 더 그린다 — SSGI·TRAA 가 프레임마다 쌓아야 노이즈가 걷힌다
     if (this._dirty) { this._dirty = false; this.settle = this.raster.settleFrames; this.refl.mode = 'low'; this.reflSharp = true; this.syncShadows(); }
     else if (this.settle > 0) { this.settle--; this.refl.mode = this.reflSharp ? 'full' : 'skip'; this.reflSharp = false; }
@@ -2598,8 +2673,10 @@ export class Stage {
       this.warmAll = false;
       const off: THREE.Object3D[] = [];
       this.scene.traverse(o => { if (o.frustumCulled && ((o as THREE.Mesh).isMesh || (o as THREE.Points).isPoints)) { o.frustumCulled = false; off.push(o); } });
+      const t = performance.now();
       try { this.raster.render(); } finally { off.forEach(o => (o.frustumCulled = true)); }
-    } else this.raster.render();
+      loadStall('셰이더 미리 짓기(시야 밖 포함 전부)', performance.now() - t);
+    } else { const t = performance.now(); this.raster.render(); loadStall('그리기(새 재질 셰이더 짓기)', performance.now() - t); }
     const pf = this.perf.frames, now = performance.now();
     pf.push(now); while (pf.length && now - pf[0] > 1000) pf.shift();
     this.labels.render(this.scene, this.camera);

@@ -1,6 +1,7 @@
 // 방 부속 모델 — 창문(창틀·미닫이 창짝·유리·창대) · 커튼 · 맞은편 침대와 침구. 전부 코드로 만든 단순 형상(단위 m)
 // 좌표는 scene.ts 방과 같다: x = 붙박이장 왼쪽 끝 0, y = 바닥 0, z = 뒷벽(붙박이장 벽) 0 → 앞 +
 import * as THREE from 'three';
+import { loadDoing, loadMark } from './loadlog';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
 const pvc = new THREE.MeshPhysicalMaterial({ color: '#f1f1ee', roughness: 0.35 });
@@ -855,7 +856,7 @@ async function addHomvueModule(g: THREE.Group, o: RoomFurnishOpts, style: RoomSt
     };
     const wave = (furn: boolean) => Promise.all([...by.keys()].filter(n => by.get(n)!.some(t => t.furn) === furn)
       .map(n => getModel(n).catch(e => { console.warn('[홈뷰 꾸밈] 모델', n, e); return null; }).then(m => put(n, m))));
-    ctx.pending.push(wave(true).then(() => (alive() ? wave(false) : undefined)));
+    ctx.pending.push(wave(true).then(() => { loadMark('가구 다 옴'); loadDoing('소품 받아 끼우기'); return alive() ? wave(false) : undefined; }).then(() => loadMark('소품 다 옴')));
   };
   // 비정상 크기·비율 소품 — 홈뷰 배율이 잘못 들어온 것(자녀방 벽 액자 11.6배 → 7.4m, 탁상 액자 6.1배 → 1.6m, 아기방 오르골 0.04배 → 8mm).
   // 배율을 버리고 모델 원래 크기로, 원래 크기도 이상하면 이 방의 같은 종류 정상 소품으로 바꾼다(사용자 지시 2026-11-03 「비율이 이상한 소품은 다른 걸로 교체」)

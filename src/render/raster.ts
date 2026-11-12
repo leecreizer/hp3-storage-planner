@@ -109,6 +109,18 @@ export const POST_DEFAULTS: PostSettings = {
   // 화면 반사는 켬(사용자 설정 2026-11-03) — 접촉 그림자(SSS)는 끔
   ssr: true, ssrIntensity: 0.5, sss: false,
 };
+// 기본값 = 2026-11-12 사용자가 쓰던 후처리(사용자 지시 「현재 정의된 모든 옵션 체크 내용으로 기본설정」) — 위 값들의 내력은 주석대로 두고 덮는다.
+// 화면 성능 단계(quality.ts)는 이 위에서 사양에 맞게 처음 값만 끈다 — 사용자가 체크하면 그 단계에서도 켜진다(아래 userSet)
+Object.assign(POST_DEFAULTS, {
+  ssgi: true, quality: 'high', gi: 1, ao: 0.7, radius: 4.2, thickness: 1, giSpace: 'world', giOcc: 1, giRes: 'half', denoise: true,
+  aoKind: 'both', aoRadius: 0.15, aoThick: 1, aoPow: 1, aoSoft: 0, traa: true,
+  toneMapping: 'aces', exposure: 1.5, contrast: 1, saturation: 1, vignette: 0.06,
+  bloom: true, bloomStrength: 0.1, bloomThreshold: 1, bloomRadius: 0.4,
+  reflect: 'mid', outside: 'skyline', outsideRot: -140,
+  camFov: 60, camRot: 1, camZoom: 1, camPan: 1, camDamping: true, camGrab: false,
+  bakedAO: true, contact: true, spaceAO: true, spaceLMStr: 1, spaceKeepAO: true, depthFx: 0.5, prodAO: true, prodAOStr: 0.6,
+  ssr: true, ssrIntensity: 0.5, sss: true,
+} satisfies PostSettings);
 /** SSGINode 문서의 시간 누적용 권장값 — 슬라이스 × 걸음 */
 const QUALITY: Record<GIQuality, [number, number]> = { low: [1, 12], mid: [2, 8], high: [3, 16] };
 const TONE: Record<ToneMap, THREE.ToneMapping> = { agx: THREE.AgXToneMapping, neutral: THREE.NeutralToneMapping, aces: THREE.ACESFilmicToneMapping };
@@ -136,12 +148,23 @@ export interface Raster {
   setOutline(objs: THREE.Object3D[]): boolean;
   /** 화면 성능 단계(quality.ts) — caps = 후처리 설정 위에 덮어쓸 값(저장하지 않는다), lite = 장면 한 장 + FXAA 만 */
   setQuality(caps: Partial<PostSettings>, lite: boolean): void;
+  /** 사용자가 직접 바꾼 항목 — 화면 성능 단계가 끄지 않는다 */
+  readonly userSet: ReadonlySet<keyof PostSettings>;
+  /** 직접 바꾼 기록을 지운다(「기본값으로」) — 다시 단계 기본을 따른다 */
+  clearUserSet(): void;
 }
 
 const params = new URLSearchParams(location.search);
 /** 외곽선 색 — 선택 파랑(#2f6bff, 화면 색) */
 const OUTLINE_RGB = vec3(0x2f / 255, 0x6b / 255, 1);
-const POST_KEY = 'storage-planner.post.v7';   // 예전 판(v1~v6)이 저장돼 있어도 새 기본값을 쓰게(v7 = 모서리 그늘 both)
+const POST_KEY = 'storage-planner.post.v7';
+/** 사용자가 직접 바꾼 후처리 항목 — 화면 성능 단계는 처음 값만 정하고, 사용자가 체크·조절한 항목은 그 단계에서도 그대로 쓴다
+ *  (사용자 지시 2026-11-12 「노트북도 고성능이 있는데 막아버리면 — 설정만 사양에 맞춰 끄고 사용자가 체크하면 적용되게」) */
+const SET_KEY = 'storage-planner.postset.v1';
+function loadSet(): Set<keyof PostSettings> { try { return new Set(JSON.parse(localStorage.getItem(SET_KEY) || '[]')); } catch { return new Set(); } }
+function saveSet(s: Set<keyof PostSettings>) { try { localStorage.setItem(SET_KEY, JSON.stringify([...s])); } catch { /* 이번 화면엔 반영 */ } }
+/** 가벼운 화면(장면 한 장 + FXAA)에선 못 그리는 효과 — 사용자가 하나라도 켜면 단계가 노트북이어도 전체 화면 처리로 그린다 */
+const HEAVY: (keyof PostSettings)[] = ['ssgi', 'ssr', 'sss', 'traa', 'bloom', 'denoise', 'aoKind'];   // 예전 판(v1~v6)이 저장돼 있어도 새 기본값을 쓰게(v7 = 모서리 그늘 both)
 function loadPost(): PostSettings {
   try { return { ...POST_DEFAULTS, ...JSON.parse(localStorage.getItem(POST_KEY) || '{}') }; } catch { return { ...POST_DEFAULTS }; }
 }
@@ -204,7 +227,8 @@ function webgpu(scene: THREE.Scene, camera: THREE.PerspectiveCamera, mainLight?:
   // user = 사용자가 「후처리」 메뉴에서 고른 값(저장), post = 실제로 쓰는 값 = user 위에 화면 성능 단계(caps)를 덮은 것
   const user = loadPost();
   const post: PostSettings = { ...user };
-  let caps: Partial<PostSettings> = {}, lite = false;
+  let caps: Partial<PostSettings> = {}, lite = false, liteOn = false;
+  const userSet = loadSet();
   renderer.toneMapping = TONE[post.toneMapping];
   let pmrem: GPUPMREMGenerator | null = null;
   let pipeline: RenderPipeline | null = null;
@@ -241,7 +265,7 @@ function webgpu(scene: THREE.Scene, camera: THREE.PerspectiveCamera, mainLight?:
   const me: Raster = {
     kind: 'webgpu', renderer, ready: false, post,
     // 멈춘 뒤 더 그리는 프레임 — 시간 누적(TRAA·SSGI·SSR)이 없으면 0(노트북 단계는 손을 떼면 바로 멈춘다)
-    get settleFrames() { return lite || (!post.traa && !post.ssgi && !post.ssr) ? 0 : 48; },
+    get settleFrames() { return liteOn || (!post.traa && !post.ssgi && !post.ssr) ? 0 : 48; },
     supports: new Set(Object.keys(POST_DEFAULTS) as (keyof PostSettings)[]),
     async init() {
       await renderer.init();
@@ -372,7 +396,7 @@ function webgpu(scene: THREE.Scene, camera: THREE.PerspectiveCamera, mainLight?:
       pipeline = new RenderPipeline(renderer);
       pipeline.outputColorTransform = false;       // 톤매핑은 아래 renderOutput 에서 — 그 뒤에 색 보정
       rebuild = () => {
-        if (lite) {
+        if (liteOn) {
           (scenePass as any).contextNode = null;
           const shown: any = renderOutput(vec4(liteColor.rgb.mul(liteFactor), liteColor.a));
           let rgb = saturation(shown.rgb, u.saturation);
@@ -407,9 +431,13 @@ function webgpu(scene: THREE.Scene, camera: THREE.PerspectiveCamera, mainLight?:
     },
     setSize(w, h) { renderer.setSize(w, h); },
     render() { pipeline?.render(); },
+    userSet,
+    clearUserSet() { userSet.clear(); saveSet(userSet); applyEff(false); },
     setPost(p) {
       Object.assign(user, p);
       savePost(user);
+      for (const k of Object.keys(p) as (keyof PostSettings)[]) userSet.add(k);
+      saveSet(userSet);
       applyEff(false);
     },
     setOutline(objs) { outlineObjs.length = 0; outlineObjs.push(...objs); return true; },
@@ -425,7 +453,11 @@ function webgpu(scene: THREE.Scene, camera: THREE.PerspectiveCamera, mainLight?:
   };
   /** 실제 값(post) = 사용자 값 위에 단계 덮기 → 바뀐 만큼 반영(켜고 끄는 항목은 그래프를 다시 짓는다) */
   function applyEff(force: boolean) {
-      const next: PostSettings = { ...user, ...caps };
+      // 단계가 끄는 값은 사용자가 직접 바꾸지 않은 항목에만
+      const capsEff = Object.fromEntries(Object.entries(caps).filter(([k]) => !userSet.has(k as keyof PostSettings))) as Partial<PostSettings>;
+      const next: PostSettings = { ...user, ...capsEff };
+      const liteNext = lite && !HEAVY.some(k => userSet.has(k) && (k === 'aoKind' || !!next[k]));
+      if (liteNext !== liteOn) { liteOn = liteNext; force = true; }
       const structural = force || (['ssgi', 'aoKind', 'denoise', 'traa', 'bloom', 'toneMapping', 'ssr', 'sss'] as const).some(k => next[k] !== post[k])
         || (next.aoSoft > 0) !== (post.aoSoft > 0);   // 부드럽게 켜고 끄기는 노드를 끼우고 뺀다
       Object.assign(post, next);
@@ -473,5 +505,7 @@ function webgl(scene: THREE.Scene, camera: THREE.PerspectiveCamera): Raster {
     setWindow() { /* WebGL 은 공간감 효과 없음 */ },
     setOutline() { return false; },
     setQuality() { /* WebGL 은 AO·톤만이라 단계 없음(화소 배율만 Stage 가 맞춘다) */ },
+    userSet: new Set<keyof PostSettings>(),
+    clearUserSet() { /* 단계 없음 */ },
   };
 }

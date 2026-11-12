@@ -1,4 +1,5 @@
 // 붙박이장 셀프 플래너 (웹) — store.hanssem.com/storage-simulator 기능 재현 + 해 방향 · 실사 렌더
+import './defaults';   // 처음 여는 사람의 기본 상태 — 다른 모듈이 저장소를 읽기 전에
 import { ACC_INFO, onWardHvReady } from './props';
 import './style.css';
 import * as THREE from 'three';
@@ -11,6 +12,7 @@ import { POST_DEFAULTS, type PostSettings } from './render/raster';
 import { AUTO_TIER, GPU_NAME, PROFILES, QUALITY_FORCED, qualityChoice, setQualityChoice, type QualityChoice } from './quality';
 import { arrange } from './arrange';
 import { roomGateOpen } from './loadgate';
+import { loadMark, loadReport } from './loadlog';
 
 const $ = <T extends HTMLElement = HTMLElement>(s: string) => document.querySelector(s) as T;
 const h = (tag: string, cls = '', html = '') => { const e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; };
@@ -65,7 +67,7 @@ const wallLen = () => (roomDims.wall === 'back' || roomDims.wall === 'front' ? r
 const roomDepth = () => (roomDims.wall === 'back' || roomDims.wall === 'front' ? roomDims.d : roomDims.w);
 let gapSplit = 0.5;                    // 양쪽 오픈일 때 왼쪽 몫
 /** 3D 화면에서 고른 것 — 방문·창·가구 묶음 */
-let picked: 'door' | 'window' | 'furn' | 'fix' | null = null;
+let picked: 'door' | 'window' | 'furn' | 'fix' | 'curtain' | null = null;
 // ---- 설비(콘센트 · 통신단자함 · 벽걸이 에어컨) — 사용자 지시 2026-11-06 「붙박이장이 콘센트·단자함을 가리는지, 에어컨과 간섭하는지 생각해야 —
 // 소품으로 달아 두고 없으면 빼면 된다」. 장과 겹치면 경고만 한다(사용자 결정 — 장 자리·추천은 바꾸지 않는다)
 const FIX_KEY = 'storage-planner.fixtures.v1';
@@ -220,6 +222,7 @@ function openTypeModal() {
     list.append(row);
   }
   $('#type-ok').onclick = () => {
+    loadMark('장 타입 확인');
     const t = pl.type(pick);
     const space = design?.space ?? design?.width ?? 3100;
     const w = Math.max(pl.minWidth(t.id), space);   // 구성표 범위(2410~4200) 밖도 몸통 조합으로 계산된다
@@ -261,6 +264,7 @@ async function rebuild(resetView = false, quick = false) {
   const seq = ++buildSeq;
   const b = await buildWardrobe(pl, design, { lift: wardSlot != null && wardOpen() ? wardSlot : undefined });
   if (seq !== buildSeq) return;
+  loadMark('장 모델 다 옴');
   built = b;
   // 놓을 자리가 없어진 칸 액세서리는 뺀다 — 트레이를 넣은 뒤 몸통을 서랍형으로 바꾸면 체크·가격만 남고 모델은 안 보였다(사용자 지적 2026-11-09).
   // 칸 메뉴에는 「이 칸엔 ○○이 없어요」로 흐리게 남는다
@@ -301,6 +305,7 @@ function preloadPlan() {
 }
 
 function drawOverlay() {
+  if (stage.curtainPicked !== (picked === 'curtain')) stage.markCurtain(picked === 'curtain');   // 다른 것을 고르면 커튼 테두리를 끈다
   stage.showDoorZone(picked === 'door');
   stage.markOpening(picked === 'door' && roomDoor ? 'door' : picked === 'window' ? 'window' : null);   // 고른 방문·창에 파란 테두리   // 방문 열림 자리(파란 부채꼴)는 방문을 골랐을 때만(사용자 지시 2026-11-05)
   if (!built || !design) return;
@@ -1065,51 +1070,61 @@ function renderPost() {
   postPanel.innerHTML = '';
   postPanel.append(h('div', 'sun-title', `후처리 <small>실시간 화면 · ${r.kind === 'webgpu' ? 'WebGPU' : 'WebGL (AO·톤만)'}</small>`));
   // 화면 성능 단계가 끈 항목 — 값은 기억해 두고(높음으로 돌리면 그대로) 이 단계에서만 꺼진다
-  const capped = stage.quality.caps as Record<string, unknown>;
-  if (Object.keys(capped).length) postPanel.append(h('p', 'note', `화면 성능 「${stage.quality.label}」 단계라 흐린 항목은 꺼져 있어요 — 실사 메뉴 아래 화면 성능에서 바꿔요`));
+  // 단계가 기본으로 끈 항목 — 체크하면 그 단계에서도 켜진다(사용자 지시 2026-11-12). 직접 바꾼 항목은 흐리게 두지 않는다
+  const capped = Object.fromEntries(Object.entries(stage.quality.caps).filter(([k]) => !r.userSet.has(k as keyof PostSettings))) as Record<string, unknown>;
+  if (Object.keys(capped).length) postPanel.append(h('p', 'note', `화면 성능 「${stage.quality.label}」 단계라 흐린 항목은 기본으로 꺼 두었어요 — 체크하면 켜져요(「기본값으로」를 누르면 다시 꺼요)`));
   for (const c of POST_CTLS) {
     if (c.kind === 'grp') { postPanel.append(h('div', 'grp', `${c.label}${c.note ? ` <small>${c.note}</small>` : ''}`)); continue; }
     if (c.kind === 'button') { const b = h('button', 'reset', c.label) as HTMLButtonElement; b.type = 'button'; b.onclick = () => c.run(b); postPanel.append(b); continue; }
     const on = r.supports.has(c.key);
     const row = h('label', (c.kind === 'check' ? 'chk' : '') + (on && !(c.key in capped) ? '' : ' off'));
-    row.title = !on ? 'WebGPU 화면에서만 — 주소의 ?webgl 을 빼고 열어 주세요' : c.key in capped ? `화면 성능 「${stage.quality.label}」에서는 꺼져 있어요` : '';
+    row.title = !on ? 'WebGPU 화면에서만 — 주소의 ?webgl 을 빼고 열어 주세요' : c.key in capped ? `화면 성능 「${stage.quality.label}」에서 기본으로 꺼 둔 항목 — 체크하거나 바꾸면 켜져요` : '';
     row.append(h('span', '', c.label));
+    /** 직접 바꿨다 — 단계가 꺼 둔 항목이어도 이제 켜져 있으니 흐리게 두지 않는다 */
+    const lift = () => { if (on && c.key in capped) { row.classList.remove('off'); row.title = ''; } };
     if (c.kind === 'range') {
       const inp = h('input') as HTMLInputElement, out = h('input', 'val') as HTMLInputElement;
       Object.assign(inp, { type: 'range', min: String(c.min), max: String(c.max), step: String(c.step), value: String(post[c.key]), disabled: !on });
       out.type = 'number'; out.disabled = !on;
       const show = (v: number) => (out.value = stepFmt(inp, v));
       show(post[c.key] as number);
-      inp.oninput = () => { stage.setPost({ [c.key]: +inp.value }); show(+inp.value); };
-      bindNum(inp, out, v => stage.setPost({ [c.key]: v }));
+      inp.oninput = () => { stage.setPost({ [c.key]: +inp.value }); show(+inp.value); lift(); };
+      bindNum(inp, out, v => { stage.setPost({ [c.key]: v }); lift(); });
       row.append(inp, out);
     } else if (c.kind === 'check') {
       const inp = h('input') as HTMLInputElement;
       Object.assign(inp, { type: 'checkbox', checked: !!post[c.key], disabled: !on });
-      inp.onchange = () => stage.setPost({ [c.key]: inp.checked });
+      inp.onchange = () => { stage.setPost({ [c.key]: inp.checked }); lift(); };
       row.append(inp);
     } else {
       const sel = h('select') as HTMLSelectElement;
       c.options.forEach(([v, t]) => sel.append(new Option(t, v, false, post[c.key] === v)));
       sel.disabled = !on;
-      sel.onchange = () => stage.setPost({ [c.key]: sel.value });
+      sel.onchange = () => { stage.setPost({ [c.key]: sel.value }); lift(); };
       row.append(sel);
     }
     postPanel.append(row);
   }
   postPanel.append(h('p', 'note', '실사(경로 추적)·굽기·서펠 화면에는 쓰이지 않는다. 노출 배율은 조명 패널의 노출에 곱한다'));
   const reset = h('button', 'reset', '기본값으로');
-  reset.onclick = () => { stage.setPost({ ...POST_DEFAULTS, ...keepScene() }); renderPost(); };
+  reset.onclick = () => { postBase(); renderPost(); };
   postPanel.append(reset);
   // 비교 — 기본(깊이감 요청 전 값)과 깊이감 강조안을 오간다. 단축키 C
   const same = (p: Partial<PostSettings>) => Object.entries({ ...POST_DEFAULTS, ...p, ...keepScene() }).every(([k, v]) => post[k] === v);
   const cmp = h('div', 'cmp');
   for (const [name, p] of [['기본 (수정 전)', {}], ['깊이감 강조', DEPTH_LOOK]] as const) {
     const b = h('button', 'reset' + (same(p) ? ' on' : ''), name);
-    b.onclick = () => { stage.setPost({ ...POST_DEFAULTS, ...p, ...keepScene() }); renderPost(); };
+    b.onclick = () => { postBase(p); renderPost(); };
     cmp.append(b);
   }
   postPanel.firstElementChild!.after(cmp);
+}
+/** 기본값(+ 고른 안)으로 — 직접 바꾼 기록을 지워 화면 성능 단계 기본을 다시 따른다. 고른 안의 항목만 직접 고른 것으로 남긴다 */
+function postBase(p: Partial<PostSettings> = {}) {
+  stage.setPost({ ...POST_DEFAULTS, ...p, ...keepScene() });
+  stage.raster.clearUserSet();
+  if (Object.keys(p).length) stage.setPost(p);
+  stage.setQuality(stage.quality);          // 단계가 다시 끈 값의 화면 쪽(거울 반사 등)도 맞춘다
 }
 /** 깊이감·입체감 강조안 — 간접광 SSGI + 구석 그늘 GTAO · 품질 높음 · AO 1 · 노출 1.35 · 대비 1.05 · 비네팅 0.25.
  *  비교 뒤 기본은 수정 전으로 되돌렸다(사용자 지시 2026-10-29) — 이 안은 비교용으로 남긴다 */
@@ -1127,7 +1142,7 @@ addEventListener('keydown', e => {
   if (e.key !== 'c' && e.key !== 'C') return;
   if ((e.target as HTMLElement).closest('input, select, textarea')) return;
   const deep = Object.entries(DEPTH_LOOK).every(([k, v]) => (stage.raster.post as Record<string, unknown>)[k] === v);
-  stage.setPost({ ...POST_DEFAULTS, ...(deep ? {} : DEPTH_LOOK), ...keepScene() });
+  postBase(deep ? {} : DEPTH_LOOK);
   renderPost();
 });
 renderPost();
@@ -1142,7 +1157,7 @@ function renderQuality() {
   const row = $('#q-row'); row.innerHTML = '';
   ([['auto', `자동 · ${PROFILES[AUTO_TIER].label}`], ['low', PROFILES.low.label], ['mid', PROFILES.mid.label], ['high', PROFILES.high.label]] as [QualityChoice, string][]).forEach(([c, t]) => {
     const b = h('button', qualityChoice() === c ? 'on' : '', t) as HTMLButtonElement;
-    b.type = 'button'; b.disabled = !!QUALITY_FORCED && c !== QUALITY_FORCED;
+    b.type = 'button';   // 주소의 ?q= 는 시작 단계만 정한다 — 버튼은 잠그지 않는다(사용자 지시 2026-11-12 「고성능 노트북도 있는데 막아버리면」)
     b.onclick = () => { stage.setQuality(setQualityChoice(c)); renderQuality(); if (!postPanel.hidden) renderPost(); };
     row.append(b);
   });
@@ -1167,7 +1182,7 @@ setInterval(() => {
   const ms = live ? (f[n - 1] - f[0]) / (n - 1) : 0;
   const cv = stage.renderer.domElement;
   fpsEl.innerHTML = (live ? `<b>${Math.round(1000 / ms)}</b> fps · ${ms.toFixed(1)}ms` : '<b>멈춤</b> <small>바뀐 게 없어 그리지 않아요</small>')
-    + `<br><small>${stage.quality.label} · ${cv.width}×${cv.height} · 배율 ${stage.renderer.getPixelRatio().toFixed(2)}</small>`;
+    + `<br><small>${stage.quality.label} · ${cv.width}×${cv.height} · 배율 ${stage.renderer.getPixelRatio().toFixed(2)}</small>` + loadReport();
 }, 250);
 
 // 3D 화면 클릭: 몸통 탭이면 칸 선택, 도어 탭이면 누른 도어의 칸 도어 바꾸기.
@@ -1702,16 +1717,19 @@ let doorDrag = false, doorDragged = false;
 // 방문·창 선택 — 클릭(누른 자리에서 떼기)으로만 고른다. 누른 채 움직이면 그 아래에 문·창이 있어도 카메라 회전이고,
 // 고른 것만 끌어 옮긴다(사용자 지시 2026-10-30: 「클릭 후 마우스를 떼지 않고 회전·이동은 선택이 아니다」)
 // ---------- 커튼 — 좌우 자락을 한쪽씩 잡고 레일 따라 끌어 펴거나 모은다(사용자 지시 2026-11-03). 가구·문·창 고르기보다 먼저 받는다
+// 고른 커튼만 끈다 — 화면을 돌리려고 누른 자리가 마침 커튼이면 커튼 자락이 끌려 왔다(사용자 지적 2026-11-12 「선택 후 드래그한 것도 아닌데 회전하다 커튼이 선택되면서 드래그」).
+// 문·창·가구처럼 클릭(누른 자리에서 떼기)으로 먼저 고른다
 let curtainDrag = false;
+const unpickCurtain = () => { if (picked === 'curtain') picked = null; stage.markCurtain(false); };
 cv.addEventListener('pointerdown', e => {
-  if (e.button !== 0 || stage.mode !== 'raster' || !stage.startCurtainDrag(e)) return;
+  if (e.button !== 0 || stage.mode !== 'raster' || picked !== 'curtain' || !stage.startCurtainDrag(e)) return;
   curtainDrag = true;
   stage.controls.enabled = false; cv.setPointerCapture(e.pointerId); cv.style.cursor = 'ew-resize';
   e.stopImmediatePropagation();
 }, true);
 cv.addEventListener('pointermove', e => {
   if (curtainDrag) { stage.moveCurtainDrag(e); e.stopImmediatePropagation(); return; }
-  if (!e.buttons && stage.mode === 'raster' && stage.pickCurtain(e)) cv.style.cursor = 'ew-resize';
+  if (!e.buttons && stage.mode === 'raster' && stage.pickCurtain(e)) cv.style.cursor = picked === 'curtain' ? 'ew-resize' : 'pointer';
 }, true);
 cv.addEventListener('pointerup', e => {
   if (!curtainDrag) return;
@@ -1721,18 +1739,22 @@ cv.addEventListener('pointerup', e => {
 }, true);
 
 let selUnit: string | null = null;          // 고른 가구 묶음(홈뷰 꾸밈)
-let pickDown: { x: number; y: number; door: boolean; win: boolean; fix: string | null; unit: string | null } | null = null;
+let pickDown: { x: number; y: number; door: boolean; win: boolean; cur: boolean; fix: string | null; unit: string | null } | null = null;
 cv.addEventListener('pointerdown', e => {
   if (e.button !== 0 || stage.mode !== 'raster') { pickDown = null; return; }
-  const door = !!roomDoor && stage.hitsRoomDoor(e), win = !door && stage.hitsWindow(e);
-  const fix = door || win ? null : stage.pickFixture(e);
-  pickDown = { x: e.clientX, y: e.clientY, door, win, fix, unit: door || win || fix ? null : (stage.pickUnit(e)?.userData.hvUnit ?? null) };
+  const door = !!roomDoor && stage.hitsRoomDoor(e);
+  // 커튼 — 겉커튼은 창보다 먼저, 비치는 속커튼은 창이 아닌 자리에서만(창을 덮어 창을 못 고르게 되지 않게)
+  const ch = door ? null : stage.pickCurtain(e), win = !door && stage.hitsWindow(e), cur = !!ch && (ch.layer === 'Out' || !win);
+  const fix = door || win || cur ? null : stage.pickFixture(e);
+  pickDown = { x: e.clientX, y: e.clientY, door, win: win && !cur, cur, fix, unit: door || win || cur || fix ? null : (stage.pickUnit(e)?.userData.hvUnit ?? null) };
 }, true);
 const unpickUnit = () => { selUnit = null; furnPop.hidden = true; stage.markUnits(null); };
 cv.addEventListener('pointerup', e => {
   const pd = pickDown; pickDown = null;
   if (!pd || doorDrag || winDrag || furnDrag || rotDrag || fixDrag || Math.hypot(e.clientX - pd.x, e.clientY - pd.y) > 5) return;
   unpickWard();
+  if (pd.cur) { unpickUnit(); if (selFix) unpickFix(); picked = 'curtain'; pops.forEach(x => (x.hidden = true)); stage.markCurtain(true); drawOverlay(); doorDragged = true; return; }
+  if (picked === 'curtain') unpickCurtain();
   if (pd.fix) { unpickUnit(); picked = 'fix'; selFix = pd.fix; pops.forEach(x => (x.hidden = x !== fixPop)); renderFixPop(); stage.markFixtures(selFix); drawOverlay(); doorDragged = true; return; }
   if (selFix) unpickFix();
   if (pd.door) { unpickUnit(); picked = 'door'; renderRoomDoorPop(); pops.forEach(x => (x.hidden = x !== roomDoorPop)); drawOverlay(); doorDragged = true; }
@@ -2017,18 +2039,17 @@ cv.addEventListener('pointerup', () => {
 }, true);
 /** 기본 설비 — 장 벽 콘센트(장이 가리는 흔한 자리) · 침대 벽 콘센트 · 창 없는 옆벽에 통신단자함(아래) · 창문 앞 천장에 시스템 에어컨 */
 function defaultFixtures(): RoomFixture[] {
-  const side = stage.winWall === 'left' ? 'right' : 'left';
+  // 기본 자리 = 2026-11-12 사용자가 쓰던 안방 설비(사용자 지시 「현재 설정으로 기본」). 저장한 설비가 없으면 방을 지은 뒤
+  // stage.settleFixtures 가 가구·창·방문을 피해 민다(시스템 에어컨은 창 앞, 스위치·멀티패널은 방문 손잡이 쪽)
   return [
-    { id: 'outlet-1', kind: 'outlet', wall: 'back', t: 0.45, y: 0.25 },
-    { id: 'outlet-2', kind: 'outlet', wall: 'front', t: 0.35, y: 0.25 },
-    { id: 'telecom-1', kind: 'telecom', wall: side, t: ROOM_D - 0.45, y: 0.3 },
-    // 에어컨 기본은 시스템 에어컨(사용자 지시 2026-11-12 「기본 에어컨은 벽걸이 말고 시스템 에어컨으로 창문 앞으로」) — 자리·방향은 방을 지은 뒤
-    // stage.settleFixtures 가 창 앞으로. 벽걸이는 빼 두고 목록에서 되살린다
-    { id: 'aircon-1', kind: 'aircon', wall: side, t: ROOM_D - 1.0, y: 2.0, del: true },
-    { id: 'ceilac-1', kind: 'ceilac', wall: 'ceiling', t: (stage.rx1 - stage.rx0 || 3.6) / 2, y: ROOM_D / 2 },
-    // 조명 스위치 · 멀티패널 — 방문 옆(문을 알면 stage.settleFixtures 가 문틀 옆으로), 바닥에서 1.14m(가운데 1.2m)
-    { id: 'switch-1', kind: 'switch', wall: 'back', t: 1.0, y: 1.14 },
-    { id: 'multi-1', kind: 'multi', wall: 'back', t: 1.2, y: 1.14 },
+    { id: 'outlet-1', kind: 'outlet', wall: 'back', t: 1, y: 0.25 },
+    { id: 'outlet-2', kind: 'outlet', wall: 'right', t: 2.487, y: 0.195 },
+    { id: 'telecom-1', kind: 'telecom', wall: 'left', t: 1.38, y: 0.3 },
+    // 에어컨 기본은 시스템 에어컨(사용자 지시 2026-11-12 「기본 에어컨은 벽걸이 말고 시스템 에어컨으로 창문 앞으로」) — 벽걸이는 빼 두고 목록에서 되살린다
+    { id: 'aircon-1', kind: 'aircon', wall: 'left', t: 3.96, y: 2.0, del: true },
+    { id: 'ceilac-1', kind: 'ceilac', wall: 'ceiling', t: 1.871, y: 4.21, rot: 180 },
+    { id: 'switch-1', kind: 'switch', wall: 'back', t: 1.006, y: 1.14 },
+    { id: 'multi-1', kind: 'multi', wall: 'back', t: 1.195, y: 1.14 },
   ];
 }
 function loadFixtures(): RoomFixture[] {

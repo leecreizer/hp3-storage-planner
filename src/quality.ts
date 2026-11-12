@@ -68,7 +68,7 @@ export function qualityChoice(): QualityChoice { return choice; }
 export function quality(): QualityProfile { return PROFILES[choice === 'auto' ? AUTO_TIER : choice]; }
 export function setQualityChoice(c: QualityChoice) {
   choice = c;
-  if (!FORCED) try { localStorage.setItem(KEY, c); } catch { /* 이번 화면엔 반영된다 */ }
+  try { localStorage.setItem(KEY, c); } catch { /* 이번 화면엔 반영된다 */ }
   return quality();
 }
 /** 실제 화소 배율 — 단계 상한 · 기기 배율 · 화소 예산 중 가장 작은 값(0.75 아래로는 내리지 않는다) */
