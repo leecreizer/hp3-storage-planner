@@ -715,8 +715,10 @@ export type RoomFurnishOpts = {
   /** 장 앞 통로 깊이(m) — avoid 의 장 상자에서 장 앞면을 되짚는 데 쓴다 */
   aisle?: number;
   /** 자리를 먼저 잡고 모델을 뒤에 끼울 때 — 모델 하나가 끼워질 때마다(화면을 다시 그리게) */
-  onFill?: () => void;
+  onFill?: (added: THREE.Object3D[]) => void;
 };
+/** 다음 화면까지 기다린다 — 끼운 것을 한 프레임씩 보여 주려고. 화면이 안 그려지는 탭(가려짐)이면 기다리지 않고, 늦어도 0.1초 */
+const nextFrame = () => document.hidden ? Promise.resolve() : new Promise<void>(r => { const t = setTimeout(r, 100); requestAnimationFrame(() => { clearTimeout(t); r(); }); });
 /** 맞은편 벽(z = D)에 침대 + 침구 + 협탁 2 + (자리 되면) 2단 책장, 창(오른쪽 벽 x1)에 커튼. alive() 가 거짓이면(방이 다시 만들어짐) 버린다 */
 
 // ---- 홈뷰 방 꾸밈 옮겨 놓기 (사용자 지시 2026-10-30 「홈뷰에서의 각 방들 구성을 참고해서 배치」 · 「방별 소품도 달라져야」)
@@ -844,16 +846,22 @@ async function addHomvueModule(g: THREE.Group, o: RoomFurnishOpts, style: RoomSt
       if (!by.has(n)) by.set(n, []);
       by.get(n)!.push({ ob, furn: items[i].role !== 'prop', rug: isRug(i) });
     });
-    const put = (n: string, m: THREE.Object3D | null) => {
+    // 모델 하나씩 끼우고 한 프레임 쉰다 — 다시 지을 때는 모델을 이미 받아 둬서 가구·소품이 한 프레임에 다 들어오고, 그 프레임에서 셰이더를
+    // 한꺼번에 지어 화면이 멈춘 뒤 다 된 모습이 한 번에 떴다(사용자 지적 2026-11-12 「한 번에 보여주려니 끊겨서 멈춘 느낌 — 공간과 장을 순차적으로」).
+    // 한 개씩이면 셰이더 짓기도 프레임마다 나뉘고 가구가 하나씩 놓이는 게 보인다
+    let line: Promise<void> = Promise.resolve();
+    const put = (n: string, m: THREE.Object3D | null) => (line = line.then(async () => {
       if (!m || !alive()) return;
+      const added: THREE.Object3D[] = [];
       by.get(n)!.forEach((t, k) => {
         const c = k ? m.clone(true) : m;
         c.position.set(0, 0, 0); c.quaternion.identity(); c.scale.set(1, 1, 1);
         if (t.rug) c.traverse(x => { x.castShadow = false; });
-        t.ob.add(c);
+        t.ob.add(c); added.push(c);
       });
-      o.onFill?.();
-    };
+      o.onFill?.(added);
+      await nextFrame();
+    }));
     const wave = (furn: boolean) => Promise.all([...by.keys()].filter(n => by.get(n)!.some(t => t.furn) === furn)
       .map(n => getModel(n).catch(e => { console.warn('[홈뷰 꾸밈] 모델', n, e); return null; }).then(m => put(n, m))));
     ctx.pending.push(wave(true).then(() => { loadMark('가구 다 옴'); loadDoing('소품 받아 끼우기'); return alive() ? wave(false) : undefined; }).then(() => loadMark('소품 다 옴')));

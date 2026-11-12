@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite';
-import { readFileSync, realpathSync } from 'node:fs';
+import { appendFileSync, mkdirSync, readFileSync, realpathSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 import { relative } from 'node:path';
 // 사내망 노트북 접속(LAN=1) — 0.0.0.0:5211 https(자체 인증서 .cert/, 저장소 제외). WebGPU 는 https 에서만 켜진다.
 // 평소 개발 서버(127.0.0.1:5210 http)는 그대로 두고 따로 띄운다: LAN=1 npx vite
@@ -11,8 +12,32 @@ const ASSET_ROOT = loadEnv('development', process.cwd(), 'VITE_').VITE_ASSET_ROO
 // node_modules 연결(junction)의 실제 위치
 const DEPS = (() => { try { return relative(process.cwd(), realpathSync('node_modules')); } catch { return 'node_modules'; } })();
 
+// 빌드 표시 — 불러오기 기록(src/loadlog.ts)에 어느 판에서 잰 것인지 남긴다
+const BUILD = { hash: (() => { try { return execSync('git rev-parse --short HEAD').toString().trim(); } catch { return '?'; } })(), time: new Date().toISOString() };
+
 export default defineConfig({
   base: './',
+  define: { __BUILD__: JSON.stringify(BUILD) },
+  plugins: [{
+    // 불러오기 기록 받기 — 화면이 한 건 끝낼 때마다 보낸다(src/loadlog.ts). 사내망 노트북(5211)에서 잰 것도 여기로 바로 모인다
+    name: 'loadlog',
+    configureServer(server) {
+      server.middlewares.use('/__loadlog', (req, res) => {
+        if (req.method !== 'POST') { res.statusCode = 405; res.end(); return; }
+        let body = '';
+        req.on('data', c => { body += c; if (body.length > 2e6) req.destroy(); });
+        req.on('end', () => {
+          try {
+            const j = JSON.parse(body);
+            j.from = req.socket.remoteAddress; j.got = new Date().toISOString();
+            mkdirSync('logs', { recursive: true });
+            appendFileSync('logs/loadlog.jsonl', JSON.stringify(j) + '\n');
+            res.end('ok');
+          } catch (e) { res.statusCode = 400; res.end(String(e)); }
+        });
+      });
+    },
+  }],
   server: {
     port: LAN ? 5211 : 5210, strictPort: true, host: LAN ? '0.0.0.0' : '127.0.0.1',
     https: LAN ? { key: readFileSync('.cert/key.pem'), cert: readFileSync('.cert/cert.pem') } : undefined,

@@ -18,3 +18,5 @@ __pycache__/
 .vite-cache-lan
 # 로컬 경로(원본 자산 폴더)
 .env.local
+# 불러오기 기록(개발 서버가 받은 것 — 기기·설정 정보 포함)
+logs/

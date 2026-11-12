@@ -12,7 +12,7 @@ import { POST_DEFAULTS, type PostSettings } from './render/raster';
 import { AUTO_TIER, GPU_NAME, PROFILES, QUALITY_FORCED, qualityChoice, setQualityChoice, type QualityChoice } from './quality';
 import { arrange } from './arrange';
 import { roomGateOpen } from './loadgate';
-import { loadMark, loadReport } from './loadlog';
+import { loadBegin, loadClear, loadContext, loadDownload, loadCount, loadEndAfterFrame, loadKind, loadMark, loadReport } from './loadlog';
 
 const $ = <T extends HTMLElement = HTMLElement>(s: string) => document.querySelector(s) as T;
 const h = (tag: string, cls = '', html = '') => { const e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; };
@@ -185,7 +185,7 @@ async function loadHvRoom(style: RoomStyle, fresh: boolean) {
   }
   // 홈뷰 방은 열 때마다 원본 방문 자리로 — 예전 기본 방문(맞은편 벽)이 남아 창과 같은 벽에 붙어 있었다(사용자 지적 2026-11-02)
   if (hvRoom) applyPlan(); else stage.setRoomPlan(roomPlan());
-  applyRoom(); renderPanel(); drawOverlay(); savePlan();
+  applyRoom(!fresh && !!sd && stage.fixAuto); renderPanel(); drawOverlay(); savePlan();
 }
 
 try { const v = localStorage.getItem(STYLE_KEY) as RoomStyle | null; if (v && ROOM_STYLES.some(x => x.id === v)) stage.roomStyle = v; } catch { /* 기본 안방 */ }
@@ -259,8 +259,10 @@ let buildSeq = 0;
 // 툴바 아이콘은 세부 메뉴가 열린 동안만 검게(사용자 지시 2026-11-09 「아이콘을 눌러 세부 메뉴가 나타나야 검은색」) — 시점·도어·전체 화면처럼 메뉴가 없는 단추는 칠하지 않는다
 function markView(_k: 'persp' | 'front') { $('#v-front').classList.remove('on'); }   // 3D 단추는 뺐다(사용자 지시 2026-11-09 「2D·3D 전환 기능이 없어 3D 아이콘 제거」)
 /** quick = 칸 고르기·순서 바꾸기 — 장 자리가 그대로면 방·라이트맵을 다시 만들지 않는다(Stage.setWardrobe) */
-async function rebuild(resetView = false, quick = false) {
+async function rebuild(resetView = false, quick = false, why = quick ? '칸 고르기·순서' : '장 설계 변경') {
   if (!design) return;
+  // 기록(loadlog) — 장만 바뀌면 이 건으로 끝나고, 장 자리·폭이 바뀌어 방을 다시 지으면 Stage.buildRoom 이 「재구성」으로 바꾼다
+  loadBegin('장 바꾸기', `${why} · 폭 ${design.width} · 공간 ${design.space ?? design.width}`);
   const seq = ++buildSeq;
   const b = await buildWardrobe(pl, design, { lift: wardSlot != null && wardOpen() ? wardSlot : undefined });
   if (seq !== buildSeq) return;
@@ -279,6 +281,7 @@ async function rebuild(resetView = false, quick = false) {
   saveDesign();
   hoverDoor = null;                        // 이전 장의 도어·서랍을 가리키지 않게
   stage.setWardrobe(built, (design.offset ?? 0) / 1000, (design.space ?? design.width) / 1000, quick);
+  if (loadKind() === '장 바꾸기') { loadMark('장 놓음'); loadEndAfterFrame('장 그림(방 그대로)', '장 바꾸기'); }
   setDoorOpen(built, doorOpen, doorsHidden()); cullProps();
   refreshFixWarn(); refreshFit();
   if (resetView) { stage.view('persp'); markView('persp'); }
@@ -292,7 +295,7 @@ async function rebuild(resetView = false, quick = false) {
   // (사용자 지시 2026-11-03 「GPU 쓰는 건 렌더링 모드가 바뀔 때」). 실사를 처음 고를 때 준비한다
 }
 // 홈뷰 장 소품(뒤에서 받는 중)이 다 오면 장 안만 다시 채운다 — 장 자리는 그대로라 방·라이트맵은 두고
-onWardHvReady(() => { if (built) void rebuild(false, true); });
+onWardHvReady(() => { if (built) void rebuild(false, true, '장 안 의류 도착'); });
 let prewarmed = false;
 /** 지금 계획에서 고를 수 있는 몸통·도어 모델을 미리 받아 둔다 */
 function preloadPlan() {
@@ -1191,6 +1194,25 @@ renderQuality();
 // FPS 표시 — 바뀐 게 없으면 그리지 않으므로(배터리·발열) 그동안은 「멈춤」. ?stats 로 열면 처음부터 켬
 const FPS_KEY = 'storage-planner.fps';
 const fpsEl = h('div'); fpsEl.id = 'fps'; $('#viewport').append(fpsEl);
+// 글은 0.25초마다 새로 쓰고, 기록 단추는 한 번만 만든다(새로 쓰는 글 안에 두면 누르는 사이 단추가 바뀌어 눌리지 않는다)
+const fpsTxt = h('div'); fpsEl.append(fpsTxt);
+const logBar = h('div', 'loadlog-bar');
+const logSave = h('button', '', '기록 저장') as HTMLButtonElement, logDel = h('button', '', '지우기') as HTMLButtonElement;
+logSave.onclick = () => loadDownload();
+logDel.onclick = () => { if (confirm('이 브라우저에 쌓인 불러오기 기록을 지울까요?')) loadClear(); };
+logBar.append(logSave, logDel); fpsEl.append(logBar);
+// 기록에 남길 화면 설정 — 같은 기기라도 단계·후처리·방 크기에 따라 시간이 달라 함께 봐야 한다
+loadContext(() => {
+  const cv = stage.renderer.domElement;
+  const ls = (k: string) => { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch { return null; } };
+  return {
+    tier: stage.quality.name, mode: stage.mode, canvas: `${cv.width}×${cv.height}`, dpr: +stage.renderer.getPixelRatio().toFixed(2),
+    post: stage.raster.post,
+    design: design ? { type: design.typeId, width: design.width, space: design.space, offset: design.offset, slots: design.slots.length, ep: design.options } : null,
+    layout: localStorage.getItem('storage-planner.layout'), room: ls('storage-planner.roomdims.v1'),
+    visible: document.visibilityState,
+  };
+});
 const fpsBox = $('#q-fps') as HTMLInputElement;
 const setFps = (on: boolean) => { fpsEl.hidden = !on; fpsBox.checked = on; try { localStorage.setItem(FPS_KEY, on ? '1' : '0'); } catch { /* 이번 화면엔 반영 */ } };
 fpsBox.onchange = () => setFps(fpsBox.checked);
@@ -1201,8 +1223,9 @@ setInterval(() => {
   const live = n > 1 && now - f[n - 1] < 300;
   const ms = live ? (f[n - 1] - f[0]) / (n - 1) : 0;
   const cv = stage.renderer.domElement;
-  fpsEl.innerHTML = (live ? `<b>${Math.round(1000 / ms)}</b> fps · ${ms.toFixed(1)}ms` : '<b>멈춤</b> <small>바뀐 게 없어 그리지 않아요</small>')
+  fpsTxt.innerHTML = (live ? `<b>${Math.round(1000 / ms)}</b> fps · ${ms.toFixed(1)}ms` : '<b>멈춤</b> <small>바뀐 게 없어 그리지 않아요</small>')
     + `<br><small>${stage.quality.label} · ${cv.width}×${cv.height} · 배율 ${stage.renderer.getPixelRatio().toFixed(2)}</small>` + loadReport();
+  logSave.textContent = `기록 저장(${loadCount()}건)`;
 }, 250);
 
 // 3D 화면 클릭: 몸통 탭이면 칸 선택, 도어 탭이면 누른 도어의 칸 도어 바꾸기.
@@ -1678,16 +1701,19 @@ function bestRun(S: number, blocks: [number, number][]): [number, number] {
 }
 /** 설치 공간·문 자리에 맞춰 장 폭·자리를 정하고 다시 만든다 */
 /** 방 크기·설치할 벽을 장면에 — 깊이·높이, 그리고 장 자리를 다시 */
-function applyRoom() {
+function applyRoom(keepSpot = false) {
   // 방문을 새 벽 안으로 — 침대 벽(맞은편)의 창 쪽 끝에 있던 문은 그 끝을 지킨다
   if (roomDoor) {
     const span = (roomDoor.wall === 'back' || roomDoor.wall === 'front' ? wallLen() : roomDepth()) / 1000;
     roomDoor.t = Math.min(roomDoor.t, Math.max(0.08, span - roomDoor.w - 0.15));
     saveDoor(); stage.setDoor(roomDoor);
   }
-  stage.setRoomDims(roomDepth() / 1000, roomDims.h / 1000); fitToSpace(true);
+  stage.setRoomDims(roomDepth() / 1000, roomDims.h / 1000); fitToSpace(true, keepSpot);
 }
-function fitToSpace(resetView = false) {
+/** keepSpot = 저장된 장 폭·자리 그대로(공간 구조·오픈 폭만 맞춘다) — 처음 열 때 설비를 방에 맞춰 옮기기 전(stage.fixAuto).
+ *  그때 다시 계산하면 옮기기 전 설비 자리로 장 자리가 나와(2320 → 2691), 설비를 옮긴 뒤 원래 자리(2320)로 돌아오며
+ *  방을 한 번 더 지었다 — 처음 열기 기록(loadlog)에 「공간 다시 짓기: 장 자리·칸」(실측 2026-11-12). 설비를 옮긴 뒤엔 fixChanged 가 다시 맞춘다 */
+function fitToSpace(resetView = false, keepSpot = false) {
   if (!design) return;
   const t = pl.type(design.typeId);
   // 장 크기(설치 폭)는 벽 길이 안. 꽉 채우기면 벽 전체, 아니면 남는 자리를 공간 구조대로 — 오른쪽 오픈 = 오른쪽에, 왼쪽 오픈 = 왼쪽에, 양쪽 = 나눠
@@ -1697,6 +1723,7 @@ function fitToSpace(resetView = false) {
   const gap = Math.max(0, Lw - design.space) / 1000;
   const L = stage.layout;
   stage.openW = L === 'openR' ? { L: 0, R: gap } : L === 'openL' ? { L: gap, R: 0 } : L === 'openBoth' ? { L: gap * gapSplit, R: gap * (1 - gapSplit) } : { L: 0, R: 0 };
+  if (keepSpot) { syncEP(); rebuild(resetView); render(); return; }
   const S = (design.space ?? design.width) / 1000;
   const minW = pl.minWidth(t.id);
   // 자동(사용자가 가리기·피하기를 안 골랐다) — 설비를 피해서 장이 들어가면 피하고, 안 들어가면 가린다

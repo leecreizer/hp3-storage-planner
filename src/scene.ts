@@ -18,7 +18,7 @@ import { float, lights, materialColor, normalView, positionViewDirection, reflec
 import { createRaster, type PostSettings, type Raster, type RasterRenderer } from './render/raster';
 import { quality, effectiveDpr, type QualityProfile } from './quality';
 import { roomFurnished } from './loadgate';
-import { loadDoing, loadMark, loadStall } from './loadlog';
+import { loadBake, loadBegin, loadDoing, loadEnd, loadMark, loadOpen, loadRebuild, loadStall } from './loadlog';
 // MuTracer(실사)는 쓸 때 불러온다 — 정적으로 불러오면 모듈 약 240개 · 10MB 가 다 와야 앱이 시작해 첫 화면이 늦었다(2026-10-29 실측)
 type MT = typeof import('./render/mutracer');
 let mt: MT | null = null;
@@ -683,6 +683,7 @@ export class Stage {
   /** 공간 구조 — 기본은 예전과 같은 「우측 오픈」(붙박이장 폭 + 오른쪽 1.5m) */
   layout: RoomLayout = 'openR';
   private roomKey = '';
+  private roomParts: [string, string][] | null = null;
   /** 방 안쪽 가로 범위(m) — 붙박이장은 0 ~ 폭 */
   /** 오픈된 쪽으로 이어지는 방 폭(m) — 「재질+라인+사이즈」에서 벽까지 빈 공간을 입력해 바꾼다 */
   openW = { L: OPEN_W, R: OPEN_W };
@@ -786,7 +787,7 @@ export class Stage {
   private gateWait = 0;
   private openGateAfterBake() {
     const p = this.raster.post;
-    if (this.mode !== 'raster' || (!p.spaceAO && !p.prodAO)) { roomFurnished(); return; }
+    if (this.mode !== 'raster' || (!p.spaceAO && !p.prodAO)) { roomFurnished(); loadEnd('라이트맵 굽지 않음'); return; }
     clearTimeout(this.gateWait);
     this.gateWait = window.setTimeout(() => { this.gateWait = 0; roomFurnished(); }, 30000);
   }
@@ -887,8 +888,18 @@ export class Stage {
     // 열쇠엔 창을 맞추기 전 값(원하는 창)을 넣는다 — 맞춘 창(this.win)을 넣었더니 짓는 중에 창이 방에 맞춰지며(창대 0.5 → 0.35m) 열쇠가 바뀌어
     // 같은 방을 한 번 더 통째로 지었다 — 덮개가 두 번 뜨고 가구 받기·라이트맵도 두 번(실측 2026-11-12, 처음 열기 6초)
     this.winWant ??= { ...this.win };
-    const key = `${spaceW}|${wx0}|${wx1}|${this.wardrobe?.slots.map(sl => sl.x1.toFixed(3)).join(',')}|${this.layout}|${JSON.stringify(this.door)}|${this.openW.L}|${this.openW.R}|${this.ceiling}|${JSON.stringify(this.winWant)}|${this.roomStyle}|${ROOM_D}|${ROOM_H}|${this.winWall}|${this.hvWall}|${this.wardHidden}|${JSON.stringify(this.hvMoves[this.movesKey] ?? {})}`;   // 방문이 바뀌면 가구 자리도 다시
+    // 방문이 바뀌면 가구 자리도 다시. 이름을 붙여 둔다 — 재구성 기록(loadlog)에 「무엇이 바뀌어 다시 지었나」를 남긴다
+    const parts: [string, string][] = [
+      ['공간 폭', `${spaceW}`], ['장 자리', `${wx0}|${wx1}`], ['칸', `${this.wardrobe?.slots.map(sl => sl.x1.toFixed(3)).join(',')}`],
+      ['공간 구조', `${this.layout}`], ['방문', JSON.stringify(this.door)], ['오픈 폭', `${this.openW.L}|${this.openW.R}`], ['천장 조명', `${this.ceiling}`],
+      ['창', JSON.stringify(this.winWant)], ['방 꾸밈', `${this.roomStyle}`], ['방 크기', `${ROOM_D}|${ROOM_H}`], ['창 벽', `${this.winWall}`],
+      ['장 벽', `${this.hvWall}`], ['장 숨김', `${this.wardHidden}`], ['가구 옮김', JSON.stringify(this.hvMoves[this.movesKey] ?? {})],
+    ];
+    const key = parts.map(p => p[1]).join('|');
     if (key === this.roomKey) return;
+    const changed = this.roomParts ? parts.filter((p, i) => p[1] !== this.roomParts![i][1]).map(p => p[0]) : [];
+    this.roomParts = parts;
+    loadRebuild((changed.length ? changed.join('·') : '설정 변경') + (this.quietBuild ? ' (화면 유지)' : ''));
     this.roomKey = key;
     this.roomW = spaceW;
     const L = this.layout;
@@ -977,10 +988,17 @@ export class Stage {
     this.unitAvoid = [...(sw ? [sw] : []), ...wardAvoid];
     const unitsInfo: { key: string; label: string; del: boolean }[] = [];
     this.furnishing = true;
-    if (!quiet) { loadMark('공간 짓기 시작'); loadDoing('공간·장 짓기'); }
+    loadMark('공간 짓기 시작'); if (!quiet) loadDoing('공간·장 짓기');
     void addHomvueRoom(this.room, { x0, x1, D, H, win: { x1: lx1, z0, z1, top: H + PD, zMin: cMin, zMax: cMax, m: f.m.clone(), zone: [zone.min.x, zone.max.x, zone.min.z, zone.max.z], sill: y0 },
       avoid: [...(sw ? [sw] : []), ...wardAvoid], aisle, style: this.roomStyle, hvWall: this.hvWall, moves: this.hvMoves[this.movesKey], unitsInfo,
-      onFill: () => { if (this.roomKey === key && !quiet) this.dirty = true; } }, () => this.roomKey === key)
+      onFill: added => {
+        if (this.roomKey !== key) return;
+        // 끼운 모델은 그 프레임에 시야 밖이어도 그린다(셰이더를 그때 짓는다) — 다 놓인 뒤 한꺼번에 짓던 「셰이더 미리 짓기」가 1.6~4초 멈췄다
+        this.warmOnce.push(...added);
+        // 상품 구운 그늘도 놓일 때 같이 — 다 놓인 뒤 한꺼번에 달면 덧층 재질을 그때 몰아 짓는다
+        if (this.mode === 'raster' && this.raster.post.prodAO) applyProdAO(this.room, this.raster.post.prodAOStr ?? 0.6);
+        if (!quiet) this.dirty = true;
+      } }, () => this.roomKey === key)
       .then(() => { if (this.roomKey !== key) return; this.hvUnitsInfo = unitsInfo;
         this.pushUnitsOutOfWalls();
         this.furnishing = false; this.openGateAfterBake();
@@ -996,12 +1014,14 @@ export class Stage {
         if (this.mode === 'raster' && this.raster.post.prodAO) applyProdAO(this.room, this.raster.post.prodAOStr ?? 0.6);
         this.holdAt = 0;
         this.depthWindow();
+        // 환경맵은 라이트맵을 입힌 뒤 한 번 — 여기서 찍고 라이트맵 뒤에 또 찍어 두 번 멈췄다. 굽기가 안 오면 30초 뒤 찍는다
+        if (this.mode === 'raster' && this.raster.post.spaceAO) { clearTimeout(this.envWaitBake); this.envWaitBake = window.setTimeout(() => this.releaseEnvWait(), 30000); }
         this.envDirty = true; this.dirty = true; this.warmAll = true; this.sceneChanged();
         // 실시간이면 환경맵을 찍고 새 방을 한 번 그린 뒤 끈다(loop). 실사·굽기 화면은 그쪽이 자기 진행 상태를 보인다
         if (this.curPicked) this.markCurtain(true);   // 새로 지은 커튼에 테두리를 다시
         this.onRoomBuilt?.();
         loadStall('가구 다 온 뒤 정리(그림자판·묶기·그늘막)', performance.now() - tPost, tPost); loadDoing('라이트맵 굽기');
-        if (this.mode === 'raster') this.busyWaitEnv = true; else this.setBusy(false); })
+        if (this.mode !== 'raster') this.setBusy(false); else if (this.isBusy) this.revealAfterDraw = true; })
       .catch(e => { console.warn('[방] 꾸미기 실패', e); if (this.roomKey === key) { this.furnishing = false; roomFurnished(); this.setBusy(false); this.holdAt = 0; this.sceneChanged(); } });
     this.noWindowLight(this.mode === 'raster');
     // 창 크기의 1.3배를 창 밖 0.62m 에 — 아래로 기울이면 사각형 윗변이 안쪽으로 0.46m(×1.3 → 0.6m) 기울어
@@ -1142,7 +1162,14 @@ export class Stage {
     this.applyLight();
     this.dirty = true;
     // 공간(벽·바닥·창·조명)과 장이 놓였다 — 덮개를 걷는다. 가구·소품은 받는 대로 끼워지고, 다 오면 라이트맵·환경맵을 한 번 더(위 then)
-    if (!quiet) { this.envDirty = true; if (this.mode === 'raster') this.busyWaitEnv = true; else this.setBusy(false); }
+    // 다시 지을 때는 옛 환경맵으로 바로 그리고 덮개를 걷는다 — 환경맵을 먼저 찍느라(1~3초) 공간·장이 늦게 보였다. 새 환경맵은 라이트맵 뒤 한 번.
+    // 처음 열 때는 환경맵이 없어 어둡게 보이므로 공간만 한 번 찍고 걷는다
+    if (!quiet) {
+      this.envDirty = true;
+      if (this.mode !== 'raster') this.setBusy(false);
+      else if (this.envRT) this.revealAfterDraw = true;
+      else this.busyWaitEnv = true;
+    }
   }
 
   /** 공간 구조 바꾸기 — 방만 다시 만든다 */
@@ -2260,11 +2287,16 @@ export class Stage {
   }
   /** 공간 라이트맵 다시 굽기 — 0.6초 모아서(끌기·연속 변경 중엔 미룬다). 실시간 화면에서만 */
   private aoTimer = 0;
+  /** 라이트맵 뒤로 미룬 환경맵 찍기를 푼다 */
+  private releaseEnvWait() { if (!this.envWaitBake) return; clearTimeout(this.envWaitBake); this.envWaitBake = 0; this.envDirty = true; this.dirty = true; }
   scheduleSpaceAO() {
     clearTimeout(this.aoTimer);
     const p = this.raster.post;
-    if (this.mode !== 'raster' || (!p.spaceAO && !p.prodAO)) return;
+    if (this.mode !== 'raster' || (!p.spaceAO && !p.prodAO)) { this.releaseEnvWait(); return; }
     if (this.furnishing) return;          // 가구·소품을 받는 중 — 다 끼운 뒤 buildRoom 이 다시 부른다(빈 방을 미리 굽지 않게)
+    // 방을 아직 한 번도 안 지었다 — 처음 열 때 공간 구조·설정을 넣는 sceneChanged 가 빈 장면을 굽기 시작해(처음 열기 기록 9.3초 「라이트맵 굽기 시작」이
+    // 「공간 짓기 시작」보다 먼저, 실측 2026-11-12) 방 짓기와 CPU 를 나눠 썼다
+    if (!this.roomParts) return;
     this.aoTimer = window.setTimeout(async () => {
       // 상품 먼저(굽지 않고 모델 그늘을 다는 것뿐이라 바로) — 이미 단 것은 그대로, 새로 생긴 가구에만(tools/bake_hv_ao.py)
       // 공간은 그다음 다시 굽는다 — 가구가 옮겨지면 공간 라이트맵만 새로
@@ -2283,11 +2315,14 @@ export class Stage {
             o.userData.noOcc = !b.isEmpty() && (b.min.y > 0.05 || b.max.y - b.min.y < 0.3);
           });
           // 성긴 판을 먼저 굽는 단계는 뺐다 — SAH BVH 로 광선이 3배 빨라져 짓기(1.2초)가 대부분이라 두 번 굽는 이득이 없고 화면만 두 번 바뀌었다
+          // 처음 열기·재구성 중이 아니면 굽기만 따로 한 건(빛·설정을 바꿔 다시 굽기)
+          if (!loadOpen()) loadBegin('라이트맵 다시 굽기', '빛·설정·가구 변경', false);
+          loadMark('라이트맵 굽기 시작'); loadDoing('라이트맵 굽기');
           const info = await bakeSpaceAO(this.room, extra, this.lightIn(), this.insideBox(), (ms, tex) => this.shellLightmap(ms, tex), ms => this.shellLightmap(ms, null), this.quality.bake);
-          if (info) { console.info('[공간 라이트맵]', info); this.dirty = true; this.envDirty = true; loadMark('라이트맵 끝'); loadDoing('보기'); }
-        }
-      } catch (e) { console.warn('[라이트맵] 실패', e); }
-      finally { if (this.gateWait) { clearTimeout(this.gateWait); this.gateWait = 0; roomFurnished(); } }
+          if (info) { console.info('[공간 라이트맵]', info); this.dirty = true; this.envDirty = true; loadBake(info); loadMark('라이트맵 끝'); loadDoing('보기'); loadEnd('라이트맵 끝'); }
+        } else loadEnd('상품 그늘만(공간 라이트맵 끔)');
+      } catch (e) { console.warn('[라이트맵] 실패', e); loadEnd(`라이트맵 실패: ${e}`); }
+      finally { this.releaseEnvWait(); if (this.gateWait) { clearTimeout(this.gateWait); this.gateWait = 0; roomFurnished(); } }
     }, 600);
   }
   /** 장면이 바뀌었다 — 공간 라이트맵 다시 굽기 + 굽기·서펠 엔진에 다시 넘기기.
@@ -2659,24 +2694,26 @@ export class Stage {
     if (this.holdAt && performance.now() - this.holdAt < 3000) return;   // 가구 이동 재구성 중 — 옛 그림을 둔다(3초 넘으면 그냥 그린다)
     // 가구·소품을 받아 끼우는 동안은 찍지 않는다 — 찍을 때마다 새로 들어온 재질 셰이더를 큐브맵용으로 한꺼번에 지어 6초씩 멈췄다
     // (실측 2026-11-12, CPU 4배 느리게: 덮개 걷힌 뒤 10.5초에 6.3초 멈춤 · 그중 updateEnv 4.7초). 덮개를 걷기 전 공간만 찍는 첫 번은 둔다
-    if (this.envDirty && (!this.furnishing || this.busyWaitEnv) && performance.now() - this.envAt > 100) this.updateEnv();
+    if (this.envDirty && (!this.furnishing || this.busyWaitEnv) && !this.envWaitBake && performance.now() - this.envAt > 100) this.updateEnv();
     // 바뀐 게 없어도 settleFrames 동안은 더 그린다 — SSGI·TRAA 가 프레임마다 쌓아야 노이즈가 걷힌다
     if (this._dirty) { this._dirty = false; this.settle = this.raster.settleFrames; this.refl.mode = 'low'; this.reflSharp = true; this.syncShadows(); }
     else if (this.settle > 0) { this.settle--; this.refl.mode = this.reflSharp ? 'full' : 'skip'; this.reflSharp = false; }
     else return;
     this.refl.frame++; this.refl.done.length = 0;
     this.overlay.traverse(o => o.layers.set(1));   // 편집 표시는 레이어 1 — 거울 반사에 안 비친다
-    if (this.warmAll) {
-      // 시야 밖 물체까지 한 번에 그려 셰이더를 미리 짓는다 — 방을 둘러볼 때 처음 들어오는 가구마다 파이프라인을 그 자리에서 지어
+    if (this.warmAll || this.warmOnce.length) {
+      // 시야 밖 물체까지 그려 셰이더를 미리 짓는다 — 방을 둘러볼 때 처음 들어오는 가구마다 파이프라인을 그 자리에서 지어
       // 0.2~1초씩 멈췄다(실측 2026-11-03: 4초 돌기에 멈춤 10번 · 새 파이프라인 9개, 프레임 중간값 16.7ms 인데 p95 246ms).
-      // 방·장을 만든 직후 한 번(로딩 덮개가 덮고 있다)
-      this.warmAll = false;
+      // 가구·소품은 끼울 때 하나씩(warmOnce), 다 놓인 뒤 한 번 더 전부(warmAll — 그때는 대부분 지어져 있어 짧다)
+      const all = this.warmAll, roots = all ? [this.scene] : this.warmOnce.slice();
+      this.warmAll = false; this.warmOnce.length = 0;
       const off: THREE.Object3D[] = [];
-      this.scene.traverse(o => { if (o.frustumCulled && ((o as THREE.Mesh).isMesh || (o as THREE.Points).isPoints)) { o.frustumCulled = false; off.push(o); } });
+      for (const r of roots) r.traverse(o => { if (o.frustumCulled && ((o as THREE.Mesh).isMesh || (o as THREE.Points).isPoints)) { o.frustumCulled = false; off.push(o); } });
       const t = performance.now();
       try { this.raster.render(); } finally { off.forEach(o => (o.frustumCulled = true)); }
-      loadStall('셰이더 미리 짓기(시야 밖 포함 전부)', performance.now() - t);
+      loadStall(all ? '셰이더 미리 짓기(시야 밖 포함 전부)' : '끼운 모델 셰이더 짓기', performance.now() - t);
     } else { const t = performance.now(); this.raster.render(); loadStall('그리기(새 재질 셰이더 짓기)', performance.now() - t); }
+    if (this.revealAfterDraw) { this.revealAfterDraw = false; const k = this.busySeq; requestAnimationFrame(() => { if (k === this.busySeq && this.isBusy) this.setBusy(false); }); }
     const pf = this.perf.frames, now = performance.now();
     pf.push(now); while (pf.length && now - pf[0] > 1000) pf.shift();
     this.labels.render(this.scene, this.camera);
@@ -2687,6 +2724,12 @@ export class Stage {
   private settle = 0;
   /** 다음 실시간 프레임에 시야 밖까지 그려 셰이더를 미리 짓는다 */
   private warmAll = false;
+  /** 다음 프레임에 시야 밖이어도 그릴 것 — 방금 끼운 가구·소품 모델 */
+  private warmOnce: THREE.Object3D[] = [];
+  /** 다음 프레임을 그린 뒤 덮개를 걷는다 — 다시 지을 때 공간·장을 환경맵을 기다리지 않고 바로 보인다 */
+  private revealAfterDraw = false;
+  /** 라이트맵을 구운 뒤 환경맵을 찍는다 — 가구가 다 놓인 때와 라이트맵을 입힌 때 두 번 찍던 것을 한 번으로(찍을 때마다 1~3초 멈춤) */
+  private envWaitBake = 0;
   /** 그림자 지도는 장면이 바뀐 프레임에만 새로 그린다 */
   private syncShadows() {
     const upd = this.shadowDirty; this.shadowDirty = false;
