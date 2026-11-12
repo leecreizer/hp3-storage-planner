@@ -2015,16 +2015,17 @@ cv.addEventListener('pointerup', () => {
   fixDrag = false; stage.controls.enabled = true; cv.style.cursor = '';
   if (doorDragged) { saveFixtures(); renderFixPop(); refreshFixWarn(); fixChanged(); }
 }, true);
-/** 기본 설비 — 장 벽 콘센트(장이 가리는 흔한 자리) · 침대 벽 콘센트 · 창 없는 옆벽에 통신단자함(아래) · 벽걸이 에어컨(위, 앞쪽) */
+/** 기본 설비 — 장 벽 콘센트(장이 가리는 흔한 자리) · 침대 벽 콘센트 · 창 없는 옆벽에 통신단자함(아래) · 창문 앞 천장에 시스템 에어컨 */
 function defaultFixtures(): RoomFixture[] {
   const side = stage.winWall === 'left' ? 'right' : 'left';
   return [
     { id: 'outlet-1', kind: 'outlet', wall: 'back', t: 0.45, y: 0.25 },
     { id: 'outlet-2', kind: 'outlet', wall: 'front', t: 0.35, y: 0.25 },
     { id: 'telecom-1', kind: 'telecom', wall: side, t: ROOM_D - 0.45, y: 0.3 },
-    { id: 'aircon-1', kind: 'aircon', wall: side, t: ROOM_D - 1.0, y: 2.0 },
-    // 시스템 에어컨 — 벽걸이와 둘 중 하나라 처음엔 빼 둔다(목록에서 되살리기)
-    { id: 'ceilac-1', kind: 'ceilac', wall: 'ceiling', t: (stage.rx1 - stage.rx0 || 3.6) / 2, y: ROOM_D / 2, del: true },
+    // 에어컨 기본은 시스템 에어컨(사용자 지시 2026-11-12 「기본 에어컨은 벽걸이 말고 시스템 에어컨으로 창문 앞으로」) — 자리·방향은 방을 지은 뒤
+    // stage.settleFixtures 가 창 앞으로. 벽걸이는 빼 두고 목록에서 되살린다
+    { id: 'aircon-1', kind: 'aircon', wall: side, t: ROOM_D - 1.0, y: 2.0, del: true },
+    { id: 'ceilac-1', kind: 'ceilac', wall: 'ceiling', t: (stage.rx1 - stage.rx0 || 3.6) / 2, y: ROOM_D / 2 },
     // 조명 스위치 · 멀티패널 — 방문 옆(문을 알면 stage.settleFixtures 가 문틀 옆으로), 바닥에서 1.14m(가운데 1.2m)
     { id: 'switch-1', kind: 'switch', wall: 'back', t: 1.0, y: 1.14 },
     { id: 'multi-1', kind: 'multi', wall: 'back', t: 1.2, y: 1.14 },

@@ -69,6 +69,8 @@ export const FIXTURE_SPEC: Record<FixtureKind, { name: string; w: number; h: num
   multi: { name: '멀티패널', w: 0.15, h: 0.122, d: 0.012 },   // 4방향 천장형 — w × h 가 천장 판, d 가 천장 아래로 내려온 두께
 };
 /** 돌린 뒤 차지하는 크기 — 90°·270° 면 가로·세로가 바뀐다 */
+/** 시스템 에어컨 모델의 바람 나오는 쪽 — 0 이면 모델 +z, 180 이면 -z(settleFixtures 가 방 안을 보게 돌린다) */
+const CEILAC_OUT = 0;
 export function fixtureSize(f: Pick<RoomFixture, 'kind' | 'rot'>) {
   const s = FIXTURE_SPEC[f.kind];
   return ((f.rot ?? 0) / 90) % 2 ? { ...s, w: s.h, h: s.w } : s;
@@ -1596,6 +1598,14 @@ export class Stage {
       }
       return null;
     };
+    // 시스템 에어컨(기본) — 창문 앞 천장, 긴 쪽을 창과 나란히 · 바람 나오는 쪽이 방 안을 보게(1방향 천장형).
+    // 창 벽에서 가운데까지 0.75m(커튼박스 20cm + 몸체 절반 25cm + 30cm). 등·통로를 피하는 건 아래 ceilFree 가 이 자리에서 넓혀 가며
+    {
+      const f0 = this.wf, w = this.win;
+      const p0 = this.winToRoom(new THREE.Vector3(f0.x1 - 0.75, ROOM_H, w.t + w.w / 2));
+      const r = Math.round(THREE.MathUtils.radToDeg(Math.atan2(-Math.cos(f0.yaw), Math.sin(f0.yaw))) / 90) * 90 + CEILAC_OUT;
+      for (const f of this.fixtures) if (f.kind === 'ceilac' && !f.del) { f.t = p0.x - this.rx0; f.y = p0.z; f.rot = ((r % 360) + 360) % 360; }
+    }
     const dr = this.door;
     let nearDoor = 0;
     // 손잡이 쪽(경첩 반대) — drawDoor 의 손잡이 자리. 벽 좌표 t 가 커지는 쪽이 손잡이 쪽인가: 장 벽·오른쪽 벽은 그대로, 맞은편·왼쪽 벽은 뒤집힘
