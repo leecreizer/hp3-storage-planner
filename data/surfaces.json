@@ -1,0 +1,8042 @@
+{
+"floor": [
+{
+"id": "91610600",
+"name": "HD강-워시오크",
+"code": "SFR100756",
+"group": "HD마루",
+"series": "HD 강마루 5.8T",
+"size": [
+1.588,
+1.505
+],
+"uvMeters": 1,
+"map": "tex/kjl/91610600.jpg",
+"thumb": "tex/kjl/91610600_t.jpg"
+},
+{
+"id": "231675442",
+"name": "HD 강마루 와이드 - 내추럴오크",
+"code": "FF1000401",
+"group": "HD마루",
+"series": "HD 강마루 와이드 6T",
+"size": [
+2.4,
+2.032
+],
+"uvMeters": 1,
+"map": "tex/kjl/231675442.jpg",
+"thumb": "tex/kjl/231675442_t.jpg"
+},
+{
+"id": "231671668",
+"name": "HD 강마루 와이드 - 라이트오크",
+"code": "FF1000400",
+"group": "HD마루",
+"series": "HD 강마루 와이드 6T",
+"size": [
+2.4,
+2.032
+],
+"uvMeters": 1,
+"map": "tex/kjl/231671668.jpg",
+"thumb": "tex/kjl/231671668_t.jpg"
+},
+{
+"id": "231678230",
+"name": "HD 강마루 와이드 - 아이보리오크",
+"code": "FF1000399",
+"group": "HD마루",
+"series": "HD 강마루 와이드 6T",
+"size": [
+2.4,
+2.032
+],
+"uvMeters": 1,
+"map": "tex/kjl/231678230.jpg",
+"thumb": "tex/kjl/231678230_t.jpg"
+},
+{
+"id": "231667810",
+"name": "HD 강마루 와이드 - 퓨어화이트오크",
+"code": "FF1000398",
+"group": "HD마루",
+"series": "HD 강마루 와이드 6T",
+"size": [
+2.4,
+2.032
+],
+"uvMeters": 1,
+"map": "tex/kjl/231667810.jpg",
+"thumb": "tex/kjl/231667810_t.jpg"
+},
+{
+"id": "231677268",
+"name": "HD 브러쉬 와이드 - 브라운오크",
+"code": "FF1000406",
+"group": "HD마루",
+"series": "HD 브러쉬 와이드 6T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/231677268.jpg",
+"thumb": "tex/kjl/231677268_t.jpg"
+},
+{
+"id": "434790228",
+"name": "구정 마뷸러스 젠 - 뉴트럴그레이",
+"code": "FF1000513",
+"group": "강마루",
+"series": "(오픈X)구정 마뷸러스 젠 8.7T",
+"size": [
+1.791,
+1.791
+],
+"uvMeters": 1,
+"map": "tex/kjl/434790228.jpg",
+"thumb": "tex/kjl/434790228_t.jpg"
+},
+{
+"id": "434785717",
+"name": "구정 마뷸러스 젠 - 리저브스톤",
+"code": "FF1000510",
+"group": "강마루",
+"series": "(오픈X)구정 마뷸러스 젠 8.7T",
+"size": [
+1.791,
+1.791
+],
+"uvMeters": 1,
+"map": "tex/kjl/434785717.jpg",
+"thumb": "tex/kjl/434785717_t.jpg"
+},
+{
+"id": "434788231",
+"name": "구정 마뷸러스 젠 - 모로칸크림",
+"code": "FF1000508",
+"group": "강마루",
+"series": "(오픈X)구정 마뷸러스 젠 8.7T",
+"size": [
+1.791,
+1.791
+],
+"uvMeters": 1,
+"map": "tex/kjl/434788231.jpg",
+"thumb": "tex/kjl/434788231_t.jpg"
+},
+{
+"id": "434790225",
+"name": "구정 마뷸러스 젠 - 새틴화이트",
+"code": "FF1000512",
+"group": "강마루",
+"series": "(오픈X)구정 마뷸러스 젠 8.7T",
+"size": [
+1.791,
+1.791
+],
+"uvMeters": 1,
+"map": "tex/kjl/434790225.jpg",
+"thumb": "tex/kjl/434790225_t.jpg"
+},
+{
+"id": "434789057",
+"name": "구정 마뷸러스 젠 - 윔브리즈",
+"code": "FF1000509",
+"group": "강마루",
+"series": "(오픈X)구정 마뷸러스 젠 8.7T",
+"size": [
+1.791,
+1.791
+],
+"uvMeters": 1,
+"map": "tex/kjl/434789057.jpg",
+"thumb": "tex/kjl/434789057_t.jpg"
+},
+{
+"id": "434793057",
+"name": "구정 마뷸러스 젠 - 젠틀판타지",
+"code": "FF1000511",
+"group": "강마루",
+"series": "(오픈X)구정 마뷸러스 젠 8.7T",
+"size": [
+1.791,
+1.791
+],
+"uvMeters": 1,
+"map": "tex/kjl/434793057.jpg",
+"thumb": "tex/kjl/434793057_t.jpg"
+},
+{
+"id": "249311651",
+"name": "143 프리미엄강마루 7.5 - 마일드 그레이",
+"code": "FF1000412",
+"group": "강마루",
+"series": "143 프리미엄 강마루 7.5T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/249311651.jpg",
+"thumb": "tex/kjl/249311651_t.jpg"
+},
+{
+"id": "249307722",
+"name": "143 프리미엄강마루 7.5 - 오리진 다크그레이",
+"code": "FF1000413",
+"group": "강마루",
+"series": "143 프리미엄 강마루 7.5T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/249307722.jpg",
+"thumb": "tex/kjl/249307722_t.jpg"
+},
+{
+"id": "249315648",
+"name": "143 프리미엄강마루 7.5 - 오리진 모카",
+"code": "FF1000417",
+"group": "강마루",
+"series": "143 프리미엄 강마루 7.5T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/249315648.jpg",
+"thumb": "tex/kjl/249315648_t.jpg"
+},
+{
+"id": "249327434",
+"name": "143 프리미엄강마루 7.5 - 오리진 베이지",
+"code": "FF1000414",
+"group": "강마루",
+"series": "143 프리미엄 강마루 7.5T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/249327434.jpg",
+"thumb": "tex/kjl/249327434_t.jpg"
+},
+{
+"id": "287328198",
+"name": "143 프리미엄강마루 7.5 - 오리진 브라운",
+"code": "FF1000450",
+"group": "강마루",
+"series": "143 프리미엄 강마루 7.5T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/287328198.jpg",
+"thumb": "tex/kjl/287328198_t.jpg"
+},
+{
+"id": "287324566",
+"name": "143 프리미엄강마루 7.5 - 오리진 블러쉬",
+"code": "FF1000448",
+"group": "강마루",
+"series": "143 프리미엄 강마루 7.5T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/287324566.jpg",
+"thumb": "tex/kjl/287324566_t.jpg"
+},
+{
+"id": "287329170",
+"name": "143 프리미엄강마루 7.5 - 오리진 카카오",
+"code": "FF1000451",
+"group": "강마루",
+"series": "143 프리미엄 강마루 7.5T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/287329170.jpg",
+"thumb": "tex/kjl/287329170_t.jpg"
+},
+{
+"id": "249321536",
+"name": "143 프리미엄강마루 7.5 - 오리진 화이트",
+"code": "FF1000408",
+"group": "강마루",
+"series": "143 프리미엄 강마루 7.5T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/249321536.jpg",
+"thumb": "tex/kjl/249321536_t.jpg"
+},
+{
+"id": "287328193",
+"name": "143 프리미엄강마루 7.5 - 오리진 화이트그레이",
+"code": "FF1000449",
+"group": "강마루",
+"series": "143 프리미엄 강마루 7.5T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/287328193.jpg",
+"thumb": "tex/kjl/287328193_t.jpg"
+},
+{
+"id": "525559846",
+"name": "165 프리미엄 강마루 7.5 - 그레이오크",
+"code": "FF1000524",
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/525559846.jpg",
+"thumb": "tex/kjl/525559846_t.jpg"
+},
+{
+"id": "525559848",
+"name": "165 프리미엄 강마루 7.5 - 내추럴오크",
+"code": "FF1000528",
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/525559848.jpg",
+"thumb": "tex/kjl/525559848_t.jpg"
+},
+{
+"id": "525559851",
+"name": "165 프리미엄 강마루 7.5 - 마롱오크",
+"code": "FF1000530",
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/525559851.jpg",
+"thumb": "tex/kjl/525559851_t.jpg"
+},
+{
+"id": "525564345",
+"name": "165 프리미엄 강마루 7.5 - 베이지오크",
+"code": "FF1000526",
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/525564345.jpg",
+"thumb": "tex/kjl/525564345_t.jpg"
+},
+{
+"id": "525564349",
+"name": "165 프리미엄 강마루 7.5 - 브라운오크",
+"code": "FF1000529",
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/525564349.jpg",
+"thumb": "tex/kjl/525564349_t.jpg"
+},
+{
+"id": "525564346",
+"name": "165 프리미엄 강마루 7.5 - 아리아오크",
+"code": "FF1000527",
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/525564346.jpg",
+"thumb": "tex/kjl/525564346_t.jpg"
+},
+{
+"id": "525565326",
+"name": "165 프리미엄 강마루 7.5 - 오트밀오크",
+"code": "FF1000525",
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/525565326.jpg",
+"thumb": "tex/kjl/525565326_t.jpg"
+},
+{
+"id": "525564341",
+"name": "165 프리미엄 강마루 7.5 - 화이트오크",
+"code": "FF1000523",
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/525564341.jpg",
+"thumb": "tex/kjl/525564341_t.jpg"
+},
+{
+"id": "650937978",
+"name": "내추럴오크30",
+"code": null,
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/650937978.jpg",
+"thumb": "tex/kjl/650937978_t.jpg"
+},
+{
+"id": "650942896",
+"name": "내추럴오크31",
+"code": null,
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/650942896.jpg",
+"thumb": "tex/kjl/650942896_t.jpg"
+},
+{
+"id": "650955236",
+"name": "내추럴오크32",
+"code": null,
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/650955236.jpg",
+"thumb": "tex/kjl/650955236_t.jpg"
+},
+{
+"id": "650960150",
+"name": "내추럴오크33",
+"code": null,
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/650960150.jpg",
+"thumb": "tex/kjl/650960150_t.jpg"
+},
+{
+"id": "650952679",
+"name": "내추럴오크34",
+"code": null,
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/650952679.jpg",
+"thumb": "tex/kjl/650952679_t.jpg"
+},
+{
+"id": "650952809",
+"name": "내추럴오크35",
+"code": null,
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/650952809.jpg",
+"thumb": "tex/kjl/650952809_t.jpg"
+},
+{
+"id": "648234327",
+"name": "마롱오크_수정",
+"code": null,
+"group": "강마루",
+"series": "165 프리미엄 강마루 7.5T",
+"size": [
+2.41,
+1.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/648234327.jpg",
+"thumb": "tex/kjl/648234327_t.jpg"
+},
+{
+"id": "529743341",
+"name": "600 마블스퀘어 강마루 - 라임아이보리",
+"code": "FF1000533",
+"group": "강마루",
+"series": "600 마블스퀘어 강마루 7.8T",
+"size": [
+3.0,
+3.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/529743341.jpg",
+"thumb": "tex/kjl/529743341_t.jpg"
+},
+{
+"id": "529737797",
+"name": "600 마블스퀘어 강마루 - 라임웜브라이트",
+"code": "FF1000535",
+"group": "강마루",
+"series": "600 마블스퀘어 강마루 7.8T",
+"size": [
+3.0,
+3.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/529737797.jpg",
+"thumb": "tex/kjl/529737797_t.jpg"
+},
+{
+"id": "529735965",
+"name": "600 마블스퀘어 강마루 - 라임웜코튼",
+"code": "FF1000532",
+"group": "강마루",
+"series": "600 마블스퀘어 강마루 7.8T",
+"size": [
+3.0,
+3.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/529735965.jpg",
+"thumb": "tex/kjl/529735965_t.jpg"
+},
+{
+"id": "529749009",
+"name": "600 마블스퀘어 강마루 - 모로코라이트",
+"code": "FF1000536",
+"group": "강마루",
+"series": "600 마블스퀘어 강마루 7.8T",
+"size": [
+3.0,
+3.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/529749009.jpg",
+"thumb": "tex/kjl/529749009_t.jpg"
+},
+{
+"id": "529737789",
+"name": "600 마블스퀘어 강마루 - 사하라라이트",
+"code": "FF1000534",
+"group": "강마루",
+"series": "600 마블스퀘어 강마루 7.8T",
+"size": [
+3.0,
+3.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/529737789.jpg",
+"thumb": "tex/kjl/529737789_t.jpg"
+},
+{
+"id": "529737767",
+"name": "600 마블스퀘어 강마루 - 솔트화이트",
+"code": "FF1000531",
+"group": "강마루",
+"series": "600 마블스퀘어 강마루 7.8T",
+"size": [
+3.0,
+3.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/529737767.jpg",
+"thumb": "tex/kjl/529737767_t.jpg"
+},
+{
+"id": "91625147",
+"name": "95 강마루 6.5 - 라이트그레이오크",
+"code": "FF1000023",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91625147.jpg",
+"thumb": "tex/kjl/91625147_t.jpg"
+},
+{
+"id": "91615723",
+"name": "95 강마루 6.5 - 리얼그레이오크",
+"code": "FF1000025",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91615723.jpg",
+"thumb": "tex/kjl/91615723_t.jpg"
+},
+{
+"id": "91612967",
+"name": "95 강마루 6.5 - 리얼블랙오크_T",
+"code": "FF1000479",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91612967.jpg",
+"thumb": "tex/kjl/91612967_t.jpg"
+},
+{
+"id": "91613927",
+"name": "95 강마루 6.5 - 베이직그레이오크",
+"code": "FF1000024",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91613927.jpg",
+"thumb": "tex/kjl/91613927_t.jpg"
+},
+{
+"id": "91624185",
+"name": "95 강마루 6.5 - 베이직내추럴오크",
+"code": "FF1000021",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91624185.jpg",
+"thumb": "tex/kjl/91624185_t.jpg"
+},
+{
+"id": "98011846",
+"name": "95 강마루 6.5 - 베이직라이트오크_T2",
+"code": "FF1000521",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/98011846.jpg",
+"thumb": "tex/kjl/98011846_t.jpg"
+},
+{
+"id": "91619476",
+"name": "95 강마루 6.5 - 베이직브라운오크_T",
+"code": "FF1000478",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91619476.jpg",
+"thumb": "tex/kjl/91619476_t.jpg"
+},
+{
+"id": "91618499",
+"name": "95 강마루 6.5 - 블러쉬라이트오크",
+"code": "FF1000051",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91618499.jpg",
+"thumb": "tex/kjl/91618499_t.jpg"
+},
+{
+"id": "91619475",
+"name": "95 강마루 6.5 - 블러쉬베이지오크",
+"code": "FF1000050",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91619475.jpg",
+"thumb": "tex/kjl/91619475_t.jpg"
+},
+{
+"id": "91615721",
+"name": "95 강마루 6.5 - 블러쉬아이보리오크",
+"code": "FF1000049",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91615721.jpg",
+"thumb": "tex/kjl/91615721_t.jpg"
+},
+{
+"id": "91616720",
+"name": "95 강마루 6.5 - 스노우오크_T",
+"code": "FF1000474",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91616720.jpg",
+"thumb": "tex/kjl/91616720_t.jpg"
+},
+{
+"id": "91620425",
+"name": "95 강마루 6.5 - 스타일워시오크_T2",
+"code": "FF1000520",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91620425.jpg",
+"thumb": "tex/kjl/91620425_t.jpg"
+},
+{
+"id": "91624184",
+"name": "95 강마루 6.5 - 스타일화이트오크_T",
+"code": "FF1000475",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91624184.jpg",
+"thumb": "tex/kjl/91624184_t.jpg"
+},
+{
+"id": "91618501",
+"name": "95 강마루 6.5 - 플레인스노우오크_T2",
+"code": "FF1000522",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91618501.jpg",
+"thumb": "tex/kjl/91618501_t.jpg"
+},
+{
+"id": "91622427",
+"name": "95 강마루 6.5 - 플레인화이트오크",
+"code": "FF1000047",
+"group": "강마루",
+"series": "95 강마루 6.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91622427.jpg",
+"thumb": "tex/kjl/91622427_t.jpg"
+},
+{
+"id": "263481142",
+"name": "95 강마루 7.5 - 내추럴라이트오크_T",
+"code": "FF1000558",
+"group": "강마루",
+"series": "95 강마루 7.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/263481142.jpg",
+"thumb": "tex/kjl/263481142_t.jpg"
+},
+{
+"id": "263548083",
+"name": "95 강마루 7.5 - 내추럴베이지오크_T",
+"code": "FF1000556",
+"group": "강마루",
+"series": "95 강마루 7.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/263548083.jpg",
+"thumb": "tex/kjl/263548083_t.jpg"
+},
+{
+"id": "221964963",
+"name": "95 강마루 7.5 - 내추럴아이보리오크_T",
+"code": "FF1000554",
+"group": "강마루",
+"series": "95 강마루 7.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/221964963.jpg",
+"thumb": "tex/kjl/221964963_t.jpg"
+},
+{
+"id": "91624061",
+"name": "95 강마루 7.5 - 리얼라이트오크",
+"code": "SFR100312",
+"group": "강마루",
+"series": "95 강마루 7.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91624061.jpg",
+"thumb": "tex/kjl/91624061_t.jpg"
+},
+{
+"id": "263546164",
+"name": "95 강마루 7.5 - 리얼크림오크_B",
+"code": "FF1000429",
+"group": "강마루",
+"series": "95 강마루 7.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/263546164.jpg",
+"thumb": "tex/kjl/263546164_t.jpg"
+},
+{
+"id": "263544157",
+"name": "95 강마루 7.5 - 리얼화이트오크_T",
+"code": "FF1000555",
+"group": "강마루",
+"series": "95 강마루 7.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/263544157.jpg",
+"thumb": "tex/kjl/263544157_t.jpg"
+},
+{
+"id": "91614676",
+"name": "95 강마루 7.5 - 리얼화이트워시오크",
+"code": "SFR100314",
+"group": "강마루",
+"series": "95 강마루 7.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/91614676.jpg",
+"thumb": "tex/kjl/91614676_t.jpg"
+},
+{
+"id": "263538314",
+"name": "95 강마루 7.5 - 스타일그레이오크_B",
+"code": "FF1000428",
+"group": "강마루",
+"series": "95 강마루 7.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/263538314.jpg",
+"thumb": "tex/kjl/263538314_t.jpg"
+},
+{
+"id": "263539270",
+"name": "95 강마루 7.5 - 아카시아_B",
+"code": "FF1000431",
+"group": "강마루",
+"series": "95 강마루 7.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/263539270.jpg",
+"thumb": "tex/kjl/263539270_t.jpg"
+},
+{
+"id": "169325020",
+"name": "95 강마루 7.5 - 크림화이트플러스오크_T",
+"code": "FF1000208",
+"group": "강마루",
+"series": "95 강마루 7.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/169325020.jpg",
+"thumb": "tex/kjl/169325020_t.jpg"
+},
+{
+"id": "263549089",
+"name": "95 강마루 7.5 - 클래식티크_T",
+"code": "FF1000557",
+"group": "강마루",
+"series": "95 강마루 7.5T",
+"size": [
+1.599,
+1.567
+],
+"uvMeters": 1,
+"map": "tex/kjl/263549089.jpg",
+"thumb": "tex/kjl/263549089_t.jpg"
+},
+{
+"id": "608149433",
+"name": "텍스처 강마루 7.5 - 내추럴오크",
+"code": "FF1000553",
+"group": "강마루",
+"series": "[신제품]95 텍스처 강마루 7.5T",
+"size": [
+1.6,
+0.76
+],
+"uvMeters": 1,
+"map": "tex/kjl/608149433.jpg",
+"thumb": "tex/kjl/608149433_t.jpg"
+},
+{
+"id": "608146484",
+"name": "텍스처 강마루 7.5 - 미스티오크",
+"code": "FF1000548",
+"group": "강마루",
+"series": "[신제품]95 텍스처 강마루 7.5T",
+"size": [
+1.6,
+0.76
+],
+"uvMeters": 1,
+"map": "tex/kjl/608146484.jpg",
+"thumb": "tex/kjl/608146484_t.jpg"
+},
+{
+"id": "608146553",
+"name": "텍스처 강마루 7.5 - 베이지오크",
+"code": "FF1000551",
+"group": "강마루",
+"series": "[신제품]95 텍스처 강마루 7.5T",
+"size": [
+1.6,
+0.76
+],
+"uvMeters": 1,
+"map": "tex/kjl/608146553.jpg",
+"thumb": "tex/kjl/608146553_t.jpg"
+},
+{
+"id": "608154104",
+"name": "텍스처 강마루 7.5 - 아리아오크",
+"code": "FF1000552",
+"group": "강마루",
+"series": "[신제품]95 텍스처 강마루 7.5T",
+"size": [
+1.6,
+0.76
+],
+"uvMeters": 1,
+"map": "tex/kjl/608154104.jpg",
+"thumb": "tex/kjl/608154104_t.jpg"
+},
+{
+"id": "608154054",
+"name": "텍스처 강마루 7.5 - 오트밀오크",
+"code": "FF1000550",
+"group": "강마루",
+"series": "[신제품]95 텍스처 강마루 7.5T",
+"size": [
+1.6,
+0.76
+],
+"uvMeters": 1,
+"map": "tex/kjl/608154054.jpg",
+"thumb": "tex/kjl/608154054_t.jpg"
+},
+{
+"id": "608066318",
+"name": "텍스처 강마루 7.5 - 크리미오크",
+"code": "FF1000547",
+"group": "강마루",
+"series": "[신제품]95 텍스처 강마루 7.5T",
+"size": [
+1.6,
+0.76
+],
+"uvMeters": 1,
+"map": "tex/kjl/608066318.jpg",
+"thumb": "tex/kjl/608066318_t.jpg"
+},
+{
+"id": "608146501",
+"name": "텍스처 강마루 7.5 - 화이트오크",
+"code": "FF1000549",
+"group": "강마루",
+"series": "[신제품]95 텍스처 강마루 7.5T",
+"size": [
+1.6,
+0.76
+],
+"uvMeters": 1,
+"map": "tex/kjl/608146501.jpg",
+"thumb": "tex/kjl/608146501_t.jpg"
+},
+{
+"id": "295040234",
+"name": "마블스퀘어 강마루 - 데저트크림B",
+"code": "FF1000541",
+"group": "강마루",
+"series": "[신제품]마블스퀘어 강마루 7.8T",
+"size": [
+3.2,
+3.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/295040234.jpg",
+"thumb": "tex/kjl/295040234_t.jpg"
+},
+{
+"id": "617653643",
+"name": "마블스퀘어 강마루 - 라임아이보리B",
+"code": "FF1000560",
+"group": "강마루",
+"series": "[신제품]마블스퀘어 강마루 7.8T",
+"size": [
+3.2,
+3.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/617653643.jpg",
+"thumb": "tex/kjl/617653643_t.jpg"
+},
+{
+"id": "617657588",
+"name": "마블스퀘어 강마루 - 라임웜브라이트B",
+"code": "FF1000561",
+"group": "강마루",
+"series": "[신제품]마블스퀘어 강마루 7.8T",
+"size": [
+3.2,
+3.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/617657588.jpg",
+"thumb": "tex/kjl/617657588_t.jpg"
+},
+{
+"id": "617482334",
+"name": "마블스퀘어 강마루 - 라임웜코튼B",
+"code": "FF1000559",
+"group": "강마루",
+"series": "[신제품]마블스퀘어 강마루 7.8T",
+"size": [
+3.2,
+3.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/617482334.jpg",
+"thumb": "tex/kjl/617482334_t.jpg"
+},
+{
+"id": "617657590",
+"name": "마블스퀘어 강마루 - 모로코라이트B",
+"code": "FF1000562",
+"group": "강마루",
+"series": "[신제품]마블스퀘어 강마루 7.8T",
+"size": [
+3.2,
+3.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/617657590.jpg",
+"thumb": "tex/kjl/617657590_t.jpg"
+},
+{
+"id": "295028928",
+"name": "마블스퀘어 강마루 - 비앙코화이트B",
+"code": "FF1000538",
+"group": "강마루",
+"series": "[신제품]마블스퀘어 강마루 7.8T",
+"size": [
+3.2,
+3.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/295028928.jpg",
+"thumb": "tex/kjl/295028928_t.jpg"
+},
+{
+"id": "295035384",
+"name": "마블스퀘어 강마루 - 사하라그레이B",
+"code": "FF1000540",
+"group": "강마루",
+"series": "[신제품]마블스퀘어 강마루 7.8T",
+"size": [
+3.2,
+3.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/295035384.jpg",
+"thumb": "tex/kjl/295035384_t.jpg"
+},
+{
+"id": "425001173",
+"name": "마블스퀘어 강마루 - 사하라라이트B",
+"code": "FF1000542",
+"group": "강마루",
+"series": "[신제품]마블스퀘어 강마루 7.8T",
+"size": [
+3.2,
+3.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/425001173.jpg",
+"thumb": "tex/kjl/425001173_t.jpg"
+},
+{
+"id": "295040196",
+"name": "마블스퀘어 강마루 - 솔트화이트B",
+"code": "FF1000539",
+"group": "강마루",
+"series": "[신제품]마블스퀘어 강마루 7.8T",
+"size": [
+3.2,
+3.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/295040196.jpg",
+"thumb": "tex/kjl/295040196_t.jpg"
+},
+{
+"id": "295038268",
+"name": "마블스퀘어 강마루 - 오션사이드B",
+"code": "FF1000537",
+"group": "강마루",
+"series": "[신제품]마블스퀘어 강마루 7.8T",
+"size": [
+3.2,
+3.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/295038268.jpg",
+"thumb": "tex/kjl/295038268_t.jpg"
+},
+{
+"id": "121357404",
+"name": "강마루 와이드 7.5 - 그레이오크",
+"code": "FF1000169",
+"group": "강마루",
+"series": "강마루 와이드 7.5T",
+"size": [
+2.4,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/121357404.jpg",
+"thumb": "tex/kjl/121357404_t.jpg"
+},
+{
+"id": "121353856",
+"name": "강마루 와이드 7.5 - 내추럴아이보리오크",
+"code": "FF1000166",
+"group": "강마루",
+"series": "강마루 와이드 7.5T",
+"size": [
+2.4,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/121353856.jpg",
+"thumb": "tex/kjl/121353856_t.jpg"
+},
+{
+"id": "346631485",
+"name": "강마루 와이드 7.5 - 리얼라이트오크_B",
+"code": "FF1000462",
+"group": "강마루",
+"series": "강마루 와이드 7.5T",
+"size": [
+2.4,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/346631485.jpg",
+"thumb": "tex/kjl/346631485_t.jpg"
+},
+{
+"id": "347086772",
+"name": "강마루 와이드 7.5 - 리얼화이트워시오크_B",
+"code": "FF1000463",
+"group": "강마루",
+"series": "강마루 와이드 7.5T",
+"size": [
+2.4,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/347086772.jpg",
+"thumb": "tex/kjl/347086772_t.jpg"
+},
+{
+"id": "207849558",
+"name": "강마루 와이드 7.5 - 블랙워시오크",
+"code": "FF1000220",
+"group": "강마루",
+"series": "강마루 와이드 7.5T",
+"size": [
+2.4,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/207849558.jpg",
+"thumb": "tex/kjl/207849558_t.jpg"
+},
+{
+"id": "207851345",
+"name": "강마루 와이드 7.5 - 샌드스톤화이트",
+"code": "FF1000221",
+"group": "강마루",
+"series": "강마루 와이드 7.5T",
+"size": [
+2.4,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/207851345.jpg",
+"thumb": "tex/kjl/207851345_t.jpg"
+},
+{
+"id": "121357403",
+"name": "강마루 와이드 7.5 - 클래식티크_B",
+"code": "FF1000465",
+"group": "강마루",
+"series": "강마루 와이드 7.5T",
+"size": [
+2.4,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/121357403.jpg",
+"thumb": "tex/kjl/121357403_t.jpg"
+},
+{
+"id": "207843530",
+"name": "강마루 와이드 7.5 - 화이트그레이오크_B",
+"code": "FF1000466",
+"group": "강마루",
+"series": "강마루 와이드 7.5T",
+"size": [
+2.4,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/207843530.jpg",
+"thumb": "tex/kjl/207843530_t.jpg"
+},
+{
+"id": "76642670",
+"name": "PRO 강마루 헤링본 7.5 - 브라운그레이오크",
+"code": "FF1000036",
+"group": "강마루",
+"series": "강마루 헤링본 7.5T",
+"size": [
+2.0,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/76642670.jpg",
+"thumb": "tex/kjl/76642670_t.jpg"
+},
+{
+"id": "76646554",
+"name": "강마루 헤링본 7.5 - 리얼크림오크",
+"code": "SFR100466",
+"group": "강마루",
+"series": "강마루 헤링본 7.5T",
+"size": [
+2.0,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/76646554.jpg",
+"thumb": "tex/kjl/76646554_t.jpg"
+},
+{
+"id": "76650179",
+"name": "강마루 헤링본 7.5 - 스타일그레이오크",
+"code": "SFR100467",
+"group": "강마루",
+"series": "강마루 헤링본 7.5T",
+"size": [
+2.0,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/76650179.jpg",
+"thumb": "tex/kjl/76650179_t.jpg"
+},
+{
+"id": "438350296",
+"name": "강마루 헤링본 7.5 - 아카시아_N",
+"code": "FF1000433",
+"group": "강마루",
+"series": "강마루 헤링본 7.5T",
+"size": [
+2.0,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/438350296.jpg",
+"thumb": "tex/kjl/438350296_t.jpg"
+},
+{
+"id": "434525731",
+"name": "와이드 마블스퀘어 강마루 - 모로코그레이B",
+"code": "FF1000546",
+"group": "강마루",
+"series": "와이드 마블스퀘어 강마루 7.8T",
+"size": [
+4.82,
+2.4
+],
+"uvMeters": 1,
+"map": "tex/kjl/434525731.jpg",
+"thumb": "tex/kjl/434525731_t.jpg"
+},
+{
+"id": "434519982",
+"name": "와이드 마블스퀘어 강마루 - 모로코라이트B",
+"code": "FF1000545",
+"group": "강마루",
+"series": "와이드 마블스퀘어 강마루 7.8T",
+"size": [
+4.82,
+2.4
+],
+"uvMeters": 1,
+"map": "tex/kjl/434519982.jpg",
+"thumb": "tex/kjl/434519982_t.jpg"
+},
+{
+"id": "434524312",
+"name": "와이드 마블스퀘어 강마루 - 사하라라이트B",
+"code": "FF1000544",
+"group": "강마루",
+"series": "와이드 마블스퀘어 강마루 7.8T",
+"size": [
+4.82,
+2.4
+],
+"uvMeters": 1,
+"map": "tex/kjl/434524312.jpg",
+"thumb": "tex/kjl/434524312_t.jpg"
+},
+{
+"id": "434520205",
+"name": "와이드 마블스퀘어 강마루 - 솔트화이트B",
+"code": "FF1000543",
+"group": "강마루",
+"series": "와이드 마블스퀘어 강마루 7.8T",
+"size": [
+4.82,
+2.4
+],
+"uvMeters": 1,
+"map": "tex/kjl/434520205.jpg",
+"thumb": "tex/kjl/434520205_t.jpg"
+},
+{
+"id": "249317530",
+"name": "디앤메종 텐우드 - 고스트화이트",
+"code": "FF1000499",
+"group": "브러쉬마루",
+"series": "디앤메종 텐우드 10T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/249317530.jpg",
+"thumb": "tex/kjl/249317530_t.jpg"
+},
+{
+"id": "249319579",
+"name": "디앤메종 텐우드 - 미스티",
+"code": "FF1000501",
+"group": "브러쉬마루",
+"series": "디앤메종 텐우드 10T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/249319579.jpg",
+"thumb": "tex/kjl/249319579_t.jpg"
+},
+{
+"id": "249326498",
+"name": "디앤메종 텐우드 - 오크10",
+"code": "FF1000500",
+"group": "브러쉬마루",
+"series": "디앤메종 텐우드 10T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/249326498.jpg",
+"thumb": "tex/kjl/249326498_t.jpg"
+},
+{
+"id": "249311654",
+"name": "디앤메종 텐우드 - 월넛10",
+"code": "FF1000503",
+"group": "브러쉬마루",
+"series": "디앤메종 텐우드 10T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/249311654.jpg",
+"thumb": "tex/kjl/249311654_t.jpg"
+},
+{
+"id": "249317531",
+"name": "디앤메종 텐우드 - 티크10",
+"code": "FF1000502",
+"group": "브러쉬마루",
+"series": "디앤메종 텐우드 10T",
+"size": [
+2.4,
+2.288
+],
+"uvMeters": 1,
+"map": "tex/kjl/249317531.jpg",
+"thumb": "tex/kjl/249317531_t.jpg"
+},
+{
+"id": "91599824",
+"name": "브러쉬 헤링본 7.5 - 월넛내추럴",
+"code": "SFR100462",
+"group": "브러쉬마루",
+"series": "브러쉬 헤링본 7.5T",
+"size": [
+1.203,
+1.27
+],
+"uvMeters": 1,
+"map": "tex/kjl/91599824.jpg",
+"thumb": "tex/kjl/91599824_t.jpg"
+},
+{
+"id": "487646649",
+"name": "마지오레 플랭크190 원목마루 - 세이블스모크",
+"code": "FF1000518",
+"group": "원목마루",
+"series": "마지오레 플랭크 14T",
+"size": [
+3.8,
+2.28
+],
+"uvMeters": 1,
+"map": "tex/kjl/487646649.jpg",
+"thumb": "tex/kjl/487646649_t.jpg"
+},
+{
+"id": "207847202",
+"name": "마지오레 플랭크190 원목마루 - 스노우화이트워시",
+"code": "FF1000498",
+"group": "원목마루",
+"series": "마지오레 플랭크 14T",
+"size": [
+3.8,
+3.04
+],
+"uvMeters": 1,
+"map": "tex/kjl/207847202.jpg",
+"thumb": "tex/kjl/207847202_t.jpg"
+},
+{
+"id": "207395139",
+"name": "마지오레 플랭크190 원목마루 - 오크",
+"code": "FF1000497",
+"group": "원목마루",
+"series": "마지오레 플랭크 14T",
+"size": [
+3.8,
+3.04
+],
+"uvMeters": 1,
+"map": "tex/kjl/207395139.jpg",
+"thumb": "tex/kjl/207395139_t.jpg"
+},
+{
+"id": "487649544",
+"name": "마지오레 플랭크190 원목마루 - 월넛브러쉬",
+"code": "FF1000519",
+"group": "원목마루",
+"series": "마지오레 플랭크 14T",
+"size": [
+3.8,
+2.28
+],
+"uvMeters": 1,
+"map": "tex/kjl/487649544.jpg",
+"thumb": "tex/kjl/487649544_t.jpg"
+},
+{
+"id": "207838521",
+"name": "마지오레 플랭크240 원목마루 - 스노우화이트워시",
+"code": "FF1000496",
+"group": "원목마루",
+"series": "마지오레 플랭크 14T",
+"size": [
+4.4,
+3.84
+],
+"uvMeters": 1,
+"map": "tex/kjl/207838521.jpg",
+"thumb": "tex/kjl/207838521_t.jpg"
+},
+{
+"id": "487639995",
+"name": "마지오레 플랭크240 원목마루 - 아리아",
+"code": "FF1000515",
+"group": "원목마루",
+"series": "마지오레 플랭크 14T",
+"size": [
+4.4,
+2.88
+],
+"uvMeters": 1,
+"map": "tex/kjl/487639995.jpg",
+"thumb": "tex/kjl/487639995_t.jpg"
+},
+{
+"id": "207840177",
+"name": "마지오레 플랭크240 원목마루 - 오크",
+"code": "FF1000495",
+"group": "원목마루",
+"series": "마지오레 플랭크 14T",
+"size": [
+4.4,
+3.84
+],
+"uvMeters": 1,
+"map": "tex/kjl/207840177.jpg",
+"thumb": "tex/kjl/207840177_t.jpg"
+},
+{
+"id": "487642642",
+"name": "마지오레 플랭크240 원목마루 - 오크화이트",
+"code": "FF1000514",
+"group": "원목마루",
+"series": "마지오레 플랭크 14T",
+"size": [
+4.4,
+2.88
+],
+"uvMeters": 1,
+"map": "tex/kjl/487642642.jpg",
+"thumb": "tex/kjl/487642642_t.jpg"
+},
+{
+"id": "487655143",
+"name": "마지오레 플랭크240 원목마루 - 카밍",
+"code": "FF1000516",
+"group": "원목마루",
+"series": "마지오레 플랭크 14T",
+"size": [
+4.4,
+2.88
+],
+"uvMeters": 1,
+"map": "tex/kjl/487655143.jpg",
+"thumb": "tex/kjl/487655143_t.jpg"
+},
+{
+"id": "487647623",
+"name": "마지오레 플랭크240 원목마루 - 피존",
+"code": "FF1000517",
+"group": "원목마루",
+"series": "마지오레 플랭크 14T",
+"size": [
+4.4,
+2.88
+],
+"uvMeters": 1,
+"map": "tex/kjl/487647623.jpg",
+"thumb": "tex/kjl/487647623_t.jpg"
+},
+{
+"id": "207396145",
+"name": "바흐3 원목마루 - 애쉬크림",
+"code": "FF1000210",
+"group": "원목마루",
+"series": "바흐3 원목마루 10T",
+"size": [
+1.82,
+1.974
+],
+"uvMeters": 1,
+"map": "tex/kjl/207396145.jpg",
+"thumb": "tex/kjl/207396145_t.jpg"
+},
+{
+"id": "207393713",
+"name": "바흐3 원목마루 - 애쉬화이트 (",
+"code": "FF1000209",
+"group": "원목마루",
+"series": "바흐3 원목마루 10T",
+"size": [
+1.82,
+1.974
+],
+"uvMeters": 1,
+"map": "tex/kjl/207393713.jpg",
+"thumb": "tex/kjl/207393713_t.jpg"
+},
+{
+"id": "207387964",
+"name": "바흐3 원목마루 - 오크",
+"code": "FF1000211",
+"group": "원목마루",
+"series": "바흐3 원목마루 10T",
+"size": [
+1.82,
+1.974
+],
+"uvMeters": 1,
+"map": "tex/kjl/207387964.jpg",
+"thumb": "tex/kjl/207387964_t.jpg"
+},
+{
+"id": "207398020",
+"name": "바흐3 원목마루 - 월넛",
+"code": "FF1000212",
+"group": "원목마루",
+"series": "바흐3 원목마루 10T",
+"size": [
+1.82,
+2.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/207398020.jpg",
+"thumb": "tex/kjl/207398020_t.jpg"
+},
+{
+"id": "143546451",
+"name": "유로플러스 - 유로그레이",
+"code": "FF1000190",
+"group": "유로플러스",
+"series": "유로플러스 5T",
+"size": [
+1.83,
+2.32
+],
+"uvMeters": 1,
+"map": "tex/kjl/143546451.jpg",
+"thumb": "tex/kjl/143546451_t.jpg"
+},
+{
+"id": "110624395",
+"name": "한샘 장판 휴(休) 2.2T - 내추럴 오크",
+"code": "FF1000040",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/110624395.jpg",
+"thumb": "tex/kjl/110624395_t.jpg"
+},
+{
+"id": "110622565",
+"name": "한샘 장판 휴(休) 2.2T - 비앙코 카라라",
+"code": "FF1000041",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/110622565.jpg",
+"thumb": "tex/kjl/110622565_t.jpg"
+},
+{
+"id": "110623503",
+"name": "한샘 장판 휴(休) 2.2T - 샌드스톤 베이지",
+"code": "FF1000056",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/110623503.jpg",
+"thumb": "tex/kjl/110623503_t.jpg"
+},
+{
+"id": "110625214",
+"name": "한샘 장판 휴(休) 2.2T - 쉐브론 베이지",
+"code": "FF1000059",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/110625214.jpg",
+"thumb": "tex/kjl/110625214_t.jpg"
+},
+{
+"id": "110621598",
+"name": "한샘 장판 휴(休) 2.2T - 쉐브론 브라이트",
+"code": "FF1000058",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/110621598.jpg",
+"thumb": "tex/kjl/110621598_t.jpg"
+},
+{
+"id": "110627110",
+"name": "한샘 장판 휴(休) 2.2T - 스칸디나 베이지",
+"code": "FF1000060",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/110627110.jpg",
+"thumb": "tex/kjl/110627110_t.jpg"
+},
+{
+"id": "110621597",
+"name": "한샘 장판 휴(休) 2.2T - 스칸디나 브라운",
+"code": "FF1000061",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/110621597.jpg",
+"thumb": "tex/kjl/110621597_t.jpg"
+},
+{
+"id": "110617957",
+"name": "한샘 장판 휴(休) 2.2T - 스칸디나 화이트",
+"code": "FF1000057",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/110617957.jpg",
+"thumb": "tex/kjl/110617957_t.jpg"
+},
+{
+"id": "261805324",
+"name": "한샘 장판 휴(休) 2.2T - 어반스톤 그레이",
+"code": "FF1000434",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/261805324.jpg",
+"thumb": "tex/kjl/261805324_t.jpg"
+},
+{
+"id": "261817194",
+"name": "한샘 장판 휴(休) 2.2T - 어반스톤 베이지",
+"code": "FF1000435",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/261817194.jpg",
+"thumb": "tex/kjl/261817194_t.jpg"
+},
+{
+"id": "261810266",
+"name": "한샘 장판 휴(休) 2.2T - 피에트라 그레이",
+"code": "FF1000436",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/261810266.jpg",
+"thumb": "tex/kjl/261810266_t.jpg"
+},
+{
+"id": "261806339",
+"name": "한샘 장판 휴(休) 2.2T - 피에트라 크레마",
+"code": "FF1000437",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/261806339.jpg",
+"thumb": "tex/kjl/261806339_t.jpg"
+},
+{
+"id": "110616903",
+"name": "한샘 장판 휴(休) 2.2T - 화이트 오크",
+"code": "FF1000038",
+"group": "한샘 장판",
+"series": "휴 2.2T",
+"size": [
+1.8,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/110616903.jpg",
+"thumb": "tex/kjl/110616903_t.jpg"
+},
+{
+"id": "423069041",
+"name": "한샘 장판 휴(休) 3.5 - 내추럴 우드 라이트",
+"code": "FF1000492",
+"group": "한샘 장판",
+"series": "휴 3.5T",
+"size": [
+1.8,
+1.7
+],
+"uvMeters": 1,
+"map": "tex/kjl/423069041.jpg",
+"thumb": "tex/kjl/423069041_t.jpg"
+},
+{
+"id": "423065370",
+"name": "한샘 장판 휴(休) 3.5 - 내추럴 우드 베이지",
+"code": "FF1000493",
+"group": "한샘 장판",
+"series": "휴 3.5T",
+"size": [
+1.8,
+1.7
+],
+"uvMeters": 1,
+"map": "tex/kjl/423065370.jpg",
+"thumb": "tex/kjl/423065370_t.jpg"
+},
+{
+"id": "142102745",
+"name": "한샘 장판 휴(休) 3.5 - 비앙코 골드",
+"code": "FF1000196",
+"group": "한샘 장판",
+"series": "휴 3.5T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/142102745.jpg",
+"thumb": "tex/kjl/142102745_t.jpg"
+},
+{
+"id": "423249658",
+"name": "한샘 장판 휴(休) 3.5 - 카라라 화이트",
+"code": "FF1000490",
+"group": "한샘 장판",
+"series": "휴 3.5T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/423249658.jpg",
+"thumb": "tex/kjl/423249658_t.jpg"
+},
+{
+"id": "142113271",
+"name": "한샘 장판 휴(休) 3.5 - 테라 그레이",
+"code": "FF1000194",
+"group": "한샘 장판",
+"series": "휴 3.5T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/142113271.jpg",
+"thumb": "tex/kjl/142113271_t.jpg"
+},
+{
+"id": "142064933",
+"name": "한샘 장판 휴(休) 3.5 - 테라 베이지",
+"code": "FF1000192",
+"group": "한샘 장판",
+"series": "휴 3.5T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/142064933.jpg",
+"thumb": "tex/kjl/142064933_t.jpg"
+},
+{
+"id": "142058933",
+"name": "한샘 장판 휴(休) 3.5 - 트라버틴 그레이",
+"code": "FF1000199",
+"group": "한샘 장판",
+"series": "휴 3.5T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/142058933.jpg",
+"thumb": "tex/kjl/142058933_t.jpg"
+},
+{
+"id": "142078814",
+"name": "한샘 장판 휴(休) 3.5 - 트라버틴 라이트",
+"code": "FF1000198",
+"group": "한샘 장판",
+"series": "휴 3.5T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/142078814.jpg",
+"thumb": "tex/kjl/142078814_t.jpg"
+},
+{
+"id": "142115219",
+"name": "한샘 장판 휴(休) 3.5 - 트라버틴 베이지",
+"code": "FF1000197",
+"group": "한샘 장판",
+"series": "휴 3.5T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/142115219.jpg",
+"thumb": "tex/kjl/142115219_t.jpg"
+},
+{
+"id": "423249659",
+"name": "한샘 장판 휴(休) 3.5 - 포세린 라이트",
+"code": "FF1000491",
+"group": "한샘 장판",
+"series": "휴 3.5T",
+"size": [
+1.8,
+1.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/423249659.jpg",
+"thumb": "tex/kjl/423249659_t.jpg"
+},
+{
+"id": "110623525",
+"name": "한샘 장판 휴(休) 4.5T - 리얼 우드 화이트",
+"code": "FF1000066",
+"group": "한샘 장판",
+"series": "휴 4.5T",
+"size": [
+1.8,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/110623525.jpg",
+"thumb": "tex/kjl/110623525_t.jpg"
+},
+{
+"id": "110621629",
+"name": "한샘 장판 휴(休) 4.5T - 몽블랑 티크",
+"code": "FF1000070",
+"group": "한샘 장판",
+"series": "휴 4.5T",
+"size": [
+1.8,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/110621629.jpg",
+"thumb": "tex/kjl/110621629_t.jpg"
+}
+],
+"wall": [
+{
+"id": "118138387",
+"name": "32025-5",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138387.jpg",
+"thumb": "tex/kjl/118138387_t.jpg"
+},
+{
+"id": "118138392",
+"name": "37002-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138392.jpg",
+"thumb": "tex/kjl/118138392_t.jpg"
+},
+{
+"id": "118138391",
+"name": "37003-1",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138391.jpg",
+"thumb": "tex/kjl/118138391_t.jpg"
+},
+{
+"id": "118138384",
+"name": "37003-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138384.jpg",
+"thumb": "tex/kjl/118138384_t.jpg"
+},
+{
+"id": "118138385",
+"name": "37003-3",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138385.jpg",
+"thumb": "tex/kjl/118138385_t.jpg"
+},
+{
+"id": "118138388",
+"name": "37020-1",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138388.jpg",
+"thumb": "tex/kjl/118138388_t.jpg"
+},
+{
+"id": "118138389",
+"name": "37027-1",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138389.jpg",
+"thumb": "tex/kjl/118138389_t.jpg"
+},
+{
+"id": "118138390",
+"name": "37027-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138390.jpg",
+"thumb": "tex/kjl/118138390_t.jpg"
+},
+{
+"id": "118138382",
+"name": "37029-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138382.jpg",
+"thumb": "tex/kjl/118138382_t.jpg"
+},
+{
+"id": "118138393",
+"name": "37029-3",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138393.jpg",
+"thumb": "tex/kjl/118138393_t.jpg"
+},
+{
+"id": "118138386",
+"name": "37029-4",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138386.jpg",
+"thumb": "tex/kjl/118138386_t.jpg"
+},
+{
+"id": "118138410",
+"name": "37029-5",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138410.jpg",
+"thumb": "tex/kjl/118138410_t.jpg"
+},
+{
+"id": "118138395",
+"name": "37029-6",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138395.jpg",
+"thumb": "tex/kjl/118138395_t.jpg"
+},
+{
+"id": "118138397",
+"name": "37030-1",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138397.jpg",
+"thumb": "tex/kjl/118138397_t.jpg"
+},
+{
+"id": "118138402",
+"name": "37030-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138402.jpg",
+"thumb": "tex/kjl/118138402_t.jpg"
+},
+{
+"id": "118138407",
+"name": "37031-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138407.jpg",
+"thumb": "tex/kjl/118138407_t.jpg"
+},
+{
+"id": "118138409",
+"name": "37031-3",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138409.jpg",
+"thumb": "tex/kjl/118138409_t.jpg"
+},
+{
+"id": "118138398",
+"name": "37031-4",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138398.jpg",
+"thumb": "tex/kjl/118138398_t.jpg"
+},
+{
+"id": "118138411",
+"name": "37032-1",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138411.jpg",
+"thumb": "tex/kjl/118138411_t.jpg"
+},
+{
+"id": "118138416",
+"name": "37032-3",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138416.jpg",
+"thumb": "tex/kjl/118138416_t.jpg"
+},
+{
+"id": "118138394",
+"name": "37032-4",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138394.jpg",
+"thumb": "tex/kjl/118138394_t.jpg"
+},
+{
+"id": "118138418",
+"name": "37032-6",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138418.jpg",
+"thumb": "tex/kjl/118138418_t.jpg"
+},
+{
+"id": "118138415",
+"name": "37033-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138415.jpg",
+"thumb": "tex/kjl/118138415_t.jpg"
+},
+{
+"id": "118138417",
+"name": "37033-3",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138417.jpg",
+"thumb": "tex/kjl/118138417_t.jpg"
+},
+{
+"id": "118138400",
+"name": "37034-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138400.jpg",
+"thumb": "tex/kjl/118138400_t.jpg"
+},
+{
+"id": "118138414",
+"name": "37034-3",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138414.jpg",
+"thumb": "tex/kjl/118138414_t.jpg"
+},
+{
+"id": "118138408",
+"name": "37034-4",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138408.jpg",
+"thumb": "tex/kjl/118138408_t.jpg"
+},
+{
+"id": "118138404",
+"name": "37034-5",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138404.jpg",
+"thumb": "tex/kjl/118138404_t.jpg"
+},
+{
+"id": "118138396",
+"name": "37035-3",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138396.jpg",
+"thumb": "tex/kjl/118138396_t.jpg"
+},
+{
+"id": "118138403",
+"name": "37035-4",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138403.jpg",
+"thumb": "tex/kjl/118138403_t.jpg"
+},
+{
+"id": "118138405",
+"name": "37036-1",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138405.jpg",
+"thumb": "tex/kjl/118138405_t.jpg"
+},
+{
+"id": "118138412",
+"name": "37036-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138412.jpg",
+"thumb": "tex/kjl/118138412_t.jpg"
+},
+{
+"id": "118174404",
+"name": "개나리 로하스 87384-3",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118174404.jpg",
+"thumb": "tex/kjl/118174404_t.jpg"
+},
+{
+"id": "118174402",
+"name": "개나리 아트북 57194-4",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118174402.jpg",
+"thumb": "tex/kjl/118174402_t.jpg"
+},
+{
+"id": "118173094",
+"name": "개나리 아트북 57194-9",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118173094.jpg",
+"thumb": "tex/kjl/118173094_t.jpg"
+},
+{
+"id": "118174401",
+"name": "뉴트럴다크그린 87405-9",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118174401.jpg",
+"thumb": "tex/kjl/118174401_t.jpg"
+},
+{
+"id": "118173188",
+"name": "데미안 70200-3",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118173188.jpg",
+"thumb": "tex/kjl/118173188_t.jpg"
+},
+{
+"id": "118173186",
+"name": "몬테 70218-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118173186.jpg",
+"thumb": "tex/kjl/118173186_t.jpg"
+},
+{
+"id": "118173185",
+"name": "바흐 70231-1",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118173185.jpg",
+"thumb": "tex/kjl/118173185_t.jpg"
+},
+{
+"id": "118173184",
+"name": "바흐 70231-9",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118173184.jpg",
+"thumb": "tex/kjl/118173184_t.jpg"
+},
+{
+"id": "118138383",
+"name": "산토리니여행 37029-1",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138383.jpg",
+"thumb": "tex/kjl/118138383_t.jpg"
+},
+{
+"id": "118173196",
+"name": "시넬리에 70232-1",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118173196.jpg",
+"thumb": "tex/kjl/118173196_t.jpg"
+},
+{
+"id": "118174400",
+"name": "신한 스케치 15082-1",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118174400.jpg",
+"thumb": "tex/kjl/118174400_t.jpg"
+},
+{
+"id": "118138413",
+"name": "추억의 회전목마 37032-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138413.jpg",
+"thumb": "tex/kjl/118138413_t.jpg"
+},
+{
+"id": "118138399",
+"name": "추억의 회전목마 37032-5",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138399.jpg",
+"thumb": "tex/kjl/118138399_t.jpg"
+},
+{
+"id": "118138401",
+"name": "캐슬로열티 37035-2",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118138401.jpg",
+"thumb": "tex/kjl/118138401_t.jpg"
+},
+{
+"id": "118173190",
+"name": "케일 70233-3",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118173190.jpg",
+"thumb": "tex/kjl/118173190_t.jpg"
+},
+{
+"id": "118173187",
+"name": "코지패브릭 87427-5",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+0.5,
+0.5
+],
+"uvMeters": 1,
+"map": "tex/kjl/118173187.jpg",
+"thumb": "tex/kjl/118173187_t.jpg"
+},
+{
+"id": "118179825",
+"name": "헤링본 그레이_1.8T_LVS-1810_수정",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118179825.jpg",
+"thumb": "tex/kjl/118179825_t.jpg"
+},
+{
+"id": "118179827",
+"name": "헤링본 화이트_1.8T_LVS-1802_수정",
+"code": null,
+"group": "벽지",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/118179827.jpg",
+"thumb": "tex/kjl/118179827_t.jpg"
+},
+{
+"id": "209283830",
+"name": "70213-10_플레인 (리빙)",
+"code": "PGSH00507",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/209283830.jpg",
+"thumb": "tex/kjl/209283830_t.jpg"
+},
+{
+"id": "106052431",
+"name": "70221-2_브린 (리빙)",
+"code": "PGSH00233",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.3,
+0.3
+],
+"uvMeters": 1,
+"map": "tex/kjl/106052431.jpg",
+"thumb": "tex/kjl/106052431_t.jpg"
+},
+{
+"id": "106049944",
+"name": "70233-1_케일 (리빙)",
+"code": "PGSH00292",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.3,
+0.3
+],
+"uvMeters": 1,
+"map": "tex/kjl/106049944.jpg",
+"thumb": "tex/kjl/106049944_t.jpg"
+},
+{
+"id": "209486592",
+"name": "70243-1_헬리오 (리빙)",
+"code": "PGSH00476",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/209486592.jpg",
+"thumb": "tex/kjl/209486592_t.jpg"
+},
+{
+"id": "209481808",
+"name": "70244-1_테오도르 (리빙)",
+"code": "PGSH00475",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.522,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/209481808.jpg",
+"thumb": "tex/kjl/209481808_t.jpg"
+},
+{
+"id": "209491227",
+"name": "70245-1_클림트 (리빙)",
+"code": "PGSH00469",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/209491227.jpg",
+"thumb": "tex/kjl/209491227_t.jpg"
+},
+{
+"id": "209489252",
+"name": "70245-2_클림트 (리빙)",
+"code": "PGSH00470",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/209489252.jpg",
+"thumb": "tex/kjl/209489252_t.jpg"
+},
+{
+"id": "209482773",
+"name": "70245-5_클림트 (리빙)",
+"code": "PGSH00473",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/209482773.jpg",
+"thumb": "tex/kjl/209482773_t.jpg"
+},
+{
+"id": "209501234",
+"name": "70253-1_밀레 (리빙)",
+"code": "PGSH00431",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/209501234.jpg",
+"thumb": "tex/kjl/209501234_t.jpg"
+},
+{
+"id": "209496758",
+"name": "70254-1_제프리 (리빙)",
+"code": "PGSH00423",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/209496758.jpg",
+"thumb": "tex/kjl/209496758_t.jpg"
+},
+{
+"id": "209491888",
+"name": "70254-5_제프리 (리빙)",
+"code": "PGSH00427",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/209491888.jpg",
+"thumb": "tex/kjl/209491888_t.jpg"
+},
+{
+"id": "209499513",
+"name": "70254-6_제프리 (리빙)",
+"code": "PGSH00428",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/209499513.jpg",
+"thumb": "tex/kjl/209499513_t.jpg"
+},
+{
+"id": "456652906",
+"name": "70269-2 벨벳 (리빙)",
+"code": "PGSH00938",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/456652906.jpg",
+"thumb": "tex/kjl/456652906_t.jpg"
+},
+{
+"id": "456657913",
+"name": "70271-1 코듀로이 (리빙)",
+"code": "PGSH00948",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/456657913.jpg",
+"thumb": "tex/kjl/456657913_t.jpg"
+},
+{
+"id": "456669038",
+"name": "70271-2 코듀로이 (리빙)",
+"code": "PGSH00949",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/456669038.jpg",
+"thumb": "tex/kjl/456669038_t.jpg"
+},
+{
+"id": "456668065",
+"name": "70272-1 옥스퍼드 (리빙)",
+"code": "PGSH00951",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/456668065.jpg",
+"thumb": "tex/kjl/456668065_t.jpg"
+},
+{
+"id": "456665195",
+"name": "70272-2 옥스퍼드 (리빙)",
+"code": "PGSH00952",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/456665195.jpg",
+"thumb": "tex/kjl/456665195_t.jpg"
+},
+{
+"id": "456673451",
+"name": "70274-1 샌드월 (리빙)",
+"code": "PGSH00957",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/456673451.jpg",
+"thumb": "tex/kjl/456673451_t.jpg"
+},
+{
+"id": "456787152",
+"name": "70274-2 샌드월 (리빙)",
+"code": "PGSH00958",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/456787152.jpg",
+"thumb": "tex/kjl/456787152_t.jpg"
+},
+{
+"id": "457002496",
+"name": "70276-1 데코월 (리빙)",
+"code": "PGSH00967",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457002496.jpg",
+"thumb": "tex/kjl/457002496_t.jpg"
+},
+{
+"id": "457006223",
+"name": "70276-2 데코월 (리빙)",
+"code": "PGSH00968",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457006223.jpg",
+"thumb": "tex/kjl/457006223_t.jpg"
+},
+{
+"id": "457001698",
+"name": "70277-1 로코코 (리빙)",
+"code": "PGSH00970",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457001698.jpg",
+"thumb": "tex/kjl/457001698_t.jpg"
+},
+{
+"id": "457001731",
+"name": "70278-1 캐시미어 (리빙)",
+"code": "PGSH00972",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457001731.jpg",
+"thumb": "tex/kjl/457001731_t.jpg"
+},
+{
+"id": "457006981",
+"name": "70278-2 캐시미어 (리빙)",
+"code": "PGSH00973",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457006981.jpg",
+"thumb": "tex/kjl/457006981_t.jpg"
+},
+{
+"id": "457015459",
+"name": "70278-3 캐시미어 (리빙)",
+"code": "PGSH00974",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457015459.jpg",
+"thumb": "tex/kjl/457015459_t.jpg"
+},
+{
+"id": "457011971",
+"name": "70279-1 앙고라 (리빙)",
+"code": "PGSH00978",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457011971.jpg",
+"thumb": "tex/kjl/457011971_t.jpg"
+},
+{
+"id": "457020363",
+"name": "70279-2 앙고라 (리빙)",
+"code": "PGSH00979",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457020363.jpg",
+"thumb": "tex/kjl/457020363_t.jpg"
+},
+{
+"id": "457025713",
+"name": "70279-5 앙고라 (리빙)",
+"code": "PGSH00982",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457025713.jpg",
+"thumb": "tex/kjl/457025713_t.jpg"
+},
+{
+"id": "457044940",
+"name": "70280-1 더블니트 (리빙)",
+"code": "PGSH00985",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457044940.jpg",
+"thumb": "tex/kjl/457044940_t.jpg"
+},
+{
+"id": "457289211",
+"name": "70281-1 레이븐 (리빙)",
+"code": "PGSH00993",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457289211.jpg",
+"thumb": "tex/kjl/457289211_t.jpg"
+},
+{
+"id": "457282689",
+"name": "70281-2 레이븐 (리빙)",
+"code": "PGSH00994",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457282689.jpg",
+"thumb": "tex/kjl/457282689_t.jpg"
+},
+{
+"id": "457285453",
+"name": "70282-1 부클레 (리빙)",
+"code": "PGSH00998",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457285453.jpg",
+"thumb": "tex/kjl/457285453_t.jpg"
+},
+{
+"id": "457286549",
+"name": "70282-2 부클레 (리빙)",
+"code": "PGSH00999",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457286549.jpg",
+"thumb": "tex/kjl/457286549_t.jpg"
+},
+{
+"id": "457286558",
+"name": "70282-3 부클레 (리빙)",
+"code": "PGSH01000",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457286558.jpg",
+"thumb": "tex/kjl/457286558_t.jpg"
+},
+{
+"id": "457293343",
+"name": "70283-1 스타코 (리빙)",
+"code": "PGSH01004",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457293343.jpg",
+"thumb": "tex/kjl/457293343_t.jpg"
+},
+{
+"id": "457288620",
+"name": "70283-2 스타코 (리빙)",
+"code": "PGSH01005",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457288620.jpg",
+"thumb": "tex/kjl/457288620_t.jpg"
+},
+{
+"id": "457298052",
+"name": "70283-4 스타코 (리빙)",
+"code": "PGSH01007",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457298052.jpg",
+"thumb": "tex/kjl/457298052_t.jpg"
+},
+{
+"id": "457285820",
+"name": "70283-5 스타코 (리빙)",
+"code": "PGSH01008",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457285820.jpg",
+"thumb": "tex/kjl/457285820_t.jpg"
+},
+{
+"id": "457292768",
+"name": "70285-1 더 웨이브 (리빙)",
+"code": "PGSH01012",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.64
+],
+"uvMeters": 1,
+"map": "tex/kjl/457292768.jpg",
+"thumb": "tex/kjl/457292768_t.jpg"
+},
+{
+"id": "457301369",
+"name": "70286-1 노블스톤 (리빙)",
+"code": "PGSH01014",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457301369.jpg",
+"thumb": "tex/kjl/457301369_t.jpg"
+},
+{
+"id": "457297914",
+"name": "70286-2 노블스톤 (리빙)",
+"code": "PGSH01015",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457297914.jpg",
+"thumb": "tex/kjl/457297914_t.jpg"
+},
+{
+"id": "457311086",
+"name": "70286-3 노블스톤 (리빙)",
+"code": "PGSH01016",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/457311086.jpg",
+"thumb": "tex/kjl/457311086_t.jpg"
+},
+{
+"id": "580162901",
+"name": "70287-1 블로시아(리빙)",
+"code": "PGSH01275",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162901.jpg",
+"thumb": "tex/kjl/580162901_t.jpg"
+},
+{
+"id": "580163444",
+"name": "70288-1 빈티지 가든(리빙)",
+"code": "PGSH01273",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163444.jpg",
+"thumb": "tex/kjl/580163444_t.jpg"
+},
+{
+"id": "580165058",
+"name": "70288-2 빈티지 가든(리빙)",
+"code": "PGSH01274",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580165058.jpg",
+"thumb": "tex/kjl/580165058_t.jpg"
+},
+{
+"id": "580164141",
+"name": "70289-1 리토월(리빙)",
+"code": "PGSH01272",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580164141.jpg",
+"thumb": "tex/kjl/580164141_t.jpg"
+},
+{
+"id": "580165051",
+"name": "70290-1 마블스(리빙)",
+"code": "PGSH01270",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580165051.jpg",
+"thumb": "tex/kjl/580165051_t.jpg"
+},
+{
+"id": "580165052",
+"name": "70290-2 마블스(리빙)",
+"code": "PGSH01271",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580165052.jpg",
+"thumb": "tex/kjl/580165052_t.jpg"
+},
+{
+"id": "580165047",
+"name": "70291-1 트리프(리빙)",
+"code": "PGSH01268",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580165047.jpg",
+"thumb": "tex/kjl/580165047_t.jpg"
+},
+{
+"id": "580165049",
+"name": "70291-2 트리프(리빙)",
+"code": "PGSH01269",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580165049.jpg",
+"thumb": "tex/kjl/580165049_t.jpg"
+},
+{
+"id": "580164107",
+"name": "70292-1 그레인월(리빙)",
+"code": "PGSH01265",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580164107.jpg",
+"thumb": "tex/kjl/580164107_t.jpg"
+},
+{
+"id": "580164109",
+"name": "70292-2 그레인월(리빙)",
+"code": "PGSH01266",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580164109.jpg",
+"thumb": "tex/kjl/580164109_t.jpg"
+},
+{
+"id": "580163422",
+"name": "70292-3 그레인월(리빙)",
+"code": "PGSH01267",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163422.jpg",
+"thumb": "tex/kjl/580163422_t.jpg"
+},
+{
+"id": "580162848",
+"name": "70293-1 울네프(리빙)",
+"code": "PGSH01261",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162848.jpg",
+"thumb": "tex/kjl/580162848_t.jpg"
+},
+{
+"id": "580162852",
+"name": "70293-2 울네프(리빙)",
+"code": "PGSH01262",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162852.jpg",
+"thumb": "tex/kjl/580162852_t.jpg"
+},
+{
+"id": "580163409",
+"name": "70293-3 울네프(리빙)",
+"code": "PGSH01263",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163409.jpg",
+"thumb": "tex/kjl/580163409_t.jpg"
+},
+{
+"id": "580162858",
+"name": "70293-4 울네프(리빙)",
+"code": "PGSH01264",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162858.jpg",
+"thumb": "tex/kjl/580162858_t.jpg"
+},
+{
+"id": "580161999",
+"name": "70294-1 오브위브(리빙)",
+"code": "PGSH01256",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580161999.jpg",
+"thumb": "tex/kjl/580161999_t.jpg"
+},
+{
+"id": "580162834",
+"name": "70294-2 오브위브(리빙)",
+"code": "PGSH01257",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162834.jpg",
+"thumb": "tex/kjl/580162834_t.jpg"
+},
+{
+"id": "580163397",
+"name": "70294-3 오브위브(리빙)",
+"code": "PGSH01258",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163397.jpg",
+"thumb": "tex/kjl/580163397_t.jpg"
+},
+{
+"id": "580163399",
+"name": "70294-4 오브위브(리빙)",
+"code": "PGSH01259",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163399.jpg",
+"thumb": "tex/kjl/580163399_t.jpg"
+},
+{
+"id": "580163404",
+"name": "70294-5 오브위브(리빙)",
+"code": "PGSH01260",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163404.jpg",
+"thumb": "tex/kjl/580163404_t.jpg"
+},
+{
+"id": "580163341",
+"name": "70295-1 바클(리빙)",
+"code": "PGSH01251",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163341.jpg",
+"thumb": "tex/kjl/580163341_t.jpg"
+},
+{
+"id": "580163351",
+"name": "70295-2 바클(리빙)",
+"code": "PGSH01252",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163351.jpg",
+"thumb": "tex/kjl/580163351_t.jpg"
+},
+{
+"id": "580162793",
+"name": "70295-3 바클(리빙)",
+"code": "PGSH01253",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162793.jpg",
+"thumb": "tex/kjl/580162793_t.jpg"
+},
+{
+"id": "580163364",
+"name": "70295-4 바클(리빙)",
+"code": "PGSH01254",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163364.jpg",
+"thumb": "tex/kjl/580163364_t.jpg"
+},
+{
+"id": "580162822",
+"name": "70295-5 바클(리빙)",
+"code": "PGSH01255",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162822.jpg",
+"thumb": "tex/kjl/580162822_t.jpg"
+},
+{
+"id": "580164016",
+"name": "70296-1 클레이어(리빙)",
+"code": "PGSH01242",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580164016.jpg",
+"thumb": "tex/kjl/580164016_t.jpg"
+},
+{
+"id": "580164018",
+"name": "70296-2 클레이어(리빙)",
+"code": "PGSH01243",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580164018.jpg",
+"thumb": "tex/kjl/580164018_t.jpg"
+},
+{
+"id": "580162744",
+"name": "70296-3 클레이어(리빙)",
+"code": "PGSH01244",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162744.jpg",
+"thumb": "tex/kjl/580162744_t.jpg"
+},
+{
+"id": "580163319",
+"name": "70296-4 클레이어(리빙)",
+"code": "PGSH01245",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163319.jpg",
+"thumb": "tex/kjl/580163319_t.jpg"
+},
+{
+"id": "580164053",
+"name": "70296-5 클레이어(리빙)",
+"code": "PGSH01246",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580164053.jpg",
+"thumb": "tex/kjl/580164053_t.jpg"
+},
+{
+"id": "580162765",
+"name": "70296-6 클레이어(리빙)",
+"code": "PGSH01247",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162765.jpg",
+"thumb": "tex/kjl/580162765_t.jpg"
+},
+{
+"id": "580163332",
+"name": "70296-7 클레이어(리빙)",
+"code": "PGSH01248",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163332.jpg",
+"thumb": "tex/kjl/580163332_t.jpg"
+},
+{
+"id": "580164060",
+"name": "70296-8 클레이어(리빙)",
+"code": "PGSH01249",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580164060.jpg",
+"thumb": "tex/kjl/580164060_t.jpg"
+},
+{
+"id": "580163335",
+"name": "70296-9클레이어(리빙)",
+"code": "PGSH01250",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163335.jpg",
+"thumb": "tex/kjl/580163335_t.jpg"
+},
+{
+"id": "580164009",
+"name": "70297-1 듀라월(리빙)",
+"code": "PGSH01237",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580164009.jpg",
+"thumb": "tex/kjl/580164009_t.jpg"
+},
+{
+"id": "580161909",
+"name": "70297-2 듀라월(리빙)",
+"code": "PGSH01238",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580161909.jpg",
+"thumb": "tex/kjl/580161909_t.jpg"
+},
+{
+"id": "580163284",
+"name": "70297-3 듀라월(리빙)",
+"code": "PGSH01239",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163284.jpg",
+"thumb": "tex/kjl/580163284_t.jpg"
+},
+{
+"id": "580162705",
+"name": "70297-4 듀라월(리빙)",
+"code": "PGSH01240",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162705.jpg",
+"thumb": "tex/kjl/580162705_t.jpg"
+},
+{
+"id": "580163287",
+"name": "70297-5 듀라월(리빙)",
+"code": "PGSH01241",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163287.jpg",
+"thumb": "tex/kjl/580163287_t.jpg"
+},
+{
+"id": "580160990",
+"name": "70298-1 스톤 그리드(리빙)",
+"code": "PGSH01233",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580160990.jpg",
+"thumb": "tex/kjl/580160990_t.jpg"
+},
+{
+"id": "580162688",
+"name": "70298-2 스톤 그리드(리빙)",
+"code": "PGSH01234",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162688.jpg",
+"thumb": "tex/kjl/580162688_t.jpg"
+},
+{
+"id": "580162699",
+"name": "70298-3 스톤 그리드(리빙)",
+"code": "PGSH01235",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162699.jpg",
+"thumb": "tex/kjl/580162699_t.jpg"
+},
+{
+"id": "580163278",
+"name": "70298-4 스톤 그리드(리빙)",
+"code": "PGSH01236",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163278.jpg",
+"thumb": "tex/kjl/580163278_t.jpg"
+},
+{
+"id": "580163253",
+"name": "70299-1 누벨스톤(리빙)",
+"code": "PGSH01228",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163253.jpg",
+"thumb": "tex/kjl/580163253_t.jpg"
+},
+{
+"id": "580162661",
+"name": "70299-2 누벨스톤(리빙)",
+"code": "PGSH01229",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162661.jpg",
+"thumb": "tex/kjl/580162661_t.jpg"
+},
+{
+"id": "580161882",
+"name": "70299-3 누벨스톤(리빙)",
+"code": "PGSH01230",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580161882.jpg",
+"thumb": "tex/kjl/580161882_t.jpg"
+},
+{
+"id": "580161885",
+"name": "70299-4 누벨스톤(리빙)",
+"code": "PGSH01231",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580161885.jpg",
+"thumb": "tex/kjl/580161885_t.jpg"
+},
+{
+"id": "580162676",
+"name": "70299-5 누벨스톤(리빙)",
+"code": "PGSH01232",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162676.jpg",
+"thumb": "tex/kjl/580162676_t.jpg"
+},
+{
+"id": "580163243",
+"name": "70300-1 하드데코(리빙)",
+"code": "PGSH01222",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163243.jpg",
+"thumb": "tex/kjl/580163243_t.jpg"
+},
+{
+"id": "580163245",
+"name": "70300-2 하드데코(리빙)",
+"code": "PGSH01223",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163245.jpg",
+"thumb": "tex/kjl/580163245_t.jpg"
+},
+{
+"id": "580163247",
+"name": "70300-3 하드데코(리빙)",
+"code": "PGSH01224",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163247.jpg",
+"thumb": "tex/kjl/580163247_t.jpg"
+},
+{
+"id": "580161862",
+"name": "70300-4 하드데코(리빙)",
+"code": "PGSH01225",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580161862.jpg",
+"thumb": "tex/kjl/580161862_t.jpg"
+},
+{
+"id": "580162655",
+"name": "70300-5 하드데코(리빙)",
+"code": "PGSH01226",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162655.jpg",
+"thumb": "tex/kjl/580162655_t.jpg"
+},
+{
+"id": "580162656",
+"name": "70300-6 하드데코(리빙)",
+"code": "PGSH01227",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162656.jpg",
+"thumb": "tex/kjl/580162656_t.jpg"
+},
+{
+"id": "580163202",
+"name": "70301-1 피노스톤(리빙)",
+"code": "PGSH01216",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163202.jpg",
+"thumb": "tex/kjl/580163202_t.jpg"
+},
+{
+"id": "580161837",
+"name": "70301-2 피노스톤(리빙)",
+"code": "PGSH01217",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580161837.jpg",
+"thumb": "tex/kjl/580161837_t.jpg"
+},
+{
+"id": "580162628",
+"name": "70301-3 피노스톤(리빙)",
+"code": "PGSH01218",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162628.jpg",
+"thumb": "tex/kjl/580162628_t.jpg"
+},
+{
+"id": "580163227",
+"name": "70301-4 피노스톤(리빙)",
+"code": "PGSH01219",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163227.jpg",
+"thumb": "tex/kjl/580163227_t.jpg"
+},
+{
+"id": "580161843",
+"name": "70301-5 피노스톤(리빙)",
+"code": "PGSH01220",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580161843.jpg",
+"thumb": "tex/kjl/580161843_t.jpg"
+},
+{
+"id": "580163233",
+"name": "70301-6 피노스톤(리빙)",
+"code": "PGSH01221",
+"group": "신한 리빙",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163233.jpg",
+"thumb": "tex/kjl/580163233_t.jpg"
+},
+{
+"id": "580163135",
+"name": "70302-1 프라임 스톤(리빙)",
+"code": "PGSH01208",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163135.jpg",
+"thumb": "tex/kjl/580163135_t.jpg"
+},
+{
+"id": "580163136",
+"name": "70302-2 프라임 스톤(리빙)",
+"code": "PGSH01209",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163136.jpg",
+"thumb": "tex/kjl/580163136_t.jpg"
+},
+{
+"id": "580163139",
+"name": "70302-3 프라임 스톤(리빙)",
+"code": "PGSH01210",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163139.jpg",
+"thumb": "tex/kjl/580163139_t.jpg"
+},
+{
+"id": "580160884",
+"name": "70302-4 프라임 스톤(리빙)",
+"code": "PGSH01211",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580160884.jpg",
+"thumb": "tex/kjl/580160884_t.jpg"
+},
+{
+"id": "580160927",
+"name": "70302-5 프라임 스톤(리빙)",
+"code": "PGSH01212",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580160927.jpg",
+"thumb": "tex/kjl/580160927_t.jpg"
+},
+{
+"id": "580160928",
+"name": "70302-6 프라임 스톤(리빙)",
+"code": "PGSH01213",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580160928.jpg",
+"thumb": "tex/kjl/580160928_t.jpg"
+},
+{
+"id": "580163195",
+"name": "70302-7 프라임 스톤(리빙)",
+"code": "PGSH01214",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580163195.jpg",
+"thumb": "tex/kjl/580163195_t.jpg"
+},
+{
+"id": "580162601",
+"name": "70302-8 프라임스톤",
+"code": "PGSH01215",
+"group": "신한 리빙",
+"series": "",
+"size": [
+1.0,
+0.49
+],
+"uvMeters": 1,
+"map": "tex/kjl/580162601.jpg",
+"thumb": "tex/kjl/580162601_t.jpg"
+},
+{
+"id": "259992592",
+"name": "F15094-2_서울의 야경 (방염)",
+"code": "PGSH00652",
+"group": "신한 방염",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259992592.jpg",
+"thumb": "tex/kjl/259992592_t.jpg"
+},
+{
+"id": "259997272",
+"name": "F15094-3_서울의 야경 (방염)",
+"code": "PGSH00653",
+"group": "신한 방염",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259997272.jpg",
+"thumb": "tex/kjl/259997272_t.jpg"
+},
+{
+"id": "259998155",
+"name": "F70226-1_브람스 (방염)",
+"code": "PGSH00633",
+"group": "신한 방염",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259998155.jpg",
+"thumb": "tex/kjl/259998155_t.jpg"
+},
+{
+"id": "259983860",
+"name": "F70226-2_브람스 (방염)",
+"code": "PGSH00634",
+"group": "신한 방염",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259983860.jpg",
+"thumb": "tex/kjl/259983860_t.jpg"
+},
+{
+"id": "259988960",
+"name": "FC8052-1_알토 (방염천장지)",
+"code": "PGSH00665",
+"group": "신한 방염",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259988960.jpg",
+"thumb": "tex/kjl/259988960_t.jpg"
+},
+{
+"id": "260000249",
+"name": "FC8052-3_알토 (방염천장지)",
+"code": "PGSH00666",
+"group": "신한 방염",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/260000249.jpg",
+"thumb": "tex/kjl/260000249_t.jpg"
+},
+{
+"id": "259984986",
+"name": "FC9643-10_스타 (방염천장지)",
+"code": "PGSH00663",
+"group": "신한 방염",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259984986.jpg",
+"thumb": "tex/kjl/259984986_t.jpg"
+},
+{
+"id": "259991870",
+"name": "FC9643-11_스타 (방염천장지)",
+"code": "PGSH00664",
+"group": "신한 방염",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259991870.jpg",
+"thumb": "tex/kjl/259991870_t.jpg"
+},
+{
+"id": "106050856",
+"name": "15053-1_조용한사색 (스케치)",
+"code": "PGSH00006",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.3,
+0.3
+],
+"uvMeters": 1,
+"map": "tex/kjl/106050856.jpg",
+"thumb": "tex/kjl/106050856_t.jpg"
+},
+{
+"id": "259786421",
+"name": "15105-1_그날의 약속 (스케치)",
+"code": "PGSH00513",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259786421.jpg",
+"thumb": "tex/kjl/259786421_t.jpg"
+},
+{
+"id": "259775687",
+"name": "15105-2_그날의 약속 (스케치)",
+"code": "PGSH00514",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259775687.jpg",
+"thumb": "tex/kjl/259775687_t.jpg"
+},
+{
+"id": "259792802",
+"name": "15105-3_그날의 약속 (스케치)",
+"code": "PGSH00515",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259792802.jpg",
+"thumb": "tex/kjl/259792802_t.jpg"
+},
+{
+"id": "259779576",
+"name": "15106-1_즐거운 소식 (스케치)",
+"code": "PGSH00508",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259779576.jpg",
+"thumb": "tex/kjl/259779576_t.jpg"
+},
+{
+"id": "259771744",
+"name": "15106-2_즐거운 소식 (스케치)",
+"code": "PGSH00509",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/259771744.jpg",
+"thumb": "tex/kjl/259771744_t.jpg"
+},
+{
+"id": "388854333",
+"name": "15110-1 아침햇살",
+"code": "PGSH00795",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388854333.jpg",
+"thumb": "tex/kjl/388854333_t.jpg"
+},
+{
+"id": "388855248",
+"name": "15110-2 아침햇살",
+"code": "PGSH00796",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388855248.jpg",
+"thumb": "tex/kjl/388855248_t.jpg"
+},
+{
+"id": "388853352",
+"name": "15110-3 아침햇살",
+"code": "PGSH00797",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388853352.jpg",
+"thumb": "tex/kjl/388853352_t.jpg"
+},
+{
+"id": "388855245",
+"name": "15111-1 모래알 터치",
+"code": "PGSH00802",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388855245.jpg",
+"thumb": "tex/kjl/388855245_t.jpg"
+},
+{
+"id": "388856155",
+"name": "15111-2 모래알 터치",
+"code": "PGSH00803",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388856155.jpg",
+"thumb": "tex/kjl/388856155_t.jpg"
+},
+{
+"id": "388854328",
+"name": "15112-1 핸디코트",
+"code": "PGSH00807",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388854328.jpg",
+"thumb": "tex/kjl/388854328_t.jpg"
+},
+{
+"id": "388854326",
+"name": "15112-2 핸디코트",
+"code": "PGSH00808",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388854326.jpg",
+"thumb": "tex/kjl/388854326_t.jpg"
+},
+{
+"id": "388854325",
+"name": "15112-3 핸디코트",
+"code": "PGSH00809",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388854325.jpg",
+"thumb": "tex/kjl/388854325_t.jpg"
+},
+{
+"id": "388856152",
+"name": "15113-1 한가로운 오후",
+"code": "PGSH00811",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388856152.jpg",
+"thumb": "tex/kjl/388856152_t.jpg"
+},
+{
+"id": "388988124",
+"name": "15113-2 한가로운 오후",
+"code": "PGSH00812",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388988124.jpg",
+"thumb": "tex/kjl/388988124_t.jpg"
+},
+{
+"id": "388854324",
+"name": "15113-3 한가로운 오후",
+"code": "PGSH00813",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388854324.jpg",
+"thumb": "tex/kjl/388854324_t.jpg"
+},
+{
+"id": "388852749",
+"name": "15114-1 나만의 휴식",
+"code": "PGSH00816",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388852749.jpg",
+"thumb": "tex/kjl/388852749_t.jpg"
+},
+{
+"id": "388856150",
+"name": "15114-2 나만의 휴식",
+"code": "PGSH00817",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388856150.jpg",
+"thumb": "tex/kjl/388856150_t.jpg"
+},
+{
+"id": "388855244",
+"name": "15114-6 나만의 휴식",
+"code": "PGSH00821",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388855244.jpg",
+"thumb": "tex/kjl/388855244_t.jpg"
+},
+{
+"id": "388854323",
+"name": "15114-7 나만의 휴식",
+"code": "PGSH00822",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388854323.jpg",
+"thumb": "tex/kjl/388854323_t.jpg"
+},
+{
+"id": "388853349",
+"name": "15115-1 모던클레이",
+"code": "PGSH00824",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388853349.jpg",
+"thumb": "tex/kjl/388853349_t.jpg"
+},
+{
+"id": "388853348",
+"name": "15116-1 고요의 정원",
+"code": "PGSH00828",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388853348.jpg",
+"thumb": "tex/kjl/388853348_t.jpg"
+},
+{
+"id": "388857050",
+"name": "15116-2 고요의 정원",
+"code": "PGSH00829",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388857050.jpg",
+"thumb": "tex/kjl/388857050_t.jpg"
+},
+{
+"id": "388853346",
+"name": "15116-3 고요의 정원",
+"code": "PGSH00830",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388853346.jpg",
+"thumb": "tex/kjl/388853346_t.jpg"
+},
+{
+"id": "388853345",
+"name": "15116-4 고요의 정원",
+"code": "PGSH00831",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388853345.jpg",
+"thumb": "tex/kjl/388853345_t.jpg"
+},
+{
+"id": "388851906",
+"name": "15116-7 고요의 정원",
+"code": "PGSH00834",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388851906.jpg",
+"thumb": "tex/kjl/388851906_t.jpg"
+},
+{
+"id": "388854319",
+"name": "15117-1 일상의 온기",
+"code": "PGSH00836",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388854319.jpg",
+"thumb": "tex/kjl/388854319_t.jpg"
+},
+{
+"id": "388854318",
+"name": "15117-2 일상의 온기",
+"code": "PGSH00837",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388854318.jpg",
+"thumb": "tex/kjl/388854318_t.jpg"
+},
+{
+"id": "388851905",
+"name": "15117-3 일상의 온기",
+"code": "PGSH00838",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388851905.jpg",
+"thumb": "tex/kjl/388851905_t.jpg"
+},
+{
+"id": "388857048",
+"name": "15118-1 규조토 샌드",
+"code": "PGSH00841",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388857048.jpg",
+"thumb": "tex/kjl/388857048_t.jpg"
+},
+{
+"id": "388851904",
+"name": "15118-2 규조토 샌드",
+"code": "PGSH00842",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388851904.jpg",
+"thumb": "tex/kjl/388851904_t.jpg"
+},
+{
+"id": "388855238",
+"name": "15118-3 규조토 샌드",
+"code": "PGSH00843",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388855238.jpg",
+"thumb": "tex/kjl/388855238_t.jpg"
+},
+{
+"id": "388856162",
+"name": "15119-1 소중한 시간",
+"code": "PGSH00845",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388856162.jpg",
+"thumb": "tex/kjl/388856162_t.jpg"
+},
+{
+"id": "388857057",
+"name": "15119-2 소중한 시간",
+"code": "PGSH00846",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388857057.jpg",
+"thumb": "tex/kjl/388857057_t.jpg"
+},
+{
+"id": "388854342",
+"name": "15119-3 소중한 시간",
+"code": "PGSH00847",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388854342.jpg",
+"thumb": "tex/kjl/388854342_t.jpg"
+},
+{
+"id": "388853356",
+"name": "15119-5 소중한 시간",
+"code": "PGSH00849",
+"group": "신한 스케치",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/388853356.jpg",
+"thumb": "tex/kjl/388853356_t.jpg"
+},
+{
+"id": "508578124",
+"name": "15120-1 아트 테라조",
+"code": "PGSH01101",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508578124.jpg",
+"thumb": "tex/kjl/508578124_t.jpg"
+},
+{
+"id": "508573396",
+"name": "15120-2 아트 테라조",
+"code": "PGSH01102",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508573396.jpg",
+"thumb": "tex/kjl/508573396_t.jpg"
+},
+{
+"id": "508577275",
+"name": "15120-3 아트 테라조",
+"code": "PGSH01103",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508577275.jpg",
+"thumb": "tex/kjl/508577275_t.jpg"
+},
+{
+"id": "508580078",
+"name": "15121-1 스페셜 페인트",
+"code": "PGSH01104",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508580078.jpg",
+"thumb": "tex/kjl/508580078_t.jpg"
+},
+{
+"id": "508565981",
+"name": "15121-2 스페셜 페인트",
+"code": "PGSH01105",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508565981.jpg",
+"thumb": "tex/kjl/508565981_t.jpg"
+},
+{
+"id": "508583004",
+"name": "15121-3 스페셜 페인트",
+"code": "PGSH01106",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508583004.jpg",
+"thumb": "tex/kjl/508583004_t.jpg"
+},
+{
+"id": "508569536",
+"name": "15121-4 스페셜 페인트",
+"code": "PGSH01107",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508569536.jpg",
+"thumb": "tex/kjl/508569536_t.jpg"
+},
+{
+"id": "508569548",
+"name": "15122-1 화려한 시선",
+"code": "PGSH01108",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508569548.jpg",
+"thumb": "tex/kjl/508569548_t.jpg"
+},
+{
+"id": "508580142",
+"name": "15122-2 화려한 시선",
+"code": "PGSH01109",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508580142.jpg",
+"thumb": "tex/kjl/508580142_t.jpg"
+},
+{
+"id": "508583041",
+"name": "15122-3 화려한 시선",
+"code": "PGSH01110",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508583041.jpg",
+"thumb": "tex/kjl/508583041_t.jpg"
+},
+{
+"id": "508569563",
+"name": "15122-4 화려한 시선",
+"code": "PGSH01111",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508569563.jpg",
+"thumb": "tex/kjl/508569563_t.jpg"
+},
+{
+"id": "508577361",
+"name": "15122-5 화려한 시선",
+"code": "PGSH01112",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508577361.jpg",
+"thumb": "tex/kjl/508577361_t.jpg"
+},
+{
+"id": "508570562",
+"name": "15122-6 화려한 시선",
+"code": "PGSH01113",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508570562.jpg",
+"thumb": "tex/kjl/508570562_t.jpg"
+},
+{
+"id": "508580173",
+"name": "15123-1 부드러운 촉감",
+"code": "PGSH01114",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508580173.jpg",
+"thumb": "tex/kjl/508580173_t.jpg"
+},
+{
+"id": "508581148",
+"name": "15123-2 부드러운 촉감",
+"code": "PGSH01115",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508581148.jpg",
+"thumb": "tex/kjl/508581148_t.jpg"
+},
+{
+"id": "508573502",
+"name": "15123-3 부드러운 촉감",
+"code": "PGSH01116",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508573502.jpg",
+"thumb": "tex/kjl/508573502_t.jpg"
+},
+{
+"id": "508584031",
+"name": "15123-4 부드러운 촉감",
+"code": "PGSH01117",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508584031.jpg",
+"thumb": "tex/kjl/508584031_t.jpg"
+},
+{
+"id": "508571587",
+"name": "15123-5 부드러운 촉감",
+"code": "PGSH01118",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508571587.jpg",
+"thumb": "tex/kjl/508571587_t.jpg"
+},
+{
+"id": "508569652",
+"name": "15123-6 부드러운 촉감",
+"code": "PGSH01119",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508569652.jpg",
+"thumb": "tex/kjl/508569652_t.jpg"
+},
+{
+"id": "508579291",
+"name": "15124-1 색다른 느낌",
+"code": "PGSH01120",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508579291.jpg",
+"thumb": "tex/kjl/508579291_t.jpg"
+},
+{
+"id": "508579298",
+"name": "15124-2 색다른 느낌",
+"code": "PGSH01121",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508579298.jpg",
+"thumb": "tex/kjl/508579298_t.jpg"
+},
+{
+"id": "508575604",
+"name": "15124-3 색다른 느낌",
+"code": "PGSH01122",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508575604.jpg",
+"thumb": "tex/kjl/508575604_t.jpg"
+},
+{
+"id": "508578383",
+"name": "15124-4 색다른 느낌",
+"code": "PGSH01123",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.0,
+1.0
+],
+"uvMeters": 1,
+"map": "tex/kjl/508578383.jpg",
+"thumb": "tex/kjl/508578383_t.jpg"
+},
+{
+"id": "508583222",
+"name": "15124-5 색다른 느낌",
+"code": "PGSH01124",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508583222.jpg",
+"thumb": "tex/kjl/508583222_t.jpg"
+},
+{
+"id": "508579348",
+"name": "15125-1 러프 쉐이드",
+"code": "PGSH01125",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508579348.jpg",
+"thumb": "tex/kjl/508579348_t.jpg"
+},
+{
+"id": "508569762",
+"name": "15125-2 러프 쉐이드",
+"code": "PGSH01126",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508569762.jpg",
+"thumb": "tex/kjl/508569762_t.jpg"
+},
+{
+"id": "508581319",
+"name": "15125-3 러프 쉐이드",
+"code": "PGSH01127",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508581319.jpg",
+"thumb": "tex/kjl/508581319_t.jpg"
+},
+{
+"id": "508574801",
+"name": "15125-4 러프 쉐이드",
+"code": "PGSH01128",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508574801.jpg",
+"thumb": "tex/kjl/508574801_t.jpg"
+},
+{
+"id": "508583415",
+"name": "15126-1 딥스톤",
+"code": "PGSH01129",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508583415.jpg",
+"thumb": "tex/kjl/508583415_t.jpg"
+},
+{
+"id": "508570913",
+"name": "15126-2 딥스톤",
+"code": "PGSH01130",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508570913.jpg",
+"thumb": "tex/kjl/508570913_t.jpg"
+},
+{
+"id": "508585273",
+"name": "15126-3 딥스톤",
+"code": "PGSH01131",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508585273.jpg",
+"thumb": "tex/kjl/508585273_t.jpg"
+},
+{
+"id": "508586208",
+"name": "15126-4 딥스톤",
+"code": "PGSH01132",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508586208.jpg",
+"thumb": "tex/kjl/508586208_t.jpg"
+},
+{
+"id": "508575876",
+"name": "15126-5 딥스톤",
+"code": "PGSH01133",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508575876.jpg",
+"thumb": "tex/kjl/508575876_t.jpg"
+},
+{
+"id": "508589012",
+"name": "15126-6 딥스톤",
+"code": "PGSH01134",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/508589012.jpg",
+"thumb": "tex/kjl/508589012_t.jpg"
+},
+{
+"id": "509255622",
+"name": "15126-7 딥스톤",
+"code": "PGSH01135",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509255622.jpg",
+"thumb": "tex/kjl/509255622_t.jpg"
+},
+{
+"id": "509254689",
+"name": "15127-1 컬러블룸",
+"code": "PGSH01136",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509254689.jpg",
+"thumb": "tex/kjl/509254689_t.jpg"
+},
+{
+"id": "509256439",
+"name": "15127-2 컬러블룸",
+"code": "PGSH01137",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509256439.jpg",
+"thumb": "tex/kjl/509256439_t.jpg"
+},
+{
+"id": "509254697",
+"name": "15127-3 컬러블룸",
+"code": "PGSH01138",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509254697.jpg",
+"thumb": "tex/kjl/509254697_t.jpg"
+},
+{
+"id": "509255632",
+"name": "15127-4 컬러블룸",
+"code": "PGSH01139",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509255632.jpg",
+"thumb": "tex/kjl/509255632_t.jpg"
+},
+{
+"id": "509253690",
+"name": "15127-5 컬러블룸",
+"code": "PGSH01140",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509253690.jpg",
+"thumb": "tex/kjl/509253690_t.jpg"
+},
+{
+"id": "509253691",
+"name": "15127-6 컬러블룸",
+"code": "PGSH01141",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509253691.jpg",
+"thumb": "tex/kjl/509253691_t.jpg"
+},
+{
+"id": "509259022",
+"name": "15127-7 컬러블룸",
+"code": "PGSH01142",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509259022.jpg",
+"thumb": "tex/kjl/509259022_t.jpg"
+},
+{
+"id": "509259023",
+"name": "15128-1 페블스톤",
+"code": "PGSH01143",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509259023.jpg",
+"thumb": "tex/kjl/509259023_t.jpg"
+},
+{
+"id": "509259036",
+"name": "15128-2 페블스톤",
+"code": "PGSH01144",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509259036.jpg",
+"thumb": "tex/kjl/509259036_t.jpg"
+},
+{
+"id": "509253700",
+"name": "15128-3 페블스톤",
+"code": "PGSH01145",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509253700.jpg",
+"thumb": "tex/kjl/509253700_t.jpg"
+},
+{
+"id": "509256465",
+"name": "15128-4 페블스톤",
+"code": "PGSH01146",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509256465.jpg",
+"thumb": "tex/kjl/509256465_t.jpg"
+},
+{
+"id": "509257397",
+"name": "15128-5 페블스톤",
+"code": "PGSH01147",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509257397.jpg",
+"thumb": "tex/kjl/509257397_t.jpg"
+},
+{
+"id": "509257398",
+"name": "15128-6 페블스톤",
+"code": "PGSH01148",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509257398.jpg",
+"thumb": "tex/kjl/509257398_t.jpg"
+},
+{
+"id": "509254726",
+"name": "15128-7 페블스톤",
+"code": "PGSH01149",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509254726.jpg",
+"thumb": "tex/kjl/509254726_t.jpg"
+},
+{
+"id": "509253708",
+"name": "15128-8 페블스톤",
+"code": "PGSH01150",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509253708.jpg",
+"thumb": "tex/kjl/509253708_t.jpg"
+},
+{
+"id": "509253711",
+"name": "15129-1 도톰한 코튼",
+"code": "PGSH01151",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509253711.jpg",
+"thumb": "tex/kjl/509253711_t.jpg"
+},
+{
+"id": "509256474",
+"name": "15129-2 도톰한 코튼",
+"code": "PGSH01152",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509256474.jpg",
+"thumb": "tex/kjl/509256474_t.jpg"
+},
+{
+"id": "509258196",
+"name": "15129-3 도톰한 코튼",
+"code": "PGSH01153",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509258196.jpg",
+"thumb": "tex/kjl/509258196_t.jpg"
+},
+{
+"id": "509253716",
+"name": "15129-4 도톰한 코튼",
+"code": "PGSH01154",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509253716.jpg",
+"thumb": "tex/kjl/509253716_t.jpg"
+},
+{
+"id": "509255707",
+"name": "15129-5 도톰한 코튼",
+"code": "PGSH01155",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509255707.jpg",
+"thumb": "tex/kjl/509255707_t.jpg"
+},
+{
+"id": "509255710",
+"name": "15129-6 도톰한 코튼",
+"code": "PGSH01156",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509255710.jpg",
+"thumb": "tex/kjl/509255710_t.jpg"
+},
+{
+"id": "509256515",
+"name": "15130-1 매트 피니시",
+"code": "PGSH01157",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509256515.jpg",
+"thumb": "tex/kjl/509256515_t.jpg"
+},
+{
+"id": "509259090",
+"name": "15130-2 매트 피니시",
+"code": "PGSH01158",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509259090.jpg",
+"thumb": "tex/kjl/509259090_t.jpg"
+},
+{
+"id": "509257444",
+"name": "15130-3 매트 피니시",
+"code": "PGSH01159",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509257444.jpg",
+"thumb": "tex/kjl/509257444_t.jpg"
+},
+{
+"id": "509260037",
+"name": "15130-4 매트 피니시",
+"code": "PGSH01160",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509260037.jpg",
+"thumb": "tex/kjl/509260037_t.jpg"
+},
+{
+"id": "509254778",
+"name": "15130-5 매트 피니시",
+"code": "PGSH01161",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509254778.jpg",
+"thumb": "tex/kjl/509254778_t.jpg"
+},
+{
+"id": "509260041",
+"name": "15130-6 매트 피니시",
+"code": "PGSH01162",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509260041.jpg",
+"thumb": "tex/kjl/509260041_t.jpg"
+},
+{
+"id": "509255738",
+"name": "15130-7 매트 피니시",
+"code": "PGSH01163",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509255738.jpg",
+"thumb": "tex/kjl/509255738_t.jpg"
+},
+{
+"id": "509252850",
+"name": "15130-8 매트 피니시",
+"code": "PGSH01164",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509252850.jpg",
+"thumb": "tex/kjl/509252850_t.jpg"
+},
+{
+"id": "509257495",
+"name": "15131-1 섬세한 직물",
+"code": "PGSH01165",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509257495.jpg",
+"thumb": "tex/kjl/509257495_t.jpg"
+},
+{
+"id": "509254827",
+"name": "15131-2 섬세한 직물",
+"code": "PGSH01166",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509254827.jpg",
+"thumb": "tex/kjl/509254827_t.jpg"
+},
+{
+"id": "509257501",
+"name": "15131-3 섬세한 직물",
+"code": "PGSH01167",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509257501.jpg",
+"thumb": "tex/kjl/509257501_t.jpg"
+},
+{
+"id": "509253826",
+"name": "15131-4 섬세한 직물",
+"code": "PGSH01168",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509253826.jpg",
+"thumb": "tex/kjl/509253826_t.jpg"
+},
+{
+"id": "509258315",
+"name": "15131-5 섬세한 직물",
+"code": "PGSH01169",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509258315.jpg",
+"thumb": "tex/kjl/509258315_t.jpg"
+},
+{
+"id": "509252860",
+"name": "15131-6 섬세한 직물",
+"code": "PGSH01170",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509252860.jpg",
+"thumb": "tex/kjl/509252860_t.jpg"
+},
+{
+"id": "509254839",
+"name": "15131-7 섬세한 직물",
+"code": "PGSH01171",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509254839.jpg",
+"thumb": "tex/kjl/509254839_t.jpg"
+},
+{
+"id": "509257525",
+"name": "15131-8 섬세한 직물",
+"code": "PGSH01172",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509257525.jpg",
+"thumb": "tex/kjl/509257525_t.jpg"
+},
+{
+"id": "509255803",
+"name": "15132-1 크랙스톤",
+"code": "PGSH01173",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509255803.jpg",
+"thumb": "tex/kjl/509255803_t.jpg"
+},
+{
+"id": "509255810",
+"name": "15132-2 크랙스톤",
+"code": "PGSH01174",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509255810.jpg",
+"thumb": "tex/kjl/509255810_t.jpg"
+},
+{
+"id": "509255815",
+"name": "15132-3 크랙스톤",
+"code": "PGSH01175",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509255815.jpg",
+"thumb": "tex/kjl/509255815_t.jpg"
+},
+{
+"id": "509253856",
+"name": "15132-4 크랙스톤",
+"code": "PGSH01176",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509253856.jpg",
+"thumb": "tex/kjl/509253856_t.jpg"
+},
+{
+"id": "509259193",
+"name": "15132-5 크랙스톤",
+"code": "PGSH01177",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509259193.jpg",
+"thumb": "tex/kjl/509259193_t.jpg"
+},
+{
+"id": "509252912",
+"name": "15132-6 크랙스톤",
+"code": "PGSH01178",
+"group": "신한 스케치",
+"series": "",
+"size": [
+1.06,
+0.52
+],
+"uvMeters": 1,
+"map": "tex/kjl/509252912.jpg",
+"thumb": "tex/kjl/509252912_t.jpg"
+},
+{
+"id": "122264990",
+"name": "C8052-1_알토 (천장지)",
+"code": "PGSH00304",
+"group": "신한 천장지",
+"series": "",
+"size": [
+0.3,
+0.3
+],
+"uvMeters": 1,
+"map": "tex/kjl/122264990.jpg",
+"thumb": "tex/kjl/122264990_t.jpg"
+},
+{
+"id": "122271595",
+"name": "C8052-3_알토 (천장지)",
+"code": "PGSH00305",
+"group": "신한 천장지",
+"series": "",
+"size": [
+0.3,
+0.3
+],
+"uvMeters": 1,
+"map": "tex/kjl/122271595.jpg",
+"thumb": "tex/kjl/122271595_t.jpg"
+},
+{
+"id": "580165088",
+"name": "C8123-1-10_테너 (천장지)",
+"code": "PGSH01276",
+"group": "신한 천장지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580165088.jpg",
+"thumb": "tex/kjl/580165088_t.jpg"
+},
+{
+"id": "580164173",
+"name": "C8123-1_테너 (천장지)",
+"code": "PGSH01278",
+"group": "신한 천장지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580164173.jpg",
+"thumb": "tex/kjl/580164173_t.jpg"
+},
+{
+"id": "580165091",
+"name": "C8123-2-10_테너 (천장지)",
+"code": "PGSH01277",
+"group": "신한 천장지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580165091.jpg",
+"thumb": "tex/kjl/580165091_t.jpg"
+},
+{
+"id": "580165126",
+"name": "C8123-2_테너 (천장지)",
+"code": "PGSH01279",
+"group": "신한 천장지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/580165126.jpg",
+"thumb": "tex/kjl/580165126_t.jpg"
+},
+{
+"id": "122271597",
+"name": "C9643-10_스타 (천장지)_N",
+"code": "PGSH00926",
+"group": "신한 천장지",
+"series": "",
+"size": [
+0.3,
+0.3
+],
+"uvMeters": 1,
+"map": "tex/kjl/122271597.jpg",
+"thumb": "tex/kjl/122271597_t.jpg"
+},
+{
+"id": "122278338",
+"name": "C9643-11_스타 (천장지)",
+"code": "PGSH00307",
+"group": "신한 천장지",
+"series": "",
+"size": [
+0.3,
+0.3
+],
+"uvMeters": 1,
+"map": "tex/kjl/122278338.jpg",
+"thumb": "tex/kjl/122278338_t.jpg"
+},
+{
+"id": "488342662",
+"name": "2001-1 로시니(파사드)",
+"code": "PGSH01086",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488342662.jpg",
+"thumb": "tex/kjl/488342662_t.jpg"
+},
+{
+"id": "488340774",
+"name": "2001-2 로시니(파사드)",
+"code": "PGSH01087",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488340774.jpg",
+"thumb": "tex/kjl/488340774_t.jpg"
+},
+{
+"id": "488333982",
+"name": "2002-1 피사로(파사드)",
+"code": "PGSH01083",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488333982.jpg",
+"thumb": "tex/kjl/488333982_t.jpg"
+},
+{
+"id": "488338582",
+"name": "2002-2 피사로(파사드)",
+"code": "PGSH01084",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488338582.jpg",
+"thumb": "tex/kjl/488338582_t.jpg"
+},
+{
+"id": "488342637",
+"name": "2002-3 피사로(파사드)",
+"code": "PGSH01085",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488342637.jpg",
+"thumb": "tex/kjl/488342637_t.jpg"
+},
+{
+"id": "488332818",
+"name": "2003-1 트래버틴(파사드)",
+"code": "PGSH01081",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.848,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488332818.jpg",
+"thumb": "tex/kjl/488332818_t.jpg"
+},
+{
+"id": "488351134",
+"name": "2003-2 트래버틴(파사드)",
+"code": "PGSH01082",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.848,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488351134.jpg",
+"thumb": "tex/kjl/488351134_t.jpg"
+},
+{
+"id": "488333841",
+"name": "2004-1 클로드(파사드)",
+"code": "PGSH01077",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488333841.jpg",
+"thumb": "tex/kjl/488333841_t.jpg"
+},
+{
+"id": "488328929",
+"name": "2004-2 클로드(파사드)",
+"code": "PGSH01078",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488328929.jpg",
+"thumb": "tex/kjl/488328929_t.jpg"
+},
+{
+"id": "488345344",
+"name": "2004-3 클로드(파사드)",
+"code": "PGSH01079",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488345344.jpg",
+"thumb": "tex/kjl/488345344_t.jpg"
+},
+{
+"id": "488341568",
+"name": "2004-4 클로드(파사드)",
+"code": "PGSH01080",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488341568.jpg",
+"thumb": "tex/kjl/488341568_t.jpg"
+},
+{
+"id": "488341537",
+"name": "2005-1 샤르댕(파사드)",
+"code": "PGSH01075",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488341537.jpg",
+"thumb": "tex/kjl/488341537_t.jpg"
+},
+{
+"id": "488341550",
+"name": "2005-2 샤르댕(파사드)",
+"code": "PGSH01076",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488341550.jpg",
+"thumb": "tex/kjl/488341550_t.jpg"
+},
+{
+"id": "488338374",
+"name": "2006-1 카를(파사드)",
+"code": "PGSH01071",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488338374.jpg",
+"thumb": "tex/kjl/488338374_t.jpg"
+},
+{
+"id": "488340526",
+"name": "2006-2 카를(파사드)",
+"code": "PGSH01072",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488340526.jpg",
+"thumb": "tex/kjl/488340526_t.jpg"
+},
+{
+"id": "488342446",
+"name": "2006-3 카를(파사드)",
+"code": "PGSH01073",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488342446.jpg",
+"thumb": "tex/kjl/488342446_t.jpg"
+},
+{
+"id": "488331870",
+"name": "2006-4 카를(파사드)",
+"code": "PGSH01074",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488331870.jpg",
+"thumb": "tex/kjl/488331870_t.jpg"
+},
+{
+"id": "488344303",
+"name": "2007-1 고야(파사드)",
+"code": "PGSH01067",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488344303.jpg",
+"thumb": "tex/kjl/488344303_t.jpg"
+},
+{
+"id": "488340507",
+"name": "2007-2 고야(파사드)",
+"code": "PGSH01068",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488340507.jpg",
+"thumb": "tex/kjl/488340507_t.jpg"
+},
+{
+"id": "488339548",
+"name": "2007-3 고야(파사드)",
+"code": "PGSH01069",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488339548.jpg",
+"thumb": "tex/kjl/488339548_t.jpg"
+},
+{
+"id": "488340511",
+"name": "2007-4 고야(파사드)",
+"code": "PGSH01070",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488340511.jpg",
+"thumb": "tex/kjl/488340511_t.jpg"
+},
+{
+"id": "488338347",
+"name": "2008-1 루벤스(파사드)",
+"code": "PGSH01063",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488338347.jpg",
+"thumb": "tex/kjl/488338347_t.jpg"
+},
+{
+"id": "488343387",
+"name": "2008-2 루벤스(파사드)",
+"code": "PGSH01064",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488343387.jpg",
+"thumb": "tex/kjl/488343387_t.jpg"
+},
+{
+"id": "488338350",
+"name": "2008-3 루벤스(파사드)",
+"code": "PGSH01065",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488338350.jpg",
+"thumb": "tex/kjl/488338350_t.jpg"
+},
+{
+"id": "488340493",
+"name": "2008-4 루벤스(파사드)",
+"code": "PGSH01066",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488340493.jpg",
+"thumb": "tex/kjl/488340493_t.jpg"
+},
+{
+"id": "488332731",
+"name": "2009-1 카미유(파사드)",
+"code": "PGSH01062",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488332731.jpg",
+"thumb": "tex/kjl/488332731_t.jpg"
+},
+{
+"id": "488338334",
+"name": "2010-1 프란츠(파사드)",
+"code": "PGSH01059",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488338334.jpg",
+"thumb": "tex/kjl/488338334_t.jpg"
+},
+{
+"id": "488328837",
+"name": "2010-2 프란츠(파사드)",
+"code": "PGSH01060",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488328837.jpg",
+"thumb": "tex/kjl/488328837_t.jpg"
+},
+{
+"id": "488332724",
+"name": "2010-3 프란츠(파사드)",
+"code": "PGSH01061",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488332724.jpg",
+"thumb": "tex/kjl/488332724_t.jpg"
+},
+{
+"id": "488333725",
+"name": "2011-1 에드가(파사드)",
+"code": "PGSH01055",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488333725.jpg",
+"thumb": "tex/kjl/488333725_t.jpg"
+},
+{
+"id": "488344267",
+"name": "2011-2 에드가(파사드)",
+"code": "PGSH01056",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488344267.jpg",
+"thumb": "tex/kjl/488344267_t.jpg"
+},
+{
+"id": "488345241",
+"name": "2011-3 에드가(파사드)",
+"code": "PGSH01057",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488345241.jpg",
+"thumb": "tex/kjl/488345241_t.jpg"
+},
+{
+"id": "488341438",
+"name": "2011-4 에드가(파사드)",
+"code": "PGSH01058",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488341438.jpg",
+"thumb": "tex/kjl/488341438_t.jpg"
+},
+{
+"id": "488345217",
+"name": "2012-1 바그너(파사드)",
+"code": "PGSH01050",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488345217.jpg",
+"thumb": "tex/kjl/488345217_t.jpg"
+},
+{
+"id": "488328808",
+"name": "2012-2 바그너(파사드)",
+"code": "PGSH01051",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488328808.jpg",
+"thumb": "tex/kjl/488328808_t.jpg"
+},
+{
+"id": "488331763",
+"name": "2012-3 바그너(파사드)",
+"code": "PGSH01052",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488331763.jpg",
+"thumb": "tex/kjl/488331763_t.jpg"
+},
+{
+"id": "488325958",
+"name": "2012-4 바그너(파사드)",
+"code": "PGSH01053",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488325958.jpg",
+"thumb": "tex/kjl/488325958_t.jpg"
+},
+{
+"id": "488347143",
+"name": "2012-5 바그너(파사드)",
+"code": "PGSH01054",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488347143.jpg",
+"thumb": "tex/kjl/488347143_t.jpg"
+},
+{
+"id": "488348041",
+"name": "2013-1 베르메르(파사드)",
+"code": "PGSH01048",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488348041.jpg",
+"thumb": "tex/kjl/488348041_t.jpg"
+},
+{
+"id": "488339487",
+"name": "2013-2 베르메르(파사드)",
+"code": "PGSH01049",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488339487.jpg",
+"thumb": "tex/kjl/488339487_t.jpg"
+},
+{
+"id": "488348001",
+"name": "2014-1 테라코타(파사드)",
+"code": "PGSH01045",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488348001.jpg",
+"thumb": "tex/kjl/488348001_t.jpg"
+},
+{
+"id": "488344187",
+"name": "2014-2 테라코타(파사드)",
+"code": "PGSH01046",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488344187.jpg",
+"thumb": "tex/kjl/488344187_t.jpg"
+},
+{
+"id": "488343302",
+"name": "2014-3 테라코타(파사드)",
+"code": "PGSH01047",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488343302.jpg",
+"thumb": "tex/kjl/488343302_t.jpg"
+},
+{
+"id": "488338225",
+"name": "2015-1 아그네스(파사드)",
+"code": "PGSH01041",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488338225.jpg",
+"thumb": "tex/kjl/488338225_t.jpg"
+},
+{
+"id": "488327814",
+"name": "2015-2 아그네스(파사드)",
+"code": "PGSH01042",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488327814.jpg",
+"thumb": "tex/kjl/488327814_t.jpg"
+},
+{
+"id": "488344168",
+"name": "2015-3 아그네스(파사드)",
+"code": "PGSH01043",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488344168.jpg",
+"thumb": "tex/kjl/488344168_t.jpg"
+},
+{
+"id": "488336410",
+"name": "2015-4 아그네스(파사드)",
+"code": "PGSH01044",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488336410.jpg",
+"thumb": "tex/kjl/488336410_t.jpg"
+},
+{
+"id": "488327772",
+"name": "2016-1 다빈치(파사드)",
+"code": "PGSH01037",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488327772.jpg",
+"thumb": "tex/kjl/488327772_t.jpg"
+},
+{
+"id": "488340334",
+"name": "2016-2 다빈치(파사드)",
+"code": "PGSH01038",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488340334.jpg",
+"thumb": "tex/kjl/488340334_t.jpg"
+},
+{
+"id": "488341301",
+"name": "2016-3 다빈치(파사드)",
+"code": "PGSH01039",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488341301.jpg",
+"thumb": "tex/kjl/488341301_t.jpg"
+},
+{
+"id": "488339391",
+"name": "2016-4 다빈치(파사드)",
+"code": "PGSH01040",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488339391.jpg",
+"thumb": "tex/kjl/488339391_t.jpg"
+},
+{
+"id": "488338140",
+"name": "2017-1 라파엘로(파사드)",
+"code": "PGSH01034",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.849,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488338140.jpg",
+"thumb": "tex/kjl/488338140_t.jpg"
+},
+{
+"id": "488332561",
+"name": "2017-2 라파엘로(파사드)",
+"code": "PGSH01035",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.849,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488332561.jpg",
+"thumb": "tex/kjl/488332561_t.jpg"
+},
+{
+"id": "488345098",
+"name": "2017-3 라파엘로(파사드)",
+"code": "PGSH01036",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.849,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488345098.jpg",
+"thumb": "tex/kjl/488345098_t.jpg"
+},
+{
+"id": "488331591",
+"name": "2018-1 샤갈(파사드)",
+"code": "PGSH01029",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488331591.jpg",
+"thumb": "tex/kjl/488331591_t.jpg"
+},
+{
+"id": "488338128",
+"name": "2018-2 샤갈(파사드)",
+"code": "PGSH01030",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488338128.jpg",
+"thumb": "tex/kjl/488338128_t.jpg"
+},
+{
+"id": "488333587",
+"name": "2018-3 샤갈(파사드)",
+"code": "PGSH01031",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488333587.jpg",
+"thumb": "tex/kjl/488333587_t.jpg"
+},
+{
+"id": "488347023",
+"name": "2018-4 샤갈(파사드)",
+"code": "PGSH01032",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488347023.jpg",
+"thumb": "tex/kjl/488347023_t.jpg"
+},
+{
+"id": "488344070",
+"name": "2018-5 샤갈(파사드)",
+"code": "PGSH01033",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488344070.jpg",
+"thumb": "tex/kjl/488344070_t.jpg"
+},
+{
+"id": "488327522",
+"name": "2019-1 티치아노(파사드)",
+"code": "PGSH01025",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.849,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488327522.jpg",
+"thumb": "tex/kjl/488327522_t.jpg"
+},
+{
+"id": "488345063",
+"name": "2019-2 티치아노(파사드)",
+"code": "PGSH01026",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.849,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488345063.jpg",
+"thumb": "tex/kjl/488345063_t.jpg"
+},
+{
+"id": "488338124",
+"name": "2019-3 티치아노(파사드)",
+"code": "PGSH01027",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.849,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488338124.jpg",
+"thumb": "tex/kjl/488338124_t.jpg"
+},
+{
+"id": "488341237",
+"name": "2019-4 티치아노(파사드)",
+"code": "PGSH01028",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.849,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488341237.jpg",
+"thumb": "tex/kjl/488341237_t.jpg"
+},
+{
+"id": "488341025",
+"name": "2020-1 마티스(파사드)",
+"code": "PGSH01020",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488341025.jpg",
+"thumb": "tex/kjl/488341025_t.jpg"
+},
+{
+"id": "488322976",
+"name": "2020-2 마티스(파사드)",
+"code": "PGSH01021",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488322976.jpg",
+"thumb": "tex/kjl/488322976_t.jpg"
+},
+{
+"id": "488333329",
+"name": "2020-3 마티스(파사드)",
+"code": "PGSH01022",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488333329.jpg",
+"thumb": "tex/kjl/488333329_t.jpg"
+},
+{
+"id": "488339085",
+"name": "2020-4 마티스(파사드)",
+"code": "PGSH01023",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488339085.jpg",
+"thumb": "tex/kjl/488339085_t.jpg"
+},
+{
+"id": "488322986",
+"name": "2020-5 마티스(파사드)",
+"code": "PGSH01024",
+"group": "신한 파사드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488322986.jpg",
+"thumb": "tex/kjl/488322986_t.jpg"
+},
+{
+"id": "591420639",
+"name": "2021-1 바그너 플러스(파사드플러스)",
+"code": "PGSH01287",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.2,
+0.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/591420639.jpg",
+"thumb": "tex/kjl/591420639_t.jpg"
+},
+{
+"id": "591430221",
+"name": "2021-2 바그너 플러스(파사드플러스)",
+"code": "PGSH01288",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.2,
+0.2
+],
+"uvMeters": 1,
+"map": "tex/kjl/591430221.jpg",
+"thumb": "tex/kjl/591430221_t.jpg"
+},
+{
+"id": "591409338",
+"name": "2022-1 샤갈 플러스(파사드플러스)",
+"code": "PGSH01283",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.27,
+0.27
+],
+"uvMeters": 1,
+"map": "tex/kjl/591409338.jpg",
+"thumb": "tex/kjl/591409338_t.jpg"
+},
+{
+"id": "591414182",
+"name": "2022-2 샤갈 플러스(파사드플러스)",
+"code": "PGSH01284",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.27,
+0.27
+],
+"uvMeters": 1,
+"map": "tex/kjl/591414182.jpg",
+"thumb": "tex/kjl/591414182_t.jpg"
+},
+{
+"id": "591408396",
+"name": "2022-3 샤갈 플러스(파사드플러스)",
+"code": "PGSH01285",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.27,
+0.27
+],
+"uvMeters": 1,
+"map": "tex/kjl/591408396.jpg",
+"thumb": "tex/kjl/591408396_t.jpg"
+},
+{
+"id": "591414200",
+"name": "2022-4 샤갈 플러스(파사드플러스)",
+"code": "PGSH01286",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.27,
+0.27
+],
+"uvMeters": 1,
+"map": "tex/kjl/591414200.jpg",
+"thumb": "tex/kjl/591414200_t.jpg"
+},
+{
+"id": "591401013",
+"name": "2023-1 마티스 플러스(파사드플러스)",
+"code": "PGSH01280",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.3,
+0.3
+],
+"uvMeters": 1,
+"map": "tex/kjl/591401013.jpg",
+"thumb": "tex/kjl/591401013_t.jpg"
+},
+{
+"id": "591397307",
+"name": "2023-2 마티스 플러스(파사드플러스)",
+"code": "PGSH01281",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.3,
+0.3
+],
+"uvMeters": 1,
+"map": "tex/kjl/591397307.jpg",
+"thumb": "tex/kjl/591397307_t.jpg"
+},
+{
+"id": "591402463",
+"name": "2023-3 마티스 플러스(파사드플러스)",
+"code": "PGSH01282",
+"group": "신한 파사드",
+"series": "",
+"size": [
+0.3,
+0.3
+],
+"uvMeters": 1,
+"map": "tex/kjl/591402463.jpg",
+"thumb": "tex/kjl/591402463_t.jpg"
+},
+{
+"id": "488347519",
+"name": "W2201-1 하드릭(파사드-월가드)",
+"code": "PGSH01097",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488347519.jpg",
+"thumb": "tex/kjl/488347519_t.jpg"
+},
+{
+"id": "488351218",
+"name": "W2201-2 하드릭(파사드-월가드)",
+"code": "PGSH01098",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488351218.jpg",
+"thumb": "tex/kjl/488351218_t.jpg"
+},
+{
+"id": "488353113",
+"name": "W2201-3 하드릭(파사드-월가드)",
+"code": "PGSH01099",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488353113.jpg",
+"thumb": "tex/kjl/488353113_t.jpg"
+},
+{
+"id": "488349332",
+"name": "W2201-4 하드릭(파사드-월가드)",
+"code": "PGSH01100",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488349332.jpg",
+"thumb": "tex/kjl/488349332_t.jpg"
+},
+{
+"id": "548524509",
+"name": "W2201-5 하드릭(파사드 월가드)",
+"code": "PGSH01207",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548524509.jpg",
+"thumb": "tex/kjl/548524509_t.jpg"
+},
+{
+"id": "488347507",
+"name": "W2202-1 믹스톤(파사드-월가드)",
+"code": "PGSH01092",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488347507.jpg",
+"thumb": "tex/kjl/488347507_t.jpg"
+},
+{
+"id": "548526216",
+"name": "W2202-10 믹스톤(파사드 월가드)",
+"code": "PGSH01205",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548526216.jpg",
+"thumb": "tex/kjl/548526216_t.jpg"
+},
+{
+"id": "548521807",
+"name": "W2202-11 믹스톤(파사드 월가드)",
+"code": "PGSH01206",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548521807.jpg",
+"thumb": "tex/kjl/548521807_t.jpg"
+},
+{
+"id": "488352155",
+"name": "W2202-2 믹스톤(파사드-월가드)",
+"code": "PGSH01093",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488352155.jpg",
+"thumb": "tex/kjl/488352155_t.jpg"
+},
+{
+"id": "488344554",
+"name": "W2202-3 믹스톤(파사드-월가드)",
+"code": "PGSH01094",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488344554.jpg",
+"thumb": "tex/kjl/488344554_t.jpg"
+},
+{
+"id": "488338635",
+"name": "W2202-4 믹스톤(파사드-월가드)",
+"code": "PGSH01095",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488338635.jpg",
+"thumb": "tex/kjl/488338635_t.jpg"
+},
+{
+"id": "488344566",
+"name": "W2202-5 믹스톤(파사드-월가드)",
+"code": "PGSH01096",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488344566.jpg",
+"thumb": "tex/kjl/488344566_t.jpg"
+},
+{
+"id": "548522626",
+"name": "W2202-6 믹스톤(파사드 월가드)",
+"code": "PGSH01201",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548522626.jpg",
+"thumb": "tex/kjl/548522626_t.jpg"
+},
+{
+"id": "548527122",
+"name": "W2202-7 믹스톤(파사드 월가드)",
+"code": "PGSH01202",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548527122.jpg",
+"thumb": "tex/kjl/548527122_t.jpg"
+},
+{
+"id": "548528062",
+"name": "W2202-8 믹스톤(파사드 월가드)",
+"code": "PGSH01203",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548528062.jpg",
+"thumb": "tex/kjl/548528062_t.jpg"
+},
+{
+"id": "548529001",
+"name": "W2202-9 믹스톤(파사드 월가드)",
+"code": "PGSH01204",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548529001.jpg",
+"thumb": "tex/kjl/548529001_t.jpg"
+},
+{
+"id": "488352128",
+"name": "W2203-1-러프트(파사드-월가드)",
+"code": "PGSH01088",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488352128.jpg",
+"thumb": "tex/kjl/488352128_t.jpg"
+},
+{
+"id": "488345537",
+"name": "W2203-2-러프트(파사드-월가드)",
+"code": "PGSH01089",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488345537.jpg",
+"thumb": "tex/kjl/488345537_t.jpg"
+},
+{
+"id": "488339791",
+"name": "W2203-3-러프트(파사드-월가드)",
+"code": "PGSH01090",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488339791.jpg",
+"thumb": "tex/kjl/488339791_t.jpg"
+},
+{
+"id": "488355036",
+"name": "W2203-4-러프트(파사드-월가드)",
+"code": "PGSH01091",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+1.044,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/488355036.jpg",
+"thumb": "tex/kjl/488355036_t.jpg"
+},
+{
+"id": "548523618",
+"name": "W2204-1 콘크무드(파사드 월가드)",
+"code": "PGSH01197",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548523618.jpg",
+"thumb": "tex/kjl/548523618_t.jpg"
+},
+{
+"id": "548523619",
+"name": "W2204-2 콘크무드(파사드 월가드)",
+"code": "PGSH01198",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548523619.jpg",
+"thumb": "tex/kjl/548523619_t.jpg"
+},
+{
+"id": "548521796",
+"name": "W2204-3 콘크무드(파사드 월가드)",
+"code": "PGSH01199",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548521796.jpg",
+"thumb": "tex/kjl/548521796_t.jpg"
+},
+{
+"id": "548527119",
+"name": "W2204-4 콘크무드(파사드 월가드)",
+"code": "PGSH01200",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548527119.jpg",
+"thumb": "tex/kjl/548527119_t.jpg"
+},
+{
+"id": "548527103",
+"name": "W2205-1 소프톤(파사드 월가드)",
+"code": "PGSH01192",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548527103.jpg",
+"thumb": "tex/kjl/548527103_t.jpg"
+},
+{
+"id": "548522614",
+"name": "W2205-2 소프톤(파사드 월가드)",
+"code": "PGSH01193",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548522614.jpg",
+"thumb": "tex/kjl/548522614_t.jpg"
+},
+{
+"id": "548526198",
+"name": "W2205-3 소프톤(파사드 월가드)",
+"code": "PGSH01194",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548526198.jpg",
+"thumb": "tex/kjl/548526198_t.jpg"
+},
+{
+"id": "548524491",
+"name": "W2205-4 소프톤(파사드 월가드)",
+"code": "PGSH01195",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548524491.jpg",
+"thumb": "tex/kjl/548524491_t.jpg"
+},
+{
+"id": "548524494",
+"name": "W2205-5 소프톤(파사드 월가드)",
+"code": "PGSH01196",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548524494.jpg",
+"thumb": "tex/kjl/548524494_t.jpg"
+},
+{
+"id": "548528045",
+"name": "W2206-1 엔티크월(파사드 월가드)",
+"code": "PGSH01190",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548528045.jpg",
+"thumb": "tex/kjl/548528045_t.jpg"
+},
+{
+"id": "548528049",
+"name": "W2206-2 엔티크월(파사드 월가드)",
+"code": "PGSH01191",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548528049.jpg",
+"thumb": "tex/kjl/548528049_t.jpg"
+},
+{
+"id": "548523599",
+"name": "W2207-1 매트슬랩(파사드 월가드)",
+"code": "PGSH01186",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548523599.jpg",
+"thumb": "tex/kjl/548523599_t.jpg"
+},
+{
+"id": "548522604",
+"name": "W2207-2 매트슬랩(파사드 월가드)",
+"code": "PGSH01187",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548522604.jpg",
+"thumb": "tex/kjl/548522604_t.jpg"
+},
+{
+"id": "548528040",
+"name": "W2207-3 매트슬랩(파사드 월가드)",
+"code": "PGSH01188",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548528040.jpg",
+"thumb": "tex/kjl/548528040_t.jpg"
+},
+{
+"id": "548521777",
+"name": "W2207-4 매트슬랩(파사드 월가드)",
+"code": "PGSH01189",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548521777.jpg",
+"thumb": "tex/kjl/548521777_t.jpg"
+},
+{
+"id": "548527081",
+"name": "W2208-1 샌디멘트(파사드 월가드)",
+"code": "PGSH01179",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548527081.jpg",
+"thumb": "tex/kjl/548527081_t.jpg"
+},
+{
+"id": "548525393",
+"name": "W2208-2 샌디멘트(파사드 월가드)",
+"code": "PGSH01180",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548525393.jpg",
+"thumb": "tex/kjl/548525393_t.jpg"
+},
+{
+"id": "548521766",
+"name": "W2208-3 샌디멘트(파사드 월가드)",
+"code": "PGSH01181",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548521766.jpg",
+"thumb": "tex/kjl/548521766_t.jpg"
+},
+{
+"id": "548526179",
+"name": "W2208-4 샌디멘트(파사드 월가드)",
+"code": "PGSH01182",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548526179.jpg",
+"thumb": "tex/kjl/548526179_t.jpg"
+},
+{
+"id": "548525396",
+"name": "W2208-5 샌디멘트(파사드 월가드)",
+"code": "PGSH01183",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548525396.jpg",
+"thumb": "tex/kjl/548525396_t.jpg"
+},
+{
+"id": "548528028",
+"name": "W2208-6 샌디멘트(파사드 월가드)",
+"code": "PGSH01184",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548528028.jpg",
+"thumb": "tex/kjl/548528028_t.jpg"
+},
+{
+"id": "548528031",
+"name": "W2208-7 샌디멘트(파사드 월가드)",
+"code": "PGSH01185",
+"group": "신한 파사드 월가드",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/548528031.jpg",
+"thumb": "tex/kjl/548528031_t.jpg"
+},
+{
+"id": "76488444",
+"name": "37029-3_산토리니 여행",
+"code": "PG1000065",
+"group": "한샘벽지",
+"series": "",
+"size": [
+1.06,
+1.06
+],
+"uvMeters": 1,
+"map": "tex/kjl/76488444.jpg",
+"thumb": "tex/kjl/76488444_t.jpg"
+},
+{
+"id": "95874451",
+"name": "37033-1_사하라 샌즈",
+"code": "PG1000084",
+"group": "한샘벽지",
+"series": "",
+"size": [
+1.06,
+1.06
+],
+"uvMeters": 1,
+"map": "tex/kjl/95874451.jpg",
+"thumb": "tex/kjl/95874451_t.jpg"
+},
+{
+"id": "112792336",
+"name": "37038-1(선라이즈)",
+"code": "PG1000525",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/112792336.jpg",
+"thumb": "tex/kjl/112792336_t.jpg"
+},
+{
+"id": "112785822",
+"name": "37038-2(선라이즈)",
+"code": "PG1000526",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/112785822.jpg",
+"thumb": "tex/kjl/112785822_t.jpg"
+},
+{
+"id": "112793292",
+"name": "37039-2(데코플레이)",
+"code": "PG1000529",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/112793292.jpg",
+"thumb": "tex/kjl/112793292_t.jpg"
+},
+{
+"id": "112790330",
+"name": "37040-3(베이직코디)",
+"code": "PG1000538",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/112790330.jpg",
+"thumb": "tex/kjl/112790330_t.jpg"
+},
+{
+"id": "112790332",
+"name": "37042-2(뉴트럴그레이)",
+"code": "PG1000542",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/112790332.jpg",
+"thumb": "tex/kjl/112790332_t.jpg"
+},
+{
+"id": "112792583",
+"name": "37045-4(시크라인)",
+"code": "PG1000556",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/112792583.jpg",
+"thumb": "tex/kjl/112792583_t.jpg"
+},
+{
+"id": "112790559",
+"name": "37047-2(핑크시슬리)",
+"code": "PG1000561",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/112790559.jpg",
+"thumb": "tex/kjl/112790559_t.jpg"
+},
+{
+"id": "112791662",
+"name": "37053-2(리빙케어)",
+"code": "PG1000574",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/112791662.jpg",
+"thumb": "tex/kjl/112791662_t.jpg"
+},
+{
+"id": "112789728",
+"name": "37054-1(퓨어라이트)",
+"code": "PG1000578",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/112789728.jpg",
+"thumb": "tex/kjl/112789728_t.jpg"
+},
+{
+"id": "112794578",
+"name": "37055-4(골드코스트)",
+"code": "PG1000583",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/112794578.jpg",
+"thumb": "tex/kjl/112794578_t.jpg"
+},
+{
+"id": "314291471",
+"name": "M001-3 _ 푸리타",
+"code": "PG1000832",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/314291471.jpg",
+"thumb": "tex/kjl/314291471_t.jpg"
+},
+{
+"id": "314297168",
+"name": "M005-2 _ 심플베이직",
+"code": "PG1000844",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/314297168.jpg",
+"thumb": "tex/kjl/314297168_t.jpg"
+},
+{
+"id": "314292511",
+"name": "M005-3 _ 심플베이직",
+"code": "PG1000845",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/314292511.jpg",
+"thumb": "tex/kjl/314292511_t.jpg"
+},
+{
+"id": "314291582",
+"name": "M006-2 _ 슬림베이직",
+"code": "PG1000852",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/314291582.jpg",
+"thumb": "tex/kjl/314291582_t.jpg"
+},
+{
+"id": "314302277",
+"name": "M007-1 _ 베르데",
+"code": "PG1000848",
+"group": "한샘벽지",
+"series": "",
+"size": [
+0.512,
+0.512
+],
+"uvMeters": 1,
+"map": "tex/kjl/314302277.jpg",
+"thumb": "tex/kjl/314302277_t.jpg"
+}
+]
+}

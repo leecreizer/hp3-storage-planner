@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>라이트맵 굽기 — 셀프 플래너 임베드</title>
+    <style>
+      body { margin: 0; overflow: hidden; background: #111; }
+      #status, #warning { position: absolute; left: 10px; font: 13px system-ui, sans-serif; text-shadow: 0 1px 2px #000; z-index: 10; white-space: pre-wrap; pointer-events: none; }
+      #status { top: 10px; color: #fff; }
+      #warning { top: 32px; color: #fb3; max-width: 60%; }
+      /* 상태는 셀프 플래너 아래 상태 줄에 나온다 */
+      #status, #warning { display: none; }
+    </style>
+    <script type="module" crossorigin src="./assets/embed-CrREUk7d.js"></script>
+  </head>
+  <body>
+    <div id="status"></div>
+    <div id="warning"></div>
+  </body>
+</html>
